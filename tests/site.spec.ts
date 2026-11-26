@@ -81,7 +81,7 @@ test.describe('layout', () => {
 test.describe('languages', () => {
   test('switcher keeps the page and remembers the choice', async ({ page }) => {
     await open(page, '/packs/wedding-signs.html');
-    await page.locator('#language-switcher').selectOption({ label: 'ES' });
+    await page.locator('.lang-switcher a[data-lang="es"]').click();
     await expect(page).toHaveURL(/\/es\/packs\/wedding-signs\.html$/);
     expect(await page.evaluate(() => localStorage.getItem('studioBelviLanguage'))).toBe('es');
   });
@@ -179,7 +179,11 @@ test.describe('contact', () => {
     await form.locator('input[name="email"]').fill('test@example.com');
     await form.locator('textarea[name="message"]').fill('Hola');
     expect(await form.evaluate((f: HTMLFormElement) => f.checkValidity())).toBe(false);
-    await form.locator('input[name="privacy"]').check();
+    await form.locator('label.consent .box').click();
+    await expect(form.locator('input[name="privacy"]')).toBeChecked();
+    await form.locator('label.chip', { hasText: '50–80' }).click();
+    await form.locator('select[name="wedding_date"]').selectOption({ index: 3 });
+    await expect(form.locator('input[name="guests"][value="50–80"]')).toBeChecked();
     expect(await form.evaluate((f: HTMLFormElement) => f.checkValidity())).toBe(true);
   });
 

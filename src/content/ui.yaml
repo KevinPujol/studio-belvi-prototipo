@@ -1,5 +1,8 @@
 # Textos de interfaz. nav01-06 y footer_text vienen de la web actual (commit 4c19754).
 es:
+  privacy_read: Leer
+  form_date_placeholder: Elige el mes
+  form_date_unknown: Aún no lo sabemos
   nav01: Porfolio
   nav02: ¿Qué hacemos?
   nav03: ¿Qué necesitas?
@@ -48,6 +51,9 @@ es:
   privacy_link: Privacidad
   meta_description: Studio Belvi diseña y crea la dirección creativa, los objetos, los espacios y las experiencias de tu boda. Packs y precios.
 en:
+  privacy_read: Read
+  form_date_placeholder: Choose a month
+  form_date_unknown: Not sure yet
   nav01: Portfolio
   nav02: What we do
   nav03: What you need
@@ -96,6 +102,9 @@ en:
   privacy_link: Privacy
   meta_description: Studio Belvi designs and creates the creative direction, objects, spaces and experiences of your wedding. Packs and prices.
 ca:
+  privacy_read: Llegir
+  form_date_placeholder: Tria el mes
+  form_date_unknown: Encara no ho sabem
   nav01: Portfolio
   nav02: Què fem?
   nav03: Què necessites?

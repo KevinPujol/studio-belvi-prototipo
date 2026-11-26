@@ -67,9 +67,9 @@ const links = [
           {links.map((l) => <a href={l.href}>{l.label}</a>)}
         </div>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-open={t.menu} data-close={t.close}>{t.menu}</button>
-        <select class="lang-switcher" id="language-switcher" aria-label="Language">
-          {LANGS.map((l) => <option value={alternates[l]} data-lang={l} selected={l === lang}>{l.toUpperCase()}</option>)}
-        </select>
+        <div class="lang-switcher" role="group" aria-label="Language">
+          {LANGS.map((l) => <a href={alternates[l]} hreflang={l} lang={l} data-lang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a>)}
+        </div>
       </div>
     </div>
   </nav>
@@ -87,13 +87,12 @@ const links = [
   </footer>
 
   <script>
-    // Language switcher: go to the same page in the chosen language and remember it.
-    const sw = document.getElementById('language-switcher') as HTMLSelectElement | null;
-    sw?.addEventListener('change', () => {
-      const opt = sw.selectedOptions[0];
-      try { localStorage.setItem('studioBelviLanguage', opt.dataset.lang || 'en'); } catch {}
-      location.href = sw.value + location.hash;
-    });
+    // Language switcher: go to the same page in the chosen language (keeping the #section) and remember it.
+    document.querySelectorAll<HTMLAnchorElement>('.lang-switcher a').forEach((a) => a.addEventListener('click', (e) => {
+      e.preventDefault();
+      try { localStorage.setItem('studioBelviLanguage', a.dataset.lang || 'en'); } catch {}
+      location.href = a.href + location.hash;
+    }));
 
     // Mobile menu (below 980px the legacy site had no menu at all).
     const nav = document.getElementById('site-nav');

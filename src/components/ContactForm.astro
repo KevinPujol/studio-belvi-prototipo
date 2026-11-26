@@ -5,25 +5,79 @@ interface Props { lang: Lang; t: Record<string, string>; levels: Level[]; famili
 const { lang, t, levels, families } = Astro.props;
 // Web3Forms access key: public by design, set per environment (no account tied to the code).
 const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
-const options = [...levels.map((l) => l.name), ...families.map((f) => f.name)];
+
+// Wedding date: the next 36 months, named in the page language ("junio de 2027", "June 2027", "juny de 2027").
+const locale = { en: 'en-GB', es: 'es-ES', ca: 'ca-ES' }[lang];
+const fmt = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' });
+const now = new Date();
+const months = Array.from({ length: 36 }, (_, i) => {
+  const d = new Date(now.getFullYear(), now.getMonth() + i + 1, 1);
+  const label = fmt.format(d);
+  return { value: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`, label: label.charAt(0).toUpperCase() + label.slice(1) };
+});
+// Guest ranges: catalogue prices are based on weddings of up to 80 guests.
+const guestRanges = ['≤ 50', '50–80', '80–120', '120–200', '+200'];
 ---
 <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-key={key} data-sent={t.form_sent} data-error={t.form_error}>
   <input type="hidden" name="access_key" value={key} />
   <input type="hidden" name="subject" value="Studio Belvi · nueva consulta desde la web" />
   <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-  <label>{t.form_name}<input name="name" required autocomplete="name" /></label>
-  <label>{t.form_email}<input name="email" type="email" required autocomplete="email" /></label>
-  <label>{t.form_date}<input name="wedding_date" type="month" /></label>
-  <label>{t.form_guests}<input name="guests" type="number" min="1" inputmode="numeric" /></label>
-  <fieldset class="full">
-    <legend>{t.form_interest}</legend>
-    {options.map((o) => <label class="check"><input type="checkbox" name="interest" value={o} />{o}</label>)}
+
+  <label class="field">
+    <span class="field-label">{t.form_name}</span>
+    <input name="name" required autocomplete="name" />
+  </label>
+  <label class="field">
+    <span class="field-label">{t.form_email}</span>
+    <input name="email" type="email" required autocomplete="email" inputmode="email" />
+  </label>
+
+  <label class="field">
+    <span class="field-label">{t.form_date}</span>
+    <span class="select">
+      <select name="wedding_date">
+        <option value="">{t.form_date_placeholder}</option>
+        <option value="Aún no lo saben">{t.form_date_unknown}</option>
+        {months.map((m) => <option value={m.value}>{m.label}</option>)}
+      </select>
+    </span>
+  </label>
+
+  <fieldset class="field">
+    <legend class="field-label">{t.form_guests}</legend>
+    <div class="chips">
+      {guestRanges.map((g) => (
+        <label class="chip"><input type="radio" name="guests" value={g} /><span>{g}</span></label>
+      ))}
+    </div>
   </fieldset>
-  <label class="full">{t.form_message}<textarea name="message" rows="5" required></textarea></label>
-  <label class="check full"><input type="checkbox" name="privacy" value="accepted" required /><span><a href={pageUrl('privacy', lang)}>{t.form_privacy}</a></span></label>
+
+  <fieldset class="field full">
+    <legend class="field-label">{t.form_interest}</legend>
+    <p class="chip-group-title">{t.offer_cd_title}</p>
+    <div class="chips">
+      {levels.map((l) => <label class="chip"><input type="checkbox" name="interest" value={l.name} /><span>{l.name}</span></label>)}
+    </div>
+    <p class="chip-group-title">{t.offer_pp_title}</p>
+    <div class="chips">
+      {families.map((f) => <label class="chip"><input type="checkbox" name="interest" value={f.name} /><span>{f.name}</span></label>)}
+    </div>
+  </fieldset>
+
+  <label class="field full">
+    <span class="field-label">{t.form_message}</span>
+    <textarea name="message" rows="5" required></textarea>
+  </label>
+
+  <label class="consent full">
+    <input type="checkbox" name="privacy" value="accepted" required />
+    <span class="box" aria-hidden="true"></span>
+    <span>{t.form_privacy} · <a href={pageUrl('privacy', lang)} target="_blank" rel="noopener">{t.privacy_read}</a></span>
+  </label>
+
   <div class="actions full">
     <button class="btn btn-primary" type="submit">{t.form_send}</button>
-    <span>{t.form_or_email} <a href="mailto:hello@studiobelvi.com">hello@studiobelvi.com</a></span>
+    <span class="alt">{t.form_or_email} <a href="mailto:hello@studiobelvi.com">hello@studiobelvi.com</a></span>
   </div>
   <p class="form-status" role="status" aria-live="polite"></p>
 </form>
@@ -44,18 +98,21 @@ const options = [...levels.map((l) => l.name), ...families.map((f) => f.name)];
       const data = new FormData(form);
       const interests = data.getAll('interest').join(', ');
       if (!form.dataset.key) {
-        // No Web3Forms key configured (prototype): fall back to the visitor's email client.
+        // No Web3Forms key configured: fall back to the visitor's email client.
         const body = [`${data.get('name')} <${data.get('email')}>`, `Fecha: ${data.get('wedding_date') || '-'}`, `Invitados: ${data.get('guests') || '-'}`, `Interés: ${interests || '-'}`, '', String(data.get('message') || '')].join('\n');
         location.href = `mailto:hello@studiobelvi.com?subject=${encodeURIComponent('Studio Belvi · consulta')}&body=${encodeURIComponent(body)}`;
         return;
       }
       data.set('interest', interests);
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+      button.disabled = true;
       try {
         const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
         const json = await res.json();
         status.textContent = json.success ? form.dataset.sent! : form.dataset.error!;
         if (json.success) form.reset();
       } catch { status.textContent = form.dataset.error!; }
+      button.disabled = false;
     });
   }
 </script>
