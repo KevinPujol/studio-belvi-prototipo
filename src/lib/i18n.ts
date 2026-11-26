@@ -9,6 +9,11 @@ export const SOURCE_LANG = 'es'; // content default (always complete)
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+/** Only the production site (studiobelvi.com at the root) may be indexed; prototypes and previews ask for noindex. */
+export function isIndexable(site: URL | undefined): boolean {
+  return !!site && site.hostname.replace(/^www\./, '') === 'studiobelvi.com' && BASE === '';
+}
+
 /** Public URL of an asset or absolute path, honouring the base path. */
 export function asset(path: string): string {
   if (!path || /^(https?:)?\/\//.test(path) || path.startsWith('data:')) return path;

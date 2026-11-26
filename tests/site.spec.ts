@@ -200,6 +200,8 @@ test.describe('no PWA, SEO basics', () => {
     await expect(page.locator('link[rel="manifest"]')).toHaveCount(0);
     expect(await page.evaluate(() => navigator.serviceWorker?.controller ?? null)).toBeNull();
     await expect(page.locator('meta[name="description"]')).toHaveCount(1);
+    // The default build targets studiobelvi.com, so it must be indexable.
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     await expect(page.locator('meta[property="og:image"]')).toHaveCount(1);
     expect((await request.get('/sitemap-index.xml')).status()).toBe(200);
     expect(await (await request.get('/robots.txt')).text()).toContain('Sitemap:');

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { LANGS, DEFAULT_LANG, asset, pageUrl, type Lang } from '../lib/i18n';
+import { LANGS, DEFAULT_LANG, asset, pageUrl, isIndexable, type Lang } from '../lib/i18n';
 import { ui as uiText } from '../lib/content';
 import { isPublished } from '../lib/routes';
 
@@ -31,6 +31,7 @@ const links = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{fullTitle}</title>
   <meta name="description" content={desc} />
+  {!isIndexable(Astro.site) && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={canonical} />
   {LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l], Astro.site).href} />)}
   <link rel="alternate" hreflang="x-default" href={new URL(alternates[DEFAULT_LANG], Astro.site).href} />
