@@ -170,9 +170,11 @@ Lo que se aprendió de cómo escribe Sveltia, ya resuelto en el código:
 - **Al guardar reescribe el fichero y borra los comentarios YAML.** Las fuentes de cada dato quedan en [02](02-catalogo-modelo-de-contenido.md), no en los ficheros.
 - La carpeta de medios es `public/assets/images` (no solo `uploads`), para que el panel muestre y reutilice las fotos actuales.
 
-Otras comprobaciones: flujo editorial activado (`publish_mode: editorial_workflow`; no se ha podido probar sin repo de GitHub, el modo local guarda directamente) y validación al construir (un precio "Desde" sin importe hace fallar el build).
+**Flujo editorial en el repo real (`KevinPujol/studio-belvi-prototipo`, 26-11-2026):** entrada con token; al guardar, Sveltia creó la PR #1 en la rama `cms/families/wedding-signs` con la etiqueta `sveltia-cms/draft` y no hubo despliegue; al pasar a *Ready* y pulsar *Publish* fusionó la PR en `main`, GitHub Actions desplegó y la web mostró el precio nuevo en ES y EN. Después se restauró el precio real (commit `5381c73`).
 
-Pendiente con el repo creado: entrar con token de `KevinPujol` y recorrer Borrador → En revisión → Publicar.
+Otras comprobaciones: validación al construir (un precio "Desde" sin importe hace fallar el build).
+
+Manual para las editoras con capturas: `docs/manual.html`, solo en local (fuera de git).
 
 ## Abierto
 

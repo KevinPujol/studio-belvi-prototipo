@@ -11,7 +11,7 @@ Estado a 26-11-2026: specs completas; arquitectura decidida: opción A (Kevin, 2
 | [04 · Arquitectura: opciones y solución por requisito](04-arquitectura-opciones.md) | **Decidida: opción A** (Astro + Sveltia CMS en GitHub Pages), 26-11-2026 |
 | [05 · Frontend](05-frontend.md) | Hecha (propuesta) |
 | [06 · Back office](06-backoffice.md) | Propuesta para la opción A; preguntas abiertas para Studio Belvi |
-| Prototipo | Construido en local (rama `prototipo`, sin commit): 21 páginas × 3 idiomas, catálogo en ES/EN/CA, FAQ en borrador, panel Sveltia probado de punta a punta en local, formulario enviando con Web3Forms, 138 pruebas Playwright en verde. Falta crear el repo del prototipo |
+| Prototipo | Publicado en https://kevinpujol.github.io/studio-belvi-prototipo/ (repo `KevinPujol/studio-belvi-prototipo`, rama local `prototipo` → `main`). Catálogo en ES/EN/CA, FAQ en borrador, formulario con Web3Forms y flujo editorial de Sveltia probados de punta a punta, 138 pruebas Playwright en verde. Manual de editoras en `docs/manual.html` (solo local). Falta: login con GitHub (Worker), revisión de Studio Belvi y migración |
 
 ## Decisiones abiertas
 
