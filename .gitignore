@@ -15,3 +15,6 @@ dist-base/
 
 # Local working notes for Claude Code (mention work accounts): not published
 CLAUDE.md
+
+# Local manual for Studio Belvi editors (kept only on this computer)
+docs/manual.html

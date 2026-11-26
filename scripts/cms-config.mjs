@@ -45,7 +45,7 @@ const dictFields = (rel) => keysOf(rel).map((k) => ({ name: k, label: k.replace(
 
 // ---------- collections ----------
 const levels = {
-  name: 'levels', label: 'Dirección creativa · niveles', label_singular: 'Nivel',
+  name: 'levels', label: 'Dirección creativa', label_singular: 'Nivel',
   folder: 'src/content/creative-levels', extension: 'yaml', format: 'yaml', i18n: true,
   create: false, delete: false, identifier_field: 'name', summary: '{{name}} · {{price.amount}} €',
   sortable_fields: ['order', 'name'],
@@ -71,7 +71,7 @@ const pack = {
 };
 
 const families = {
-  name: 'families', label: 'Production packs · familias', label_singular: 'Familia',
+  name: 'families', label: 'Packs', label_singular: 'Familia',
   folder: 'src/content/families', extension: 'yaml', format: 'yaml', i18n: true,
   create: true, slug: '{{fields.slug}}', identifier_field: 'name', summary: '{{order}}. {{name}}',
   sortable_fields: ['order', 'name'],
@@ -95,7 +95,7 @@ const families = {
 };
 
 const general = {
-  name: 'general', label: 'Catálogo · textos generales', i18n: true,
+  name: 'general', label: 'Textos del catálogo', i18n: true,
   files: [
     { name: 'catalog', label: 'Textos, condiciones y "Expand your story"', file: 'src/content/catalog.yaml', format: 'yaml', i18n: true, fields: [
       str('cd_title', 'Dirección creativa: título'), txt('cd_intro', 'Dirección creativa: introducción'), str('cd_levels_intro', 'Dirección creativa: subtítulo'),

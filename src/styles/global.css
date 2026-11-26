@@ -642,7 +642,7 @@ footer {
 .family-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .family-card { background: var(--bone); border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; transition: 0.35s ease; border: 1px solid rgba(0,0,0,0.05); }
 .family-card:hover { transform: translateY(-8px); box-shadow: var(--soft-shadow); }
-.family-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.family-card img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .family-card .body { padding: 1.8rem 2rem 2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
 .family-card h3 { font-size: 1.9rem; line-height: 1.1; }
 .family-card .tagline { font-size: 0.95rem; }
