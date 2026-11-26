@@ -187,6 +187,16 @@ test.describe('contact', () => {
     expect(await form.evaluate((f: HTMLFormElement) => f.checkValidity())).toBe(true);
   });
 
+  test('wedding date list starts at the current month in the visitor\'s browser', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2031-03-15T10:00:00'));
+    await open(page, '/es/');
+    const options = page.locator('select[name="wedding_date"] option');
+    await expect(options).toHaveCount(2 + 36);
+    await expect(options.nth(2)).toHaveAttribute('value', '2031-03');
+    await expect(options.nth(2)).toHaveText('Marzo de 2031');
+    await expect(options.last()).toHaveAttribute('value', '2034-02');
+  });
+
   test('mailto stays available', async ({ page }) => {
     await open(page, '/');
     await expect(page.locator('a[href="mailto:hello@studiobelvi.com"]').first()).toBeAttached();

@@ -6,12 +6,14 @@ const { lang, t, levels, families } = Astro.props;
 // Web3Forms access key: public by design, set per environment (no account tied to the code).
 const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
 
-// Wedding date: the next 36 months, named in the page language ("junio de 2027", "June 2027", "juny de 2027").
+// Wedding date: this month and the next 35, named in the page language ("junio de 2027", "June 2027", "juny de 2027").
+// Rendered at build time as a fallback; the script below rebuilds it in the visitor's browser so it is never stale.
+const MONTHS_AHEAD = 36;
 const locale = { en: 'en-GB', es: 'es-ES', ca: 'ca-ES' }[lang];
 const fmt = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' });
 const now = new Date();
-const months = Array.from({ length: 36 }, (_, i) => {
-  const d = new Date(now.getFullYear(), now.getMonth() + i + 1, 1);
+const months = Array.from({ length: MONTHS_AHEAD }, (_, i) => {
+  const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
   const label = fmt.format(d);
   return { value: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`, label: label.charAt(0).toUpperCase() + label.slice(1) };
 });
@@ -35,7 +37,7 @@ const guestRanges = ['≤ 50', '50–80', '80–120', '120–200', '+200'];
   <label class="field">
     <span class="field-label">{t.form_date}</span>
     <span class="select">
-      <select name="wedding_date">
+      <select name="wedding_date" data-locale={locale} data-months={MONTHS_AHEAD}>
         <option value="">{t.form_date_placeholder}</option>
         <option value="Aún no lo saben">{t.form_date_unknown}</option>
         {months.map((m) => <option value={m.value}>{m.label}</option>)}
@@ -88,6 +90,20 @@ const guestRanges = ['≤ 50', '50–80', '80–120', '120–200', '+200'];
     const params = new URLSearchParams(location.search);
     const wanted = params.get('interest');
     if (wanted) form.querySelectorAll<HTMLInputElement>('input[name="interest"]').forEach((c) => { if (c.value === wanted) c.checked = true; });
+    // Month list from today's date in the visitor's browser (keeps the two fixed options at the top).
+    const dateSelect = form.querySelector<HTMLSelectElement>('select[name="wedding_date"]');
+    if (dateSelect) {
+      const fmtMonth = new Intl.DateTimeFormat(dateSelect.dataset.locale, { month: 'long', year: 'numeric' });
+      const today = new Date();
+      const selected = dateSelect.value;
+      [...dateSelect.options].slice(2).forEach((o) => o.remove());
+      for (let i = 0; i < Number(dateSelect.dataset.months || 36); i++) {
+        const d = new Date(today.getFullYear(), today.getMonth() + i, 1);
+        const label = fmtMonth.format(d);
+        const value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+        dateSelect.add(new Option(label.charAt(0).toUpperCase() + label.slice(1), value, false, value === selected));
+      }
+    }
     const pack = params.get('pack');
     const msg = form.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
     if (pack && msg && !msg.value) msg.value = `${pack} (${wanted})\n\n`;
