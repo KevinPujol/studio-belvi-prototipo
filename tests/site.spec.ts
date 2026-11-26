@@ -86,6 +86,13 @@ test.describe('languages', () => {
     expect(await page.evaluate(() => localStorage.getItem('studioBelviLanguage'))).toBe('es');
   });
 
+  test('switching language after visiting #contact goes to the top of the other page', async ({ page }) => {
+    await open(page, '/#contact');
+    await page.locator('.lang-switcher a[data-lang="ca"]').click();
+    await expect(page).toHaveURL(/\/ca\/$/);
+    expect(await page.evaluate(() => window.scrollY)).toBeLessThan(50);
+  });
+
   test('a returning visitor with a stored choice lands on their language', async ({ page }) => {
     await page.addInitScript(() => { try { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('studioBelviLanguage', 'ca'); sessionStorage.setItem('seeded', '1'); } } catch {} });
     await page.goto('/packs.html');

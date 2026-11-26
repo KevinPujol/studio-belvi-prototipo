@@ -88,11 +88,10 @@ const links = [
   </footer>
 
   <script>
-    // Language switcher: go to the same page in the chosen language (keeping the #section) and remember it.
-    document.querySelectorAll<HTMLAnchorElement>('.lang-switcher a').forEach((a) => a.addEventListener('click', (e) => {
-      e.preventDefault();
+    // Language switcher: plain links to the same page in the other language (top of the page, no #section),
+    // remembering the choice for the next visit.
+    document.querySelectorAll<HTMLAnchorElement>('.lang-switcher a').forEach((a) => a.addEventListener('click', () => {
       try { localStorage.setItem('studioBelviLanguage', a.dataset.lang || 'en'); } catch {}
-      location.href = a.href + location.hash;
     }));
 
     // Mobile menu (below 980px the legacy site had no menu at all).
