@@ -1,0 +1,50 @@
+# published: false = borrador. No se publica faq.html (redirige a la home) ni aparece en el menú.
+es:
+  published: false
+  title: Preguntas frecuentes
+  intro: Todo lo que necesitas saber sobre cómo trabajar con Studio Belvi.
+  items:
+    - question: ¿Qué servicios ofrecéis?
+      answer: Nos especializamos en el diseño de celebraciones inmersivas, instalaciones personalizadas, fabricación a medida, experiencias interactivas y detalles narrativos hechos a mano para bodas y eventos especiales.
+    - question: ¿Podéis diseñar todo tipo de eventos?
+      answer: Por supuesto. Aunque estamos especializados en bodas, hay miles de formas de contar una historia. Te escuchamos.
+    - question: ¿Sois wedding planners?
+      answer: No, nosotros nos encargamos del diseño del evento y de la fabricación de elementos narrativos. Pero hacemos muy buen equipo con los <i>planners</i> y nos podemos integrar perfectamente con el que hayáis escogido.
+    - question: ¿Qué es la Propuesta de Dirección Creativa?
+      answer: Es un informe basado en todo lo que sabemos sobre los novios, incluyendo sus necesidades y preferencias, con el que hacemos una propuesta narrativa completa. Esta propuesta es siempre teórica, pero lo suficientemente detallada como para que los novios tengan claro todo lo que vamos a diseñar y construir, qué línea estética seguiremos y cómo será el proceso.
+    - question: ¿Cuánto me pueden costar las Story Sparks, los Story Chapters o el Story Universe?
+      answer: Es muy difícil dar números aproximados porque cada proyecto es extremadamente personal e intervienen muchas variables. De manera un tanto orientativa (nunca determinante), podríamos decir que los costes parten de los 1000 euros en las Story Sparks, los 5000 en los Story Chapters y los 15 000 en el Story Universe. No obstante, si lo que quieres es algo de un lujo inigualable, debes saber que para ninguna de las opciones de colaboración hay límite de inversión y nosotros solemos apuntarnos a un bombardeo.
+    - question: ¿Hay alguna manera de obtener descuentos?
+      answer: Como llevamos poco tiempo en el sector y estamos construyendo porfolio, nos interesa conseguir buen material fotográfico, así que haremos descuento a las 5 primeras parejas que nos faciliten fotos profesionales de su boda y nos den permiso para incorporarlas a nuestro porfolio.<br>Además, como creemos que todo el mundo debería poder acceder a nuestros servicios y no queremos perdernos ninguna buena historia, estamos construyendo la Colección Belvi, que ofrecerá ciertos diseños un poco más estandarizados pero adaptables a cada pareja, lo cual nos permitirá abaratar costes.
+en:
+  title: Frequently Asked Questions
+  intro: Everything you need to know about working with Studio Belvi.
+  items:
+    - question: What services do you offer?
+      answer: We specialize in immersive celebration design, personalized installations, custom fabrication, interactive experiences, and handcrafted storytelling details for weddings and meaningful events.
+    - question: Can you design all kinds of events?
+      answer: Of course. Although we specialize in weddings, there are thousands of ways to tell a story. We’re here to listen to you.
+    - question: Are you wedding planners?
+      answer: No, we handle the event design and the creation of narrative elements. But we work very well with planners and can integrate seamlessly with whoever you’ve chosen.
+    - question: What is the Creative Direction Proposal?
+      answer: It’s a report based on everything we know about the couple—including their needs and preferences—which we use to create a comprehensive narrative proposal. This proposal is always conceptual, but detailed enough so that the couple has a clear understanding of everything we’ll design and build, the aesthetic direction we’ll follow, and what the process will look like.
+    - question: How much might Story Sparks, Story Chapters, or Story Universe cost?
+      answer: It’s very difficult to give approximate figures because each project is extremely personal and involves many variables. As a rough guide (never a definitive figure), we could say that costs start at 1,000 euros for Story Sparks, 5,000 for Story Chapters, and 15,000 for Story Universe. However, if you’re looking for something truly luxurious, you should know that there’s no upper limit on investment for any of the collaboration options, and we’re usually more than happy to go all out.
+    - question: Is there any way to get a discount?
+      answer: Since we’re relatively new to the industry and are building our portfolio, we’re interested in securing high-quality photographic material. So, we’ll offer a discount to the first five couples who provide us with professional photos from their wedding and give us permission to include them in our portfolio.<br>Additionally, since we believe everyone should have access to our services and we don’t want to miss out on any great stories, we’re developing the Belvi Collection, which will offer certain slightly more standardized designs that can still be tailored to each couple, allowing us to keep costs down.
+ca:
+  title: Preguntes freqüents
+  intro: Tot el que necessiteu saber sobre treballar amb Studio Belvi.
+  items:
+    - question: Quins serveis oferiu?
+      answer: Ens especialitzem en el disseny immersiu de celebracions, instal·lacions personalitzades, fabricació a mida, experiències interactives i detalls narratius artesanals per a casaments i esdeveniments significatius.
+    - question: Podeu dissenyar tot tipus d’esdeveniments?
+      answer: Per descomptat. Encara que estem especialitzats en bodes, hi ha milers de maneres de contar una història. T’escoltem.
+    - question: Sou wedding planners?
+      answer: No, nosaltres ens encarreguem del disseny de l’esdeveniment i de la fabricació d’elements narratius. Però fem molt bon equip amb els <i>planners</i> i ens podem integrar perfectament amb el que hàgiu triat.
+    - question: Què és la Proposta de Direcció Creativa?
+      answer: És un informe basat en tot el que sabem sobre els nuvis, incloent-hi les seves necessitats i preferències, amb el qual fem una proposta narrativa completa. Aquesta proposta és sempre teòrica, però prou detallada com perquè els nuvis tinguin clar tot el que dissenyarem i construirem, quina línia estètica seguirem i com serà el procés.
+    - question: Quant em poden costar les Story Sparks, els Story Chapters o l’Story Universe?
+      answer: És molt difícil donar números aproximats perquè cada projecte és extremadament personal i intervenen moltes variables. De manera una miqueta orientativa (mai determinant), podríem dir que els costos parteixen dels 1000 euros en les Story Sparks, els 5000 en els Story Chapters i els 15 000 en l’Story Universe. No obstant, si el que vols és quelcom d’un luxe inigualable, has de saber que per a cap de les opcions de col·laboració hi ha límit d’inversió i nosaltres solem apuntar-nos a un bombardeig.
+    - question: Hi ha alguna manera d’obtenir descomptes?
+      answer: Com que som nous en el sector i estem construint portafolis, ens interessa aconseguir bon material fotogràfic, així que farem descompte a les 5 primeres parelles que ens facilitin fotos professionals del seu casament i ens donin permís per a incorporar-les al nostre portafolis.<br>A més, com que creiem que tothom hauria de poder accedir als nostres serveis i no volem perdre’ns cap bona història, estem construint la Col·lecció Belvi, que oferirà uns certs dissenys una mica més estandarditzats però adaptables a cada parella, el qual ens permetrà abaratir costos.

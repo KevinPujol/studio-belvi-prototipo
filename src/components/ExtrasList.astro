@@ -1,0 +1,25 @@
+---
+import PriceTag from './PriceTag.astro';
+import type { Lang } from '../lib/i18n';
+import type { Extra } from '../lib/content';
+interface Props { extras: Extra[]; lang: Lang; t: Record<string, string> }
+const { extras, lang, t } = Astro.props;
+const groups = (['additional_piece', 'combo', 'addon', 'support'] as const)
+  .map((kind) => ({ kind, items: extras.filter((e) => e.kind === kind) }))
+  .filter((g) => g.items.length);
+const vatExcluded = extras.some((e) => e.price?.vat_mode === 'excluded');
+---
+{groups.map((g) => (
+  <div class="panel reveal subsection">
+    <h3>{t[`extras_${g.kind}`] ?? t.extras_addon}</h3>
+    <div class="extras">
+      {g.items.map((e) => (
+        <div class="extra">
+          <span><span class="label">{e.label}</span>{e.description && <span class="desc">{e.description}</span>}</span>
+          <PriceTag price={e.price} lang={lang} vat={false} />
+        </div>
+      ))}
+    </div>
+    {vatExcluded && g.items.some((e) => e.price) && <p class="small-note">{t.extras_vat_note}</p>}
+  </div>
+))}

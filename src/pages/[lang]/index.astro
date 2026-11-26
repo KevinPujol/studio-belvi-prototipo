@@ -1,0 +1,10 @@
+---
+// Home in ES and CA: /es/ and /ca/ (built as es/index.html, ca/index.html).
+import Page from '../../components/Page.astro';
+import { LANGS, DEFAULT_LANG } from '../../lib/i18n';
+
+export function getStaticPaths() {
+  return LANGS.filter((l) => l !== DEFAULT_LANG).map((lang) => ({ params: { lang }, props: { lang, def: { route: '', view: 'home' } } }));
+}
+---
+<Page lang={Astro.props.lang} def={Astro.props.def} />

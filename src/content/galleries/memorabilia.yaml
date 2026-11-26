@@ -1,0 +1,84 @@
+es:
+  title: Memorabilia
+  text: ""
+  cards:
+    - image: /assets/images/memorabilia/obj1.webp
+      caption: Invitación con <i>foil</i> dorado, sello de lacre y juego de pistas
+    - image: /assets/images/memorabilia/obj2.webp
+      caption: <i>Totebags</i> con el monograma de los novios
+    - image: /assets/images/memorabilia/obj3.webp
+      caption: Flor de <i>stained glass</i>
+    - image: /assets/images/memorabilia/obj4.webp
+      caption: Gargantilla de <i>crochet</i>
+    - image: /assets/images/memorabilia/obj5.webp
+      caption: Tiara inspirada en universos élficos
+    - image: /assets/images/memorabilia/obj6.webp
+      caption: <i>Corsages</i> y <i>boutonnieres</i> hechos de resina y de flores preservadas
+    - image: /assets/images/memorabilia/obj7.webp
+      caption: Adorno de artesanía Kimekomi
+    - image: /assets/images/memorabilia/obj8.webp
+      caption: Amuleto hecho con la técnica de <i>cloisonné</i>
+    - image: /assets/images/memorabilia/obj9.webp
+      caption: <i>Gold gilding</i> sobre vidrio
+    - image: /assets/images/memorabilia/obj10.webp
+      caption: Brazalete de <i>crochet</i> con hilo de efecto metálico
+    - image: /assets/images/memorabilia/obj11.webp
+      caption: Libro encuadernado a mano
+    - image: /assets/images/memorabilia/obj12.webp
+      caption: Coletero hecho a mano
+en:
+  title: Memorabilia
+  text: ""
+  cards:
+    - image: /assets/images/memorabilia/obj1.webp
+      caption: Invitation with gold foil, wax seal, and scavenger hunt
+    - image: /assets/images/memorabilia/obj2.webp
+      caption: Tote bags featuring the couple’s monogram
+    - image: /assets/images/memorabilia/obj3.webp
+      caption: Stained-glass flower
+    - image: /assets/images/memorabilia/obj4.webp
+      caption: Crochet choker
+    - image: /assets/images/memorabilia/obj5.webp
+      caption: Tiara inspired by elven realms
+    - image: /assets/images/memorabilia/obj6.webp
+      caption: Corsages and boutonnieres made of resin and preserved flowers
+    - image: /assets/images/memorabilia/obj7.webp
+      caption: Handcrafted Kimekomi ornament
+    - image: /assets/images/memorabilia/obj8.webp
+      caption: Charm made using the cloisonné technique
+    - image: /assets/images/memorabilia/obj9.webp
+      caption: Gold gilding on glass
+    - image: /assets/images/memorabilia/obj10.webp
+      caption: Crochet bracelet with metallic-effect thread
+    - image: /assets/images/memorabilia/obj11.webp
+      caption: Hand-bound book
+    - image: /assets/images/memorabilia/obj12.webp
+      caption: Handmade scrunchy
+ca:
+  title: Memorabilia
+  text: ""
+  cards:
+    - image: /assets/images/memorabilia/obj1.webp
+      caption: Invitació amb <i>foil</i> daurat, segell de lacre i joc de pistes
+    - image: /assets/images/memorabilia/obj2.webp
+      caption: <i>Totebags</i> amb el monograma dels nuvis
+    - image: /assets/images/memorabilia/obj3.webp
+      caption: Flor de <i>stained glass</i>
+    - image: /assets/images/memorabilia/obj4.webp
+      caption: Collaret de <i>crochet</i>
+    - image: /assets/images/memorabilia/obj5.webp
+      caption: Tiara inspirada en universos èlfics
+    - image: /assets/images/memorabilia/obj6.webp
+      caption: <i>Corsages</i> i <i>boutonnieres</i> fets de resina i de flors preservades
+    - image: /assets/images/memorabilia/obj7.webp
+      caption: Adorn d’artesania Kimekomi
+    - image: /assets/images/memorabilia/obj8.webp
+      caption: Amulet fet amb la tècnica de <i>cloisonné</i>
+    - image: /assets/images/memorabilia/obj9.webp
+      caption: <i>Gold gilding</i> sobre vidre
+    - image: /assets/images/memorabilia/obj10.webp
+      caption: Braçalet de <i>crochet</i> amb fil d’efecte metàl·lic
+    - image: /assets/images/memorabilia/obj11.webp
+      caption: Llibre enquadernat a mà
+    - image: /assets/images/memorabilia/obj12.webp
+      caption: Lligacues fet a mà

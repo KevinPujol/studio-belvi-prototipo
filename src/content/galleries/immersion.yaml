@@ -1,0 +1,42 @@
+es:
+  title: Inmersión
+  text: ""
+  cards:
+    - image: /assets/images/immersion/imm1.webp
+      caption: Bingo musical muy especial
+    - image: /assets/images/immersion/imm2.webp
+      caption: Pista de baile ambientada con velas
+    - image: /assets/images/immersion/imm3.webp
+      caption: Ceremonia de entrega con las damas de honor
+    - image: /assets/images/immersion/imm4.webp
+      caption: Cerezo en miniatura como libro de firmas
+    - image: /assets/images/immersion/imm5.webp
+      caption: Búsqueda del tesoro
+en:
+  title: Immersion
+  text: ""
+  cards:
+    - image: /assets/images/immersion/imm1.webp
+      caption: A very special musical bingo
+    - image: /assets/images/immersion/imm2.webp
+      caption: Candle-lit dancing setup
+    - image: /assets/images/immersion/imm3.webp
+      caption: Bridal party ceremonial moments
+    - image: /assets/images/immersion/imm4.webp
+      caption: Miniature cherry tree as a guest book
+    - image: /assets/images/immersion/imm5.webp
+      caption: Treasure hunt
+ca:
+  title: Immersió
+  text: ""
+  cards:
+    - image: /assets/images/immersion/imm1.webp
+      caption: Bingo musical molt especial
+    - image: /assets/images/immersion/imm2.webp
+      caption: Pista de ball ambientada amb espelmes
+    - image: /assets/images/immersion/imm3.webp
+      caption: Cerimònia de lliurament amb les dames d’honor
+    - image: /assets/images/immersion/imm4.webp
+      caption: Cirerer en miniatura com a llibre de signatures
+    - image: /assets/images/immersion/imm5.webp
+      caption: Cerca del tresor

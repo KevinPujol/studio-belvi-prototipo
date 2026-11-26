@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+import { LANGS, DEFAULT_LANG, asset, pageUrl, type Lang } from '../lib/i18n';
+import { ui as uiText } from '../lib/content';
+import { isPublished } from '../lib/routes';
+
+interface Props { lang: Lang; route: string; title?: string; description?: string; image?: string }
+const { lang, route, title, description, image } = Astro.props;
+const t = uiText(lang);
+const isHome = route === '';
+const fullTitle = title ? `${title} · Studio Belvi` : 'Studio Belvi';
+const desc = description || t.meta_description;
+const canonical = new URL(pageUrl(route, lang), Astro.site).href;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, pageUrl(route, l)]));
+const ogImage = new URL(asset(image || '/assets/images/portfolio/fairytale-hero.webp'), Astro.site).href;
+const home = (hash: string) => (isHome ? `#${hash}` : pageUrl('', lang, hash));
+const links = [
+  { href: home('portfolio'), label: t.nav01 },
+  { href: home('services'), label: t.nav02 },
+  { href: home('offer'), label: t.nav03 },
+  { href: pageUrl('packs', lang), label: t.nav_packs },
+  { href: home('process'), label: t.nav04 },
+  { href: home('contact'), label: t.nav05 },
+  ...(isPublished('faq') ? [{ href: pageUrl('faq', lang), label: t.nav06 }] : []),
+];
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={desc} />
+  <link rel="canonical" href={canonical} />
+  {LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l], Astro.site).href} />)}
+  <link rel="alternate" hreflang="x-default" href={new URL(alternates[DEFAULT_LANG], Astro.site).href} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Studio Belvi" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content={{ en: 'en_GB', es: 'es_ES', ca: 'ca_ES' }[lang]} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href={asset('/assets/images/logo/favicon.svg')} />
+  <!-- Language preference: same localStorage key as the legacy site, so returning visitors keep their choice. -->
+  <script is:inline define:vars={{ lang, alternates }}>
+    try {
+      var KEY = 'studioBelviLanguage';
+      var pref = localStorage.getItem(KEY);
+      var fromOutside = !document.referrer || document.referrer.indexOf(location.origin) !== 0;
+      if (lang === 'en' && (pref === 'es' || pref === 'ca') && fromOutside) location.replace(alternates[pref]);
+      else localStorage.setItem(KEY, lang);
+    } catch (e) {}
+  </script>
+</head>
+<body id="top">
+  <nav id="site-nav">
+    <div class="container nav-wrapper">
+      <a href={isHome ? '#top' : pageUrl('', lang)} class="logo">
+        <img src={asset('/assets/images/logo/logo-bone-textoderecha.svg')} alt="Studio Belvi" class="logo-image" />
+      </a>
+      <div class="nav-right">
+        <div class="nav-links" id="nav-links">
+          {links.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-open={t.menu} data-close={t.close}>{t.menu}</button>
+        <select class="lang-switcher" id="language-switcher" aria-label="Language">
+          {LANGS.map((l) => <option value={alternates[l]} data-lang={l} selected={l === lang}>{l.toUpperCase()}</option>)}
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <slot />
+
+  <footer>
+    <div class="container">
+      <p set:html={t.footer_text} />
+      <p class="footer-links">
+        <a href="mailto:hello@studiobelvi.com">hello@studiobelvi.com</a>
+        <a href={pageUrl('privacy', lang)}>{t.privacy_link}</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Language switcher: go to the same page in the chosen language and remember it.
+    const sw = document.getElementById('language-switcher') as HTMLSelectElement | null;
+    sw?.addEventListener('change', () => {
+      const opt = sw.selectedOptions[0];
+      try { localStorage.setItem('studioBelviLanguage', opt.dataset.lang || 'en'); } catch {}
+      location.href = sw.value + location.hash;
+    });
+
+    // Mobile menu (below 980px the legacy site had no menu at all).
+    const nav = document.getElementById('site-nav');
+    const toggle = nav?.querySelector<HTMLButtonElement>('.menu-toggle');
+    toggle?.addEventListener('click', () => {
+      const open = nav!.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? toggle.dataset.close! : toggle.dataset.open!;
+    });
+    nav?.querySelectorAll('.nav-links a').forEach((a) => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      if (toggle) toggle.textContent = toggle.dataset.open!;
+    }));
+
+    // Reveal on scroll (legacy behaviour).
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('active')), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>

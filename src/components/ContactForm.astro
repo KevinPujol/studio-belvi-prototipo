@@ -1,0 +1,61 @@
+---
+import { pageUrl, type Lang } from '../lib/i18n';
+import type { Family, Level } from '../lib/content';
+interface Props { lang: Lang; t: Record<string, string>; levels: Level[]; families: Family[] }
+const { lang, t, levels, families } = Astro.props;
+// Web3Forms access key: public by design, set per environment (no account tied to the code).
+const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
+const options = [...levels.map((l) => l.name), ...families.map((f) => f.name)];
+---
+<form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-key={key} data-sent={t.form_sent} data-error={t.form_error}>
+  <input type="hidden" name="access_key" value={key} />
+  <input type="hidden" name="subject" value="Studio Belvi · nueva consulta desde la web" />
+  <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <label>{t.form_name}<input name="name" required autocomplete="name" /></label>
+  <label>{t.form_email}<input name="email" type="email" required autocomplete="email" /></label>
+  <label>{t.form_date}<input name="wedding_date" type="month" /></label>
+  <label>{t.form_guests}<input name="guests" type="number" min="1" inputmode="numeric" /></label>
+  <fieldset class="full">
+    <legend>{t.form_interest}</legend>
+    {options.map((o) => <label class="check"><input type="checkbox" name="interest" value={o} />{o}</label>)}
+  </fieldset>
+  <label class="full">{t.form_message}<textarea name="message" rows="5" required></textarea></label>
+  <label class="check full"><input type="checkbox" name="privacy" value="accepted" required /><span><a href={pageUrl('privacy', lang)}>{t.form_privacy}</a></span></label>
+  <div class="actions full">
+    <button class="btn btn-primary" type="submit">{t.form_send}</button>
+    <span>{t.form_or_email} <a href="mailto:hello@studiobelvi.com">hello@studiobelvi.com</a></span>
+  </div>
+  <p class="form-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form) {
+    // Pre-select what the visitor clicked "I'm interested" on.
+    const params = new URLSearchParams(location.search);
+    const wanted = params.get('interest');
+    if (wanted) form.querySelectorAll<HTMLInputElement>('input[name="interest"]').forEach((c) => { if (c.value === wanted) c.checked = true; });
+    const pack = params.get('pack');
+    const msg = form.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+    if (pack && msg && !msg.value) msg.value = `${pack} (${wanted})\n\n`;
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const status = form.querySelector('.form-status')!;
+      const data = new FormData(form);
+      const interests = data.getAll('interest').join(', ');
+      if (!form.dataset.key) {
+        // No Web3Forms key configured (prototype): fall back to the visitor's email client.
+        const body = [`${data.get('name')} <${data.get('email')}>`, `Fecha: ${data.get('wedding_date') || '-'}`, `Invitados: ${data.get('guests') || '-'}`, `Interés: ${interests || '-'}`, '', String(data.get('message') || '')].join('\n');
+        location.href = `mailto:hello@studiobelvi.com?subject=${encodeURIComponent('Studio Belvi · consulta')}&body=${encodeURIComponent(body)}`;
+        return;
+      }
+      data.set('interest', interests);
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const json = await res.json();
+        status.textContent = json.success ? form.dataset.sent! : form.dataset.error!;
+        if (json.success) form.reset();
+      } catch { status.textContent = form.dataset.error!; }
+    });
+  }
+</script>

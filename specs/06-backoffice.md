@@ -1,0 +1,183 @@
+# 06 · Back office
+
+Estado: propuesta del 26-11-2026 para la **opción A** de [04](04-arquitectura-opciones.md) (Astro + Sveltia CMS sobre el repo). Si se elige otra opción, esta spec se rehace. Requisitos que cubre: R-12 a R-18 de [03](03-requisitos.md). "INV §n" = sección de la [investigación de opciones](research/options-research.md); las citas de sveltiacms.app se consultaron el 26-11-2026.
+
+## Resumen
+
+- El back office está en `studiobelvi.com/admin/`. Es una página estática que carga Sveltia CMS en una versión fijada.
+- Entra cada persona con **su cuenta GitHub personal**. No hay contraseñas propias que guardar.
+- Lo que se edita son formularios: niveles de dirección creativa, familias con sus packs, ampliaciones, galerías, FAQ y textos de la web, en ES / EN / CA.
+- Guardar crea un borrador. Publicar escribe en el repo y la web se actualiza en 1-2 minutos (estimación propia).
+- Lo que no se edita desde aquí (diseño, URLs, nuevos tipos de sección) lo cambia Kevin en código.
+
+## Quién entra y cómo
+
+| Persona | Cuenta | Permiso en el repo | Qué puede hacer |
+|---|---|---|---|
+| Cada editora de Studio Belvi | GitHub personal, gratuita, con 2FA | Write | Todo el contenido |
+| Kevin (mientras mantenga la web) | GitHub personal | Write o Admin | Contenido, configuración del CMS y código |
+| Cuenta compartida `studiobelvi` | La actual | Owner | Solo administración (invitar, facturación). No se usa para editar, para que cada cambio tenga autora (R-15) |
+
+Cómo se entra:
+1. Ir a `studiobelvi.com/admin/` y pulsar "Sign in with GitHub".
+2. GitHub pide autorizar la app OAuth de Studio Belvi (solo la primera vez).
+3. El intercambio de token lo hace el Worker de Sveltia en Cloudflare (Sveltia CMS Authenticator, INV §1). El secreto de la app vive en las variables del Worker, no en el repo.
+
+Alta y baja: Owner invita o retira a la persona como colaboradora del repo en GitHub. No hay lista de usuarios en el CMS.
+
+**Si alguna editora no quiere cuenta GitHub:** activar *Sveltia CMS Additions* (usuario y contraseña, mismo Worker) tras probarlo en el prototipo, porque es experimental, o pasar a Pages CMS (invitación por email). Ver [04](04-arquitectura-opciones.md).
+
+## Pantallas
+
+Sveltia muestra una colección por entrada del menú lateral. Propuesta de colecciones, en el orden en que aparecen:
+
+| # | Pantalla | Tipo | Qué contiene | Fichero en el repo |
+|---|---|---|---|---|
+| 1 | Home | Fichero único | Textos del hero, intro de "Nuestra oferta", nota de condiciones de la home, pasos del proceso | `src/content/pages/home.yaml` |
+| 2 | Dirección creativa | Carpeta (3 entradas) | Sparks, Chapters, Universe: lema, descripción, "Ideal para", qué incluye, precio, guía y duración de la reunión | `src/content/creative-levels/*.yaml` |
+| 3 | Tabla comparativa | Fichero único | Filas con etiqueta y valor por nivel | `src/content/creative-direction/comparison.yaml` |
+| 4 | Packs de producción | Carpeta (9 entradas) | Una familia por entrada, **con sus packs y ampliaciones dentro** (ver abajo) | `src/content/families/*.yaml` |
+| 5 | Ampliaciones generales | Fichero único | "Expand your story", tipos More / Custom / Immersive | `src/content/extras/global.yaml` |
+| 6 | Condiciones | Fichero único | Las condiciones generales, ordenables | `src/content/conditions.yaml` |
+| 7 | Galerías | Ficheros (4) | Memorabilia, Scenography, Immersion, Portfolio: lista de tarjetas con foto, título y texto | `src/content/galleries/*.yaml` |
+| 8 | FAQ | Fichero único | Preguntas y respuestas ordenables | `src/content/faq.yaml` |
+| 9 | Textos de la web | Fichero único | Menú, botones, pie, textos del formulario | `src/content/ui.yaml` |
+| 10 | Medios | Biblioteca de Sveltia | Todas las imágenes subidas | ver [Imágenes](#imágenes-r-13-r-10) |
+
+**Packs dentro de su familia.** El modelo de [02](02-catalogo-modelo-de-contenido.md) no cambia, pero se guarda así: cada fichero de familia lleva una lista `packs` y una lista `extras`. Ventajas: una pantalla por familia, como en el PDF; el orden de los packs es el orden de la lista (se arrastra); no hay relaciones que mantener. Cada pack de la lista se pliega para que el formulario no sea eterno.
+
+Ejemplo de una familia (resumido):
+
+```yaml
+slug: wedding-paper-suite
+name: The Wedding Paper Suite
+area: memorabilia
+visible: true
+tagline: { es: "…", en: "…", ca: "…" }
+packs:
+  - slug: the-invitation
+    name: The Invitation
+    visible: true
+    featured: true
+    price: { amount: 750, kind: from, vat_mode: excluded }
+    inclusion_groups:
+      - items: { es: ["…"], en: ["…"], ca: ["…"] }
+extras:
+  - kind: addon
+    label: { es: "…", en: "…", ca: "…" }
+    price: { kind: quote, vat_mode: excluded }
+```
+
+La forma exacta de los campos traducidos la decide la estructura i18n de Sveltia (`single_file`, ver [Idiomas](#idiomas-r-16)); el ejemplo muestra la idea.
+
+## Cómo se edita cada cosa
+
+### Precios (R-07)
+
+El precio nunca se escribe como frase. Es un grupo de campos:
+
+| Campo | Control | Valores |
+|---|---|---|
+| Tipo | Desplegable | "Desde" (`from`) · "Precio cerrado" (`fixed`) · "Presupuesto personalizado" (`quote`) |
+| Importe | Número, sin decimales | Obligatorio salvo en "Presupuesto" |
+| IVA | Desplegable | "IVA incluido" (`included`) · "+ IVA" (`excluded`). Por defecto, el de la línea: incluido en dirección creativa, excluido en packs ([02](02-catalogo-modelo-de-contenido.md)) |
+| Unidad | Desplegable, opcional | ninguna · €/mes · €/unidad · €/pieza |
+
+- El precio no se traduce: se edita una vez y vale para los tres idiomas (`i18n: duplicate`). La web compone el texto en cada idioma con `PriceTag` ([05](05-frontend.md)).
+- El "desde" de cada familia se escribe a mano en la familia. Propuesta a validar: calcularlo como el mínimo de sus packs visibles, lo que resolvería la incoherencia 3 de [02](02-catalogo-modelo-de-contenido.md).
+- **Red de seguridad:** al construir, Astro valida cada fichero con su esquema Zod. Si un precio queda mal (tipo "Desde" sin importe, por ejemplo), el build falla y la web **sigue mostrando la versión anterior**. Kevin recibe el aviso de GitHub Actions.
+
+### Packs y familias (R-14)
+
+- **Ocultar / mostrar:** interruptor "Visible" en la familia y en cada pack. Oculto = no sale en la web, pero no se borra.
+- **Orden:** familias, con un campo "Orden" (número); packs, ampliaciones y condiciones, arrastrando dentro de su lista.
+- **Destacados en la home:** interruptor "Mostrar en la home" en cada familia e interruptor "Destacado" en cada pack. La home muestra las familias marcadas, en su orden, y en cada tarjeta los nombres de sus packs destacados.
+- **Número del pack** ("01."): lo calcula la web por su posición, no se escribe.
+- **Nuevo pack:** botón "Añadir" en la lista `packs` de la familia. **Nueva familia:** "Nueva entrada" en Packs de producción; necesita también portada y área.
+- **Borrar:** posible, pero la recomendación es ocultar. Un borrado se recupera solo desde el historial de Git (ver [Deshacer](#deshacer)).
+
+### Imágenes (R-13, R-10)
+
+- Se suben desde el propio campo (portada de la familia, fotos del pack, tarjetas de galería) o desde Medios.
+- Al subir, Sveltia convierte a **WebP**, limita el ancho y comprime con calidad 85 por defecto (INV §1). Propuesta: ancho máximo 2400 px.
+- Cada imagen lleva **texto alternativo en los tres idiomas**, obligatorio en ES.
+- Orden de las fotos de una galería: arrastrando en la lista.
+- Dónde se guardan: en el repo, en `public/assets/images/` (ya convertidas a WebP, con carga diferida), la misma carpeta de las fotos actuales. Pasar a `src/assets/` para que Astro genere varios tamaños (`srcset`) sigue por verificar con Sveltia.
+- Espacio: GitHub Pages admite 1 GB por sitio (INV §7). Con unas 200 fotos WebP de ~300 KB serían unos 60 MB (estimación propia).
+
+### Idiomas (R-16)
+
+- Estructura i18n `single_file`: los tres idiomas de una entrada están en el mismo fichero, así no se desincronizan.
+- Idioma de edición por defecto: **ES**, porque el catálogo original está en castellano ([02](02-catalogo-modelo-de-contenido.md), incoherencia 6). Inglés sigue siendo el idioma por defecto de la web pública.
+- El selector de idioma del editor marca las traducciones que faltan o tienen errores (sveltiacms.app/en/docs/ui/content-editor).
+- Campos que no se traducen (`i18n: duplicate`): nombres de familia y pack (se mantienen en inglés, como en el PDF), precios, visible, destacado, orden, imágenes.
+- Si falta un texto en EN o CA al publicar, la web muestra el texto ES en su lugar y el build lista las traducciones pendientes. Nunca sale un hueco vacío.
+- Traducción asistida: Sveltia la ofrece como opción (INV §1), pero necesita una clave de un servicio de traducción. No se activa en el prototipo; si se activa, la clave va en su configuración, no en el código.
+
+## Cómo se publica (R-17, R-18)
+
+Con el **flujo editorial** de Sveltia activado (requiere backend GitHub, sveltiacms.app/en/docs/workflows/editorial):
+
+```
+Guardar ──► Borrador ──► En revisión ──► Listo ──► Publicar
+            (rama y PR en GitHub)                    │
+                                                     ▼
+                                      commit en main → GitHub Actions
+                                      (build Astro + validación) → GitHub Pages
+                                                     │
+                                                     ▼
+                                       visible en studiobelvi.com en 1-2 min
+```
+
+- **Guardar** no toca la web: crea un borrador. Se puede dejar a medias y seguir otro día.
+- **En revisión** sirve para que la otra persona lo mire antes de publicar. No es obligatorio: se puede publicar desde cualquier estado.
+- **Vista previa:** el panel lateral muestra la entrada con plantillas propias (`registerPreviewTemplate`) que usan el CSS de la web (`registerPreviewStyle`), así se parece a la página real. No es la página real completa: GitHub Pages solo publica una versión del sitio.
+- **Publicar** fusiona el borrador en `main`. El build tarda 1-2 minutos (estimación propia). Si falla la validación, no se publica nada y la web sigue como estaba.
+
+Recomendación: empezar con el flujo editorial activado, porque son dos personas y evita que un cambio a medias salga publicado. Si les resulta pesado, se desactiva y "Guardar" pasa a publicar directamente.
+
+### Deshacer
+
+- **Antes de publicar:** descartar el borrador o "Revert Changes" para los cambios sin guardar.
+- **Después de publicar:** el panel Historial de cada entrada muestra los commits y qué cambió en cada uno (sveltiacms.app/en/docs/ui/content-editor). Sveltia **no tiene botón para restaurar** una versión guardada: se reescribe el valor anterior mirando el diff, o Kevin hace un `git revert`. Es el peaje principal de la opción A frente a R-17.
+
+## Qué no se edita desde el back office
+
+- Diseño, colores, tipografías, plantillas de página, menú y URLs: código, lo cambia Kevin.
+- Configuración del propio CMS (`admin/config.yml`) y esquemas Zod: código. Si se añade un campo, se cambia en los dos sitios a la vez.
+- El formulario de contacto (destino, campos): configuración en código y en Web3Forms.
+- DNS y dominio: GoDaddy (R-21).
+
+Nota: el permiso Write de GitHub también permite editar código desde github.com, como hacen hoy. Por acuerdo, las editoras solo usan `/admin/`.
+
+## Prototipo en las cuentas de Kevin
+
+- Repo propio de Kevin con el código y el contenido de ejemplo del catálogo; Pages en su subdominio de `github.io` (con `base` de Astro, porque no es la raíz).
+- **Login en el prototipo con token personal de GitHub** (cuenta personal `KevinPujol`), sin Worker: el único editor es Kevin. Decidido el 26-11-2026.
+- La app OAuth de GitHub y el Worker de Cloudflare se crean cuando las editoras empiecen a probar, directamente en las cuentas de Studio Belvi, para no tener que migrarlos. Identificadores en variables de entorno y en `admin/config.yml`, sin nada fijo en el código ([CLAUDE.md](../CLAUDE.md)).
+- Pruebas en el prototipo antes de migrar: login con una segunda cuenta GitHub, flujo editorial completo, imágenes en `src/assets/`, traducciones que faltan, build fallido por precio mal puesto, y la vista de `/admin/` en móvil.
+- Migración: pasos de [04](04-arquitectura-opciones.md#migración-a-las-cuentas-de-studio-belvi).
+
+## Estado del prototipo (26-11-2026)
+
+Construido en local en la rama `prototipo`, sin commit ni repo remoto todavía.
+
+**Prueba de punta a punta del panel (Playwright, modo "Work with Local Repository" de Sveltia sobre una copia del contenido):** Sveltia 0.273.1 abrió las 6 colecciones sin errores; se cambió el precio "desde" de The Wedding Signs de 950 a 975 €, Sveltia confirmó "Entry saved." y, con ese fichero, el build publicó "Desde 975 € + IVA" y "From €975 + VAT" con las traducciones intactas. Después se restauró el precio real (950 €).
+
+Lo que se aprendió de cómo escribe Sveltia, ya resuelto en el código:
+- Escribe los campos opcionales vacíos como `''` (`unit: ''`, `note: ''`): el esquema los trata como "sin valor".
+- En los bloques `en`/`ca` rellena los campos compartidos con `null`: la web siempre los lee del castellano y la comprobación de coherencia los ignora.
+- **Al guardar reescribe el fichero y borra los comentarios YAML.** Las fuentes de cada dato quedan en [02](02-catalogo-modelo-de-contenido.md), no en los ficheros.
+- La carpeta de medios es `public/assets/images` (no solo `uploads`), para que el panel muestre y reutilice las fotos actuales.
+
+Otras comprobaciones: flujo editorial activado (`publish_mode: editorial_workflow`; no se ha podido probar sin repo de GitHub, el modo local guarda directamente) y validación al construir (un precio "Desde" sin importe hace fallar el build).
+
+Pendiente con el repo creado: entrar con token de `KevinPujol` y recorrer Borrador → En revisión → Publicar.
+
+## Abierto
+
+1. ¿Las editoras aceptan cuenta GitHub personal? Si no: Sveltia Additions o Pages CMS.
+2. ¿Quiénes son las editoras y cuántas? (cuentas a invitar).
+3. ¿Flujo editorial activado o publicación directa?
+4. ¿El "desde" de la familia se calcula o se escribe a mano?
+5. Imágenes en `src/assets/` con Sveltia: verificar en el prototipo.

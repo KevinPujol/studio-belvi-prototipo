@@ -1,0 +1,55 @@
+# BORRADOR: pendiente de que Studio Belvi complete los datos del responsable y lo revise.
+es:
+  title: Privacidad y aviso legal
+  draft_notice: "Borrador pendiente de revisión por Studio Belvi: faltan los datos fiscales del responsable."
+  sections:
+    - heading: Responsable
+      body: "Studio Belvi. Contacto: hello@studiobelvi.com."
+    - heading: Qué datos recogemos y para qué
+      body: Los datos que envías con el formulario de contacto (nombre, email, fecha aproximada, número de invitados, intereses y mensaje) se usan solo para responder a tu solicitud y preparar una propuesta.
+    - heading: Base legal
+      body: Tu consentimiento, que das al marcar la casilla del formulario. Puedes retirarlo cuando quieras.
+    - heading: Quién trata los datos
+      body: El formulario se envía a través de Web3Forms, un servicio con servidores en Estados Unidos que reenvía el mensaje por email y no guarda los envíos. Los emails se gestionan con Google Workspace.
+    - heading: Cuánto tiempo los guardamos
+      body: El tiempo necesario para atender tu solicitud y, si hay contrato, el que exija la ley.
+    - heading: Tus derechos
+      body: Puedes pedir acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a hello@studiobelvi.com. También puedes reclamar ante la Agencia Española de Protección de Datos.
+    - heading: Cookies
+      body: Esta web no usa cookies de seguimiento. Solo guarda en tu navegador el idioma que eliges, para mostrarte la web en ese idioma la próxima vez.
+en:
+  title: Privacy and legal notice
+  draft_notice: "Draft pending review by Studio Belvi: the controller's tax details are missing."
+  sections:
+    - heading: Data controller
+      body: "Studio Belvi. Contact: hello@studiobelvi.com."
+    - heading: What data we collect and why
+      body: The data you send with the contact form (name, email, approximate date, number of guests, interests and message) is used only to answer your request and prepare a proposal.
+    - heading: Legal basis
+      body: Your consent, which you give by ticking the box in the form. You can withdraw it at any time.
+    - heading: Who processes the data
+      body: The form is sent through Web3Forms, a service with servers in the United States that forwards the message by email and does not store submissions. Emails are handled with Google Workspace.
+    - heading: How long we keep it
+      body: For as long as needed to handle your request and, if there is a contract, for as long as the law requires.
+    - heading: Your rights
+      body: You can request access, rectification, erasure, objection, restriction and portability by writing to hello@studiobelvi.com. You can also lodge a complaint with the Spanish Data Protection Agency (AEPD).
+    - heading: Cookies
+      body: This website does not use tracking cookies. It only stores the language you choose in your browser, to show you the site in that language next time.
+ca:
+  title: Privacitat i avís legal
+  draft_notice: "Esborrany pendent de revisió per part de Studio Belvi: falten les dades fiscals del responsable."
+  sections:
+    - heading: Responsable
+      body: "Studio Belvi. Contacte: hello@studiobelvi.com."
+    - heading: Quines dades recollim i per a què
+      body: Les dades que envies amb el formulari de contacte (nom, correu electrònic, data aproximada, nombre de convidats, interessos i missatge) s'utilitzen només per respondre la teva sol·licitud i preparar una proposta.
+    - heading: Base legal
+      body: El teu consentiment, que dones en marcar la casella del formulari. El pots retirar quan vulguis.
+    - heading: Qui tracta les dades
+      body: El formulari s'envia a través de Web3Forms, un servei amb servidors als Estats Units que reenvia el missatge per correu electrònic i no desa els enviaments. Els correus es gestionen amb Google Workspace.
+    - heading: Quant de temps les conservem
+      body: El temps necessari per atendre la teva sol·licitud i, si hi ha contracte, el que exigeixi la llei.
+    - heading: Els teus drets
+      body: Pots demanar l'accés, la rectificació, la supressió, l'oposició, la limitació i la portabilitat escrivint a hello@studiobelvi.com. També pots presentar una reclamació davant l'Agència Espanyola de Protecció de Dades.
+    - heading: Cookies
+      body: Aquest web no fa servir cookies de seguiment. Només desa al teu navegador l'idioma que tries, per mostrar-te el web en aquest idioma la propera vegada.

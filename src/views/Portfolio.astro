@@ -1,0 +1,17 @@
+---
+import { asset, type Lang } from '../lib/i18n';
+import { gallery } from '../lib/content';
+interface Props { lang: Lang }
+const g = gallery('portfolio', Astro.props.lang);
+---
+<section class="page-top">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 set:html={g.title} />
+      <p set:html={g.text} />
+    </div>
+    <div class="photo-grid">
+      {g.cards.map((c) => <div class="photo-item reveal"><img src={asset(c.image)} alt={c.caption || g.title.replace(/<[^>]+>/g, '')} loading="lazy" decoding="async" /></div>)}
+    </div>
+  </div>
+</section>

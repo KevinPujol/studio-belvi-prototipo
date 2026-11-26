@@ -1,0 +1,36 @@
+---
+import PriceTag from './PriceTag.astro';
+import { pageUrl, type Lang } from '../lib/i18n';
+import type { Pack } from '../lib/content';
+interface Props { pack: Pack; familyName: string; index: number; lang: Lang; t: Record<string, string>; showNumber?: boolean }
+const { pack: p, familyName, index, lang, t, showNumber = true } = Astro.props;
+const number = String(index + 1).padStart(2, '0') + '.';
+// Ticks the family in the contact form and writes the pack at the top of the message.
+const interestUrl = `${pageUrl('', lang)}?interest=${encodeURIComponent(familyName)}&pack=${encodeURIComponent(p.name)}#contact`;
+---
+<article class="pack reveal" id={p.slug}>
+  <div class="pack-head">
+    {showNumber && <div class="pack-number">{number}</div>}
+    {p.featured && <span class="badge">{t.featured_packs}</span>}
+    <h3>{p.name}</h3>
+    <PriceTag price={p.price} lang={lang} />
+    {p.description && <p>{p.description}</p>}
+    <p style="margin-top:1.5rem"><a class="btn btn-primary interest-btn" href={interestUrl}>{t.interest}</a></p>
+  </div>
+  <details class="pack-body" open data-accordion>
+    <summary>{t.includes}</summary>
+    {p.inclusion_groups.map((g, i) => (
+      <>
+        <h4>{g.title || t.includes}</h4>
+        {g.description && <p>{g.description}</p>}
+        <ul class="check-list">{g.items.map((it) => <li>{it}</li>)}</ul>
+      </>
+    ))}
+    {p.possibilities.length > 0 && (
+      <>
+        <h4>{t.possibilities}</h4>
+        <ul class="check-list">{p.possibilities.map((it) => <li>{it}</li>)}</ul>
+      </>
+    )}
+  </details>
+</article>

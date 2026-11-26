@@ -1,0 +1,117 @@
+# Fuente: Belvi Production Packs.pdf, p. 29-34
+# Incoherencia 3 de specs/02: la familia dice "desde 550 €" pero hay packs de 350 € y 250 €. Se mantiene el PDF.
+es:
+  slug: couples-memories
+  order: 7
+  visible: true
+  featured: true
+  area: memorabilia
+  name: The Couple’s Memories
+  cover_image: /assets/images/memorabilia/obj11.webp
+  tagline: Objetos que sobreviven al día de la boda y transforman vuestra historia en recuerdos para conservar, exponer y redescubrir.
+  intro: Creamos piezas de memorabilia personalizadas a partir de los elementos, momentos y detalles que hicieron vuestra boda única.
+  price_from: { kind: from, amount: 550, vat_mode: excluded }
+  packs:
+    - slug: the-wedding-shadowbox
+      name: The Wedding Shadowbox
+      visible: true
+      featured: true
+      description: Una composición expositiva que reúne los recuerdos físicos de la boda en una pieza diseñada para conservarlos.
+      price: { kind: from, amount: 550, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Diseño de una composición personalizada.
+            - Marco o caja expositiva de formato estándar.
+            - Integración de hasta cinco elementos significativos de la boda.
+            - Personalización gráfica y estética.
+            - Fabricación y preparación.
+    - slug: the-wedding-artwork
+      name: The Wedding Artwork
+      visible: true
+      featured: false
+      description: Una obra original creada a partir de vuestra boda, su historia y sus elementos más representativos.
+      price: { kind: from, amount: 350, vat_mode: excluded }
+      possibilities:
+        - Ilustración personalizada del venue.
+        - Composición artística de elementos de la boda.
+        - Mapa ilustrado o pieza gráfica conmemorativa.
+        - Obra original inspirada en vuestra historia.
+    - slug: the-bouquet-keepsake
+      name: The Bouquet Keepsake
+      visible: true
+      featured: false
+      description: Una reproducción artística de vuestro ramo nupcial transformada en una pieza decorativa para conservarlo más allá del día de la boda. Desarrollada mediante procesos artesanales, según el diseño y el nivel de detalle.
+      price: { kind: from, amount: 450, vat_mode: excluded }
+    - slug: the-wedding-objects
+      name: The Wedding Objects
+      visible: true
+      featured: false
+      description: Objetos personalizados que reinterpretan elementos de vuestra boda y los convierten en piezas de memorabilia.
+      price: { kind: from, amount: 250, vat_mode: excluded }
+      possibilities:
+        - Barajas personalizadas.
+        - Pequeñas esculturas y objetos decorativos.
+        - Cajas y piezas conmemorativas.
+        - Otros objetos diseñados a medida.
+  extras:
+    - { kind: combo, label: The Keepsake Box, description: Una shadowbox personalizada para conservar los recuerdos físicos de la boda., price: { kind: from, amount: 550, vat_mode: excluded } }
+    - { kind: combo, label: The Art of Us, description: Una shadowbox acompañada de una obra artística original inspirada en la boda., price: { kind: from, amount: 850, vat_mode: excluded } }
+    - { kind: combo, label: The Wedding Heirloom, description: "Una colección que combina shadowbox, obra artística original y una reproducción personalizada del ramo.", price: { kind: from, amount: 1350, vat_mode: excluded } }
+en:
+  tagline: Objects that outlive the wedding day and turn your story into memories to keep, display and rediscover.
+  intro: We create personalised memorabilia from the elements, moments and details that made your wedding unique.
+  packs:
+    - description: A display composition that brings together the physical memories of the wedding in a piece designed to preserve them.
+      inclusion_groups:
+        - items:
+            - Design of a personalised composition.
+            - Standard-format frame or display box.
+            - Integration of up to five meaningful elements from the wedding.
+            - Graphic and aesthetic personalisation.
+            - Fabrication and preparation.
+    - description: An original artwork created from your wedding, its story and its most representative elements.
+      possibilities:
+        - Personalised illustration of the venue.
+        - Artistic composition of elements from the wedding.
+        - Illustrated map or commemorative graphic piece.
+        - Original artwork inspired by your story.
+    - description: An artistic reproduction of your bridal bouquet turned into a decorative piece, so you can keep it beyond the wedding day. Made by hand, depending on the design and level of detail.
+    - description: Personalised objects that reinterpret elements of your wedding and turn them into memorabilia.
+      possibilities:
+        - Personalised playing cards.
+        - Small sculptures and decorative objects.
+        - Commemorative boxes and pieces.
+        - Other custom-designed objects.
+  extras:
+    - { label: The Keepsake Box, description: A personalised shadowbox to keep the physical memories of the wedding. }
+    - { label: The Art of Us, description: A shadowbox together with an original artwork inspired by the wedding. }
+    - { label: The Wedding Heirloom, description: "A collection combining a shadowbox, an original artwork and a personalised reproduction of the bouquet." }
+ca:
+  tagline: Objectes que sobreviuen al dia del casament i transformen la vostra història en records per conservar, exposar i redescobrir.
+  intro: Creem peces de memorabilia personalitzades a partir dels elements, moments i detalls que van fer únic el vostre casament.
+  packs:
+    - description: Una composició expositiva que reuneix els records físics del casament en una peça dissenyada per conservar-los.
+      inclusion_groups:
+        - items:
+            - Disseny d'una composició personalitzada.
+            - Marc o capsa expositiva de format estàndard.
+            - Integració de fins a cinc elements significatius del casament.
+            - Personalització gràfica i estètica.
+            - Fabricació i preparació.
+    - description: Una obra original creada a partir del vostre casament, la seva història i els seus elements més representatius.
+      possibilities:
+        - Il·lustració personalitzada del venue.
+        - Composició artística d'elements del casament.
+        - Mapa il·lustrat o peça gràfica commemorativa.
+        - Obra original inspirada en la vostra història.
+    - description: Una reproducció artística del vostre ram nupcial transformada en una peça decorativa per conservar-lo més enllà del dia del casament. Desenvolupada mitjançant processos artesanals, segons el disseny i el nivell de detall.
+    - description: Objectes personalitzats que reinterpreten elements del vostre casament i els converteixen en peces de memorabilia.
+      possibilities:
+        - Baralles personalitzades.
+        - Petites escultures i objectes decoratius.
+        - Capses i peces commemoratives.
+        - Altres objectes dissenyats a mida.
+  extras:
+    - { label: The Keepsake Box, description: Una shadowbox personalitzada per conservar els records físics del casament. }
+    - { label: The Art of Us, description: Una shadowbox acompanyada d'una obra artística original inspirada en el casament. }
+    - { label: The Wedding Heirloom, description: "Una col·lecció que combina shadowbox, obra artística original i una reproducció personalitzada del ram." }

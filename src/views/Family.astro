@@ -1,0 +1,51 @@
+---
+import PriceTag from '../components/PriceTag.astro';
+import PackBlock from '../components/PackBlock.astro';
+import ExtrasList from '../components/ExtrasList.astro';
+import { asset, pageUrl, type Lang } from '../lib/i18n';
+import { family, catalog } from '../lib/content';
+interface Props { lang: Lang; t: Record<string, string>; slug: string }
+const { lang, t, slug } = Astro.props;
+const f = family(slug, lang)!;
+const cat = catalog(lang);
+---
+<section class="page-top">
+  <div class="container">
+    <p class="reveal" style="margin-bottom:2rem"><a class="text-link" style="margin:0" href={pageUrl('packs', lang)}>← {t.back_to_packs}</a></p>
+    <div class="family-hero">
+      <div class="section-header reveal" style="margin-bottom:0">
+        <span>{t[`area_${f.area}`]}</span>
+        <h2>{f.name}</h2>
+        <p>{f.tagline}</p>
+        {f.intro && <p style="margin-top:1rem">{f.intro}</p>}
+        <PriceTag price={f.price_from} lang={lang} />
+      </div>
+      {f.cover_image && <img class="reveal" src={asset(f.cover_image)} alt={f.name} decoding="async" />}
+    </div>
+
+    {f.common_inclusions.length > 0 && (
+      <div class="panel reveal subsection">
+        <h3>{t.common_inclusions}</h3>
+        <ul class="check-list">{f.common_inclusions.map((i) => <li>{i}</li>)}</ul>
+      </div>
+    )}
+
+    <div class="pack-list subsection">
+      {f.packs.map((p, i) => <PackBlock pack={p} familyName={f.name} index={i} lang={lang} t={t} showNumber={f.packs.length > 1} />)}
+    </div>
+
+    <ExtrasList extras={f.extras} lang={lang} t={t} />
+
+    {f.notes.map((n) => <p class="small-note reveal">{n}</p>)}
+    <p class="small-note reveal">{cat.conditions.join(' ')}</p>
+  </div>
+</section>
+<script>
+  // Accordion: folded on mobile, always open on desktop (no JS: everything open).
+  const mq = window.matchMedia('(max-width: 980px)');
+  const sync = () => document.querySelectorAll<HTMLDetailsElement>('details[data-accordion]').forEach((d) => { d.open = !mq.matches; });
+  sync();
+  mq.addEventListener('change', sync);
+  // Desktop: the summary is hidden, so keep it from being toggled closed.
+  document.querySelectorAll<HTMLDetailsElement>('details[data-accordion]').forEach((d) => d.addEventListener('toggle', () => { if (!mq.matches && !d.open) d.open = true; }));
+</script>

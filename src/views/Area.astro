@@ -1,0 +1,33 @@
+---
+import FamilyCard from '../components/FamilyCard.astro';
+import { asset, type Lang } from '../lib/i18n';
+import { gallery, families } from '../lib/content';
+interface Props { lang: Lang; t: Record<string, string>; area: 'memorabilia' | 'scenography' | 'immersion' }
+const { lang, t, area } = Astro.props;
+const g = gallery(area, lang);
+const fam = families(lang).filter((f) => f.area === area);
+---
+<section class="page-top">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 set:html={g.title} />
+      {g.text && <p set:html={g.text} />}
+    </div>
+    <div class="portfolio-grid cols-3">
+      {g.cards.map((c) => (
+        <div class="portfolio-item reveal">
+          <div class="portfolio-card">
+            <div class="portfolio-card-front"><img src={asset(c.image)} alt={c.caption.replace(/<[^>]+>/g, '') || g.title} loading="lazy" decoding="async" /></div>
+            <div class="portfolio-card-back"><h3 set:html={c.caption} /></div>
+          </div>
+        </div>
+      ))}
+    </div>
+    {fam.length > 0 && (
+      <div class="subsection">
+        <h3 class="subsection-title reveal">{t.area_packs_title}</h3>
+        <div class="family-grid">{fam.map((f) => <FamilyCard family={f} lang={lang} t={t} />)}</div>
+      </div>
+    )}
+  </div>
+</section>

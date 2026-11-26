@@ -1,0 +1,87 @@
+# Fuente: Belvi Production Packs.pdf, p. 20-21
+es:
+  slug: guest-experience
+  order: 4
+  visible: true
+  featured: true
+  area: immersion
+  name: The Guest Experience
+  cover_image: /assets/images/immersion/imm4.webp
+  tagline: Una experiencia diseñada alrededor de los invitados, que combina objetos personalizados, escenografía de mesa y dinámicas participativas para convertir el banquete en parte de la historia de la boda.
+  intro: Una colección coordinada de detalles, espacios y actividades pensada para sorprender, conectar y crear recuerdos compartidos.
+  price_from: { kind: from, amount: 3000, vat_mode: excluded }
+  packs:
+    - slug: the-guest-experience
+      name: The Gift + The Table + The Game
+      visible: true
+      featured: true
+      description: ""
+      price: { kind: from, amount: 3000, vat_mode: excluded }
+      inclusion_groups:
+        - title: The Gift · Regalos para invitados
+          items:
+            - Conceptualización y diseño de un regalo personalizado vinculado al concepto creativo de la boda.
+            - Producción de hasta 80 unidades de una misma tipología de regalo, con complejidad estándar.
+            - Packaging estándar.
+        - title: The Table · Centros de mesa
+          items:
+            - Diseño de una colección de centros de mesa coordinados.
+            - Fabricación de 8 centros.
+            - Personalización gráfica y variaciones de pequeños detalles según el concepto de cada mesa.
+            - Materiales y acabados estándar.
+        - title: The Game · Experiencia participativa
+          items:
+            - Conceptualización y diseño de una actividad o juego participativo.
+            - Diseño de una dinámica sencilla y sus instrucciones.
+            - Hasta 16 cartas de juego o un sistema equivalente de interacción sencilla.
+            - Materiales gráficos y elementos necesarios para participar.
+  extras:
+    - { kind: addon, label: Packaging especial, price: { kind: from, amount: 150, plus: true, vat_mode: excluded } }
+en:
+  tagline: An experience designed around the guests, combining personalised objects, table scenography and participatory activities to make the banquet part of the wedding's story.
+  intro: A coordinated collection of details, spaces and activities designed to surprise, connect and create shared memories.
+  packs:
+    - inclusion_groups:
+        - title: The Gift · Gifts for guests
+          items:
+            - Concept and design of a personalised gift linked to the wedding's creative concept.
+            - Production of up to 80 units of the same type of gift, of standard complexity.
+            - Standard packaging.
+        - title: The Table · Centrepieces
+          items:
+            - Design of a collection of coordinated centrepieces.
+            - Fabrication of 8 centrepieces.
+            - Graphic personalisation and small variations in the details according to each table's concept.
+            - Standard materials and finishes.
+        - title: The Game · Participatory experience
+          items:
+            - Concept and design of a participatory activity or game.
+            - Design of a simple dynamic and its instructions.
+            - Up to 16 game cards or an equivalent simple interaction system.
+            - Graphic materials and elements needed to take part.
+  extras:
+    - { label: Special packaging }
+ca:
+  tagline: Una experiència dissenyada al voltant dels convidats, que combina objectes personalitzats, escenografia de taula i dinàmiques participatives per convertir el banquet en part de la història del casament.
+  intro: Una col·lecció coordinada de detalls, espais i activitats pensada per sorprendre, connectar i crear records compartits.
+  packs:
+    - inclusion_groups:
+        - title: The Gift · Regals per als convidats
+          items:
+            - Conceptualització i disseny d'un regal personalitzat vinculat al concepte creatiu del casament.
+            - Producció de fins a 80 unitats d'una mateixa tipologia de regal, amb complexitat estàndard.
+            - Packaging estàndard.
+        - title: The Table · Centres de taula
+          items:
+            - Disseny d'una col·lecció de centres de taula coordinats.
+            - Fabricació de 8 centres.
+            - Personalització gràfica i variacions de petits detalls segons el concepte de cada taula.
+            - Materials i acabats estàndard.
+        - title: The Game · Experiència participativa
+          items:
+            - Conceptualització i disseny d'una activitat o joc participatiu.
+            - Disseny d'una dinàmica senzilla i les seves instruccions.
+            - Fins a 16 cartes de joc o un sistema equivalent d'interacció senzilla.
+            - Materials gràfics i elements necessaris per participar.
+  extras:
+    - { label: Packaging especial }

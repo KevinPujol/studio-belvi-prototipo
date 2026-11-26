@@ -1,0 +1,124 @@
+# Fuente: Belvi Production Packs.pdf, p. 11-14
+es:
+  slug: wedding-signs
+  order: 2
+  visible: true
+  featured: true
+  area: scenography
+  name: The Wedding Signs
+  cover_image: /assets/images/scenography/sceno2.webp
+  tagline: Una familia de señalética que transforma la identidad de la boda en elementos físicos.
+  intro: Desde piezas de bienvenida y orientación hasta composiciones artísticas y escultóricas, cada elemento se diseña para integrarse en la estética y la experiencia de la celebración.
+  price_from: { kind: from, amount: 950, vat_mode: excluded }
+  common_inclusions:
+    - Diseño personalizado y adaptación a la identidad visual de la boda.
+    - Fabricación de los elementos contemplados.
+    - Preparación y embalaje.
+    - Una ronda de correcciones de contenido y dos rondas de correcciones de diseño.
+  packs:
+    - slug: the-essentials
+      name: The Essentials
+      visible: true
+      featured: true
+      description: Una colección de señalética funcional y personalizada que da la bienvenida a los invitados y les ayuda a encontrar su lugar en la celebración.
+      price: { kind: from, amount: 950, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Cartel de bienvenida de hasta 50 × 70 cm.
+            - Seating plan físico para hasta 80 invitados y 8 mesas.
+            - Diseño coordinado de ambas piezas.
+            - Fabricación con materiales y acabados estándar.
+            - Preparación y embalaje.
+    - slug: the-installation
+      name: The Installation
+      visible: true
+      featured: false
+      description: Una propuesta de señalética concebida como una instalación artística o escultórica, donde la información se integra en una composición visual y espacial.
+      price: { kind: from, amount: 1750, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Conceptualización de una instalación de señalética.
+            - Cartel de bienvenida integrado en la composición.
+            - Seating plan físico para hasta 80 invitados y 8 mesas.
+            - Composición de hasta 3 elementos gráficos o tridimensionales protagonistas.
+            - Combinación de materiales y acabados artísticos estándar.
+            - Fabricación, preparación y embalaje.
+  extras:
+    - { kind: additional_piece, label: Números de mesa, price: { kind: from, amount: 15, unit: unit, vat_mode: excluded } }
+    - { kind: additional_piece, label: Señalética adicional, price: { kind: from, amount: 90, unit: piece, vat_mode: excluded } }
+    - { kind: additional_piece, label: Tres o más piezas adicionales de señalética sencilla dentro de una misma colección, price: { kind: from, amount: 75, unit: piece, vat_mode: excluded } }
+    - { kind: addon, label: Seating plan ilustrado, price: { kind: from, amount: 250, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Elementos escultóricos, price: { kind: from, amount: 180, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: NFC integrado para una experiencia sencilla, price: { kind: from, amount: 75, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Iluminación, price: { kind: from, amount: 150, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Composiciones suspendidas o de gran formato, price: { kind: quote, note: específico, vat_mode: excluded } }
+en:
+  tagline: A family of signage that turns the wedding's identity into physical elements.
+  intro: From welcome and wayfinding pieces to artistic and sculptural compositions, every element is designed to fit the aesthetic and the experience of the celebration.
+  common_inclusions:
+    - Custom design adapted to the wedding's visual identity.
+    - Fabrication of the elements included.
+    - Preparation and packing.
+    - One round of content revisions and two rounds of design revisions.
+  packs:
+    - description: A functional, personalised signage collection that welcomes the guests and helps them find their place at the celebration.
+      inclusion_groups:
+        - items:
+            - Welcome sign of up to 50 × 70 cm.
+            - Physical seating plan for up to 80 guests and 8 tables.
+            - Coordinated design of both pieces.
+            - Fabrication with standard materials and finishes.
+            - Preparation and packing.
+    - description: A signage proposal conceived as an artistic or sculptural installation, where the information becomes part of a visual and spatial composition.
+      inclusion_groups:
+        - items:
+            - Concept for a signage installation.
+            - Welcome sign integrated into the composition.
+            - Physical seating plan for up to 80 guests and 8 tables.
+            - Composition of up to 3 leading graphic or three-dimensional elements.
+            - Combination of standard artistic materials and finishes.
+            - Fabrication, preparation and packing.
+  extras:
+    - { label: Table numbers }
+    - { label: Additional signage }
+    - { label: Three or more additional simple signs within the same collection }
+    - { label: Illustrated seating plan }
+    - { label: Sculptural elements }
+    - { label: Built-in NFC for a simple experience }
+    - { label: Lighting }
+    - { label: Suspended or large-format compositions, price: { note: on request } }
+ca:
+  tagline: Una família de senyalística que transforma la identitat del casament en elements físics.
+  intro: Des de peces de benvinguda i orientació fins a composicions artístiques i escultòriques, cada element es dissenya per integrar-se en l'estètica i l'experiència de la celebració.
+  common_inclusions:
+    - Disseny personalitzat i adaptació a la identitat visual del casament.
+    - Fabricació dels elements previstos.
+    - Preparació i embalatge.
+    - Una ronda de correccions de contingut i dues rondes de correccions de disseny.
+  packs:
+    - description: Una col·lecció de senyalística funcional i personalitzada que dona la benvinguda als convidats i els ajuda a trobar el seu lloc a la celebració.
+      inclusion_groups:
+        - items:
+            - Cartell de benvinguda de fins a 50 × 70 cm.
+            - Seating plan físic per a fins a 80 convidats i 8 taules.
+            - Disseny coordinat de les dues peces.
+            - Fabricació amb materials i acabats estàndard.
+            - Preparació i embalatge.
+    - description: Una proposta de senyalística concebuda com una instal·lació artística o escultòrica, on la informació s'integra en una composició visual i espacial.
+      inclusion_groups:
+        - items:
+            - Conceptualització d'una instal·lació de senyalística.
+            - Cartell de benvinguda integrat en la composició.
+            - Seating plan físic per a fins a 80 convidats i 8 taules.
+            - Composició de fins a 3 elements gràfics o tridimensionals protagonistes.
+            - Combinació de materials i acabats artístics estàndard.
+            - Fabricació, preparació i embalatge.
+  extras:
+    - { label: Números de taula }
+    - { label: Senyalística addicional }
+    - { label: Tres o més peces addicionals de senyalística senzilla dins d'una mateixa col·lecció }
+    - { label: Seating plan il·lustrat }
+    - { label: Elements escultòrics }
+    - { label: NFC integrat per a una experiència senzilla }
+    - { label: Il·luminació }
+    - { label: Composicions suspeses o de gran format, price: { note: específic } }

@@ -1,0 +1,142 @@
+---
+import PriceTag from '../components/PriceTag.astro';
+import FamilyCard from '../components/FamilyCard.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { asset, pageUrl, type Lang } from '../lib/i18n';
+import { pageText, levels, families, catalog } from '../lib/content';
+interface Props { lang: Lang; t: Record<string, string> }
+const { lang, t } = Astro.props;
+const h = pageText('home', lang);
+const lv = levels(lang);
+const fam = families(lang).filter((f) => f.featured);
+const cat = catalog(lang);
+const areas = [
+  { href: 'memorabilia', n: '01', k: 'services_card01' },
+  { href: 'scenography', n: '02', k: 'services_card02' },
+  { href: 'immersion', n: '03', k: 'services_card03' },
+];
+---
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text reveal">
+      <small set:html={h.hero_small} />
+      <h1 set:html={h.hero_title} />
+      <p set:html={h.hero_text} />
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary"><span set:html={h.hero_cta} /></a>
+        <a href={pageUrl('packs', lang)} class="btn btn-secondary">{t.offer_pp_link}</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+    </div>
+  </div>
+</header>
+
+<!-- NEW: the offer, right after the hero (R-02). Replaces "How we can collaborate". -->
+<section id="offer">
+  <div class="container">
+    <div class="section-header reveal">
+      <span set:html={h.collab_span} />
+      <h2 set:html={h.collab_title} />
+      <p set:html={h.collab_text} />
+    </div>
+    <h3 class="subsection-title reveal">{t.offer_cd_title}</h3>
+    <div class="collab-grid">
+      {lv.map((l, i) => (
+        <a href={pageUrl(l.slug, lang)} class="collab-card reveal">
+          <div class="collab-number">{String(i + 1).padStart(2, '0')}</div>
+          <h3>{l.name}</h3>
+          <p class="motto">{l.motto}</p>
+          <p>{l.description}</p>
+          <PriceTag price={l.price} lang={lang} />
+        </a>
+      ))}
+    </div>
+    <a class="text-link reveal" href={pageUrl('creative-direction', lang)}>{t.offer_cd_link}</a>
+
+    <div class="subsection">
+      <h3 class="subsection-title reveal">{t.offer_pp_title}</h3>
+      <div class="family-grid">
+        {fam.map((f) => <FamilyCard family={f} lang={lang} t={t} showFeatured />)}
+      </div>
+      <a class="text-link reveal" href={pageUrl('packs', lang)}>{t.offer_pp_link}</a>
+      {cat.home_note && <p class="small-note">{cat.home_note} <a href={pageUrl('packs', lang, 'conditions')} style="text-decoration:underline">{cat.conditions_title}</a></p>}
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header reveal">
+      <span set:html={h.portfolio_span} />
+      <h2 set:html={h.portfolio_title} />
+      <p set:html={h.portfolio_text} />
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal">
+        <div class="portfolio-card">
+          <div class="portfolio-card-front">
+            <img src={asset('/assets/images/portfolio/fairytale-hero.webp')} alt="Once upon a story…" loading="lazy" decoding="async" />
+            <div class="portfolio-overlay"><h3 set:html={h.portfolio_card01_front} /></div>
+          </div>
+          <div class="portfolio-card-back">
+            <h3 set:html={h.portfolio_card01_back_title} />
+            <p set:html={h.portfolio_card01_back_text} />
+            <a href={pageUrl('portfolio', lang)} class="portfolio-button" set:html={h.portfolio_card01_back_btn} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span set:html={h.services_span} />
+      <h2 set:html={h.services_title} />
+      <p set:html={h.services_text} />
+    </div>
+    <div class="services-grid">
+      {areas.map((a) => (
+        <a href={pageUrl(a.href, lang)} class="service-card reveal">
+          <div class="service-number">{a.n}</div>
+          <h3 set:html={h[`${a.k}_title`]} />
+          <p set:html={h[`${a.k}_text`]} />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="process reveal">
+      <div class="section-header">
+        <span set:html={h.process_span} />
+        <h2 set:html={h.process_title} />
+      </div>
+      <div class="process-grid">
+        {[1, 2, 3, 4].map((n) => (
+          <div class="process-step">
+            <span>{String(n).padStart(2, '0')}</span>
+            <h3 set:html={h[`process_card0${n}_title`]} />
+            <p set:html={h[`process_card0${n}_text`]} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+    <div class="cta reveal" id="contact">
+      <h2 set:html={h.contact_title} />
+      <p set:html={h.contact_text} />
+      <ContactForm lang={lang} t={t} levels={lv} families={families(lang)} />
+    </div>
+  </div>
+</section>

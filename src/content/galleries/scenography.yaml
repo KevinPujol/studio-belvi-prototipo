@@ -1,0 +1,48 @@
+es:
+  title: Escenografía
+  text: ""
+  cards:
+    - image: /assets/images/scenography/sceno1.webp
+      caption: Arco de madera con adornos florales y lágrimas de cristal
+    - image: /assets/images/scenography/sceno2.webp
+      caption: Espejo como cartel de bienvenida
+    - image: /assets/images/scenography/sceno3.webp
+      caption: Neón personalizado
+    - image: /assets/images/scenography/sceno4.webp
+      caption: Flores gigantes
+    - image: /assets/images/scenography/sceno5.webp
+      caption: <i>Backdrop</i> hecho con hojas de libros viejos
+    - image: /assets/images/scenography/sceno6.webp
+      caption: Arco ceremonial efecto piedra
+en:
+  title: Scenography
+  text: ""
+  cards:
+    - image: /assets/images/scenography/sceno1.webp
+      caption: Wooden arch with floral decorations and crystal teardrops
+    - image: /assets/images/scenography/sceno2.webp
+      caption: Mirror used as a welcome sign
+    - image: /assets/images/scenography/sceno3.webp
+      caption: Custom neon sign
+    - image: /assets/images/scenography/sceno4.webp
+      caption: Giant flowers
+    - image: /assets/images/scenography/sceno5.webp
+      caption: Backdrop made from pages of old books
+    - image: /assets/images/scenography/sceno6.webp
+      caption: Stone-effect ceremonial arch
+ca:
+  title: Escenografia
+  text: ""
+  cards:
+    - image: /assets/images/scenography/sceno1.webp
+      caption: Arc de fusta amb adorns florals i llàgrimes de vidre
+    - image: /assets/images/scenography/sceno2.webp
+      caption: Mirall com a cartell de benvinguda
+    - image: /assets/images/scenography/sceno3.webp
+      caption: Neó personalitzat
+    - image: /assets/images/scenography/sceno4.webp
+      caption: Flors gegants
+    - image: /assets/images/scenography/sceno5.webp
+      caption: <i>Backdrop</i> fet amb fulles de llibres vells
+    - image: /assets/images/scenography/sceno6.webp
+      caption: Arc cerimonial efecte pedra

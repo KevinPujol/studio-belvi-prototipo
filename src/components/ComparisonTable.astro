@@ -1,0 +1,23 @@
+---
+import type { Level } from '../lib/content';
+interface Props { rows: { label: string; sparks: string; chapters: string; universe: string }[]; levels: Level[] }
+const { rows, levels } = Astro.props;
+const keys = levels.map((l) => l.slug);
+---
+<table class="compare reveal">
+  <thead><tr><th></th>{levels.map((l) => <th scope="col">{l.name}</th>)}</tr></thead>
+  <tbody>
+    {rows.map((r) => <tr><th scope="row">{r.label}</th>{keys.map((k) => <td>{r[k]}</td>)}</tr>)}
+  </tbody>
+</table>
+<!-- Mobile: one card per level instead of horizontal scroll (specs/05) -->
+<div class="compare-cards">
+  {levels.map((l) => (
+    <div class="panel">
+      <h3>{l.name}</h3>
+      <div class="extras">
+        {rows.map((r) => <div class="extra"><span class="label">{r.label}</span><span>{r[l.slug]}</span></div>)}
+      </div>
+    </div>
+  ))}
+</div>

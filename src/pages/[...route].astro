@@ -1,0 +1,21 @@
+---
+// Every page in every language (see src/lib/routes.ts), except the ES/CA homes: src/pages/[lang]/index.astro.
+import Page from '../components/Page.astro';
+import Redirect from '../components/Redirect.astro';
+import { LANGS, DEFAULT_LANG } from '../lib/i18n';
+import { allRoutes } from '../lib/routes';
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) =>
+    allRoutes()
+      .filter((r) => lang === DEFAULT_LANG || r.route !== '')
+      .map((r) => ({
+        params: { route: lang === DEFAULT_LANG ? r.route || undefined : `${lang}/${r.route}` },
+        props: { lang, def: r },
+      })),
+  );
+}
+---
+{Astro.props.def.view === 'redirect'
+  ? <Redirect lang={Astro.props.lang} to={Astro.props.def.key ?? ''} />
+  : <Page lang={Astro.props.lang} def={Astro.props.def} />}

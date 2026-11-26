@@ -1,0 +1,51 @@
+# Fuente: Belvi Creative Direction.pdf, p. 4-5
+es:
+  slug: sparks
+  order: 1
+  visible: true
+  name: Story Sparks
+  motto: A spark that sets the story in motion.
+  description: Una dirección creativa inicial para parejas que tienen una idea de lo que quieren, pero necesitan darle forma, coherencia y personalidad.
+  ideal_for: Parejas que tienen wedding planner o proveedores propios y quieren una dirección estética que les sirva como punto de partida.
+  price_label: Inversión inicial
+  price: { kind: fixed, amount: 490, vat_mode: included }
+  includes:
+    - Una reunión inicial de hasta 45 minutos.
+    - Cuestionario de descubrimiento.
+    - Desarrollo de un concepto creativo.
+    - Moodboard visual.
+    - Paleta cromática y selección de tipografías.
+    - Dirección de materiales, texturas y acabados.
+    - Referencias de aplicación en papelería, decoración y ambientación.
+    - Guía de estilo digital de aproximadamente 6 páginas.
+    - Reunión de presentación de la guía.
+en:
+  motto: A spark that sets the story in motion.
+  description: An initial creative direction for couples who have an idea of what they want but need to give it shape, coherence and personality.
+  ideal_for: Couples who have a wedding planner or their own suppliers and want an aesthetic direction to use as a starting point.
+  price_label: Starting investment
+  includes:
+    - An initial meeting of up to 45 minutes.
+    - Discovery questionnaire.
+    - Development of a creative concept.
+    - Visual moodboard.
+    - Colour palette and choice of typefaces.
+    - Direction for materials, textures and finishes.
+    - Application references for stationery, decoration and atmosphere.
+    - Digital style guide of about 6 pages.
+    - Presentation meeting for the guide.
+ca:
+  motto: A spark that sets the story in motion.
+  description: Una direcció creativa inicial per a parelles que tenen una idea del que volen, però necessiten donar-li forma, coherència i personalitat.
+  ideal_for: Parelles que tenen wedding planner o proveïdors propis i volen una direcció estètica que els serveixi de punt de partida.
+  price_label: Inversió inicial
+  includes:
+    - Una reunió inicial de fins a 45 minuts.
+    - Qüestionari de descobriment.
+    - Desenvolupament d'un concepte creatiu.
+    - Moodboard visual.
+    - Paleta cromàtica i selecció de tipografies.
+    - Direcció de materials, textures i acabats.
+    - Referències d'aplicació en papereria, decoració i ambientació.
+    - Guia d'estil digital d'aproximadament 6 pàgines.
+    - Reunió de presentació de la guia.

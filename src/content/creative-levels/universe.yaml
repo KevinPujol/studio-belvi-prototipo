@@ -1,0 +1,66 @@
+# Fuente: Belvi Creative Direction.pdf, p. 8-9
+es:
+  slug: universe
+  order: 3
+  visible: true
+  name: Story Universe
+  motto: A world of your own.
+  description: La creación de un universo narrativo y sensorial que convierte la boda en una experiencia diseñada de principio a fin.
+  ideal_for: Parejas que quieren que su boda tenga una narrativa propia y se viva como un universo en el que los invitados participan.
+  price_label: Inversión inicial
+  price: { kind: fixed, amount: 1850, vat_mode: included }
+  includes:
+    - Reunión inicial de hasta 90 min.
+    - Cuestionario de descubrimiento.
+    - Desarrollo de narrativa y storytelling.
+    - Identidad visual y dirección artística.
+    - Moodboard y universo de materiales.
+    - Dirección de todos los espacios de la celebración.
+    - Conceptualización de ceremonia y escenografía.
+    - Dirección de iluminación y ambientación.
+    - Diseño conceptual de experiencias para invitados.
+    - Propuesta de elementos interactivos y participativos.
+    - Aplicaciones de identidad en papelería, objetos y detalles.
+    - Referencias, materiales y especificaciones para proveedores.
+    - Guía creativa de aproximadamente 25 páginas.
+    - Reunión de presentación.
+en:
+  motto: A world of your own.
+  description: The creation of a narrative and sensory universe that turns the wedding into an experience designed from start to finish.
+  ideal_for: Couples who want their wedding to have its own story and to be lived as a universe in which the guests take part.
+  price_label: Starting investment
+  includes:
+    - Initial meeting of up to 90 min.
+    - Discovery questionnaire.
+    - Development of the narrative and storytelling.
+    - Visual identity and art direction.
+    - Moodboard and universe of materials.
+    - Direction for every space of the celebration.
+    - Concept for the ceremony and scenography.
+    - Direction for lighting and atmosphere.
+    - Conceptual design of guest experiences.
+    - Proposal of interactive and participatory elements.
+    - Applications of the identity to stationery, objects and details.
+    - References, materials and specifications for suppliers.
+    - Creative guide of about 25 pages.
+    - Presentation meeting.
+ca:
+  motto: A world of your own.
+  description: La creació d'un univers narratiu i sensorial que converteix el casament en una experiència dissenyada de principi a fi.
+  ideal_for: Parelles que volen que el seu casament tingui una narrativa pròpia i es visqui com un univers en què els convidats participen.
+  price_label: Inversió inicial
+  includes:
+    - Reunió inicial de fins a 90 min.
+    - Qüestionari de descobriment.
+    - Desenvolupament de la narrativa i l'storytelling.
+    - Identitat visual i direcció artística.
+    - Moodboard i univers de materials.
+    - Direcció de tots els espais de la celebració.
+    - Conceptualització de la cerimònia i l'escenografia.
+    - Direcció d'il·luminació i ambientació.
+    - Disseny conceptual d'experiències per als convidats.
+    - Proposta d'elements interactius i participatius.
+    - Aplicacions de la identitat en papereria, objectes i detalls.
+    - Referències, materials i especificacions per a proveïdors.
+    - Guia creativa d'aproximadament 25 pàgines.
+    - Reunió de presentació.

@@ -1,0 +1,17 @@
+---
+// Placeholder for a legacy URL whose page is not published (e.g. FAQ in draft): sends visitors to another page.
+import { pageUrl, type Lang } from '../lib/i18n';
+interface Props { lang: Lang; to: string }
+const target = pageUrl(Astro.props.to, Astro.props.lang);
+---
+<!doctype html>
+<html lang={Astro.props.lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content={`0; url=${target}`} />
+  <link rel="canonical" href={new URL(target, Astro.site).href} />
+  <title>Studio Belvi</title>
+</head>
+<body><a href={target}>Studio Belvi</a></body>
+</html>

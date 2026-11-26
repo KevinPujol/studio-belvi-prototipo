@@ -1,0 +1,60 @@
+# Fuente: Belvi Creative Direction.pdf, p. 6-7
+es:
+  slug: chapters
+  order: 2
+  visible: true
+  name: Story Chapters
+  motto: Every detail tells part of the story.
+  description: Una dirección creativa integral que conecta todos los capítulos de la celebración.
+  ideal_for: Parejas que quieren que todos los elementos de su boda tengan una identidad común, aunque trabajen con diferentes proveedores.
+  price_label: Inversión inicial
+  price: { kind: fixed, amount: 950, vat_mode: included }
+  includes:
+    - Reunión inicial de hasta 60 minutos.
+    - Cuestionario de descubrimiento.
+    - Conceptualización y storytelling de la boda.
+    - Moodboard general y referencias visuales.
+    - "Identidad gráfica: colores, tipografías, recursos gráficos."
+    - Dirección de papelería y señalética.
+    - Dirección de mesas, centros y decoración.
+    - Dirección de ceremonia y espacios.
+    - Propuesta de materiales, texturas e iluminación.
+    - Referencias visuales y especificaciones para proveedores.
+    - Guía de estilo de aproximadamente 15 páginas.
+    - Reunión de presentación.
+en:
+  motto: Every detail tells part of the story.
+  description: A comprehensive creative direction that connects every chapter of the celebration.
+  ideal_for: Couples who want every element of their wedding to share one identity, even when working with different suppliers.
+  price_label: Starting investment
+  includes:
+    - Initial meeting of up to 60 minutes.
+    - Discovery questionnaire.
+    - Concept and storytelling for the wedding.
+    - Overall moodboard and visual references.
+    - "Graphic identity: colours, typefaces, graphic resources."
+    - Direction for stationery and signage.
+    - Direction for tables, centrepieces and decoration.
+    - Direction for the ceremony and spaces.
+    - Proposal of materials, textures and lighting.
+    - Visual references and specifications for suppliers.
+    - Style guide of about 15 pages.
+    - Presentation meeting.
+ca:
+  motto: Every detail tells part of the story.
+  description: Una direcció creativa integral que connecta tots els capítols de la celebració.
+  ideal_for: Parelles que volen que tots els elements del seu casament tinguin una identitat comuna, encara que treballin amb diferents proveïdors.
+  price_label: Inversió inicial
+  includes:
+    - Reunió inicial de fins a 60 minuts.
+    - Qüestionari de descobriment.
+    - Conceptualització i storytelling del casament.
+    - Moodboard general i referències visuals.
+    - "Identitat gràfica: colors, tipografies, recursos gràfics."
+    - Direcció de papereria i senyalística.
+    - Direcció de taules, centres i decoració.
+    - Direcció de cerimònia i espais.
+    - Proposta de materials, textures i il·luminació.
+    - Referències visuals i especificacions per a proveïdors.
+    - Guia d'estil d'aproximadament 15 pàgines.
+    - Reunió de presentació.

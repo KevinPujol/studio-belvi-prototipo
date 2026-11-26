@@ -1,0 +1,27 @@
+{
+  "name": "studio-belvi",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "devDependencies": {
+    "@playwright/mcp": "^0.0.86",
+    "@playwright/test": "^1.65.1",
+    "yaml": "2.9.1"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.6",
+    "astro": "7.4.13"
+  },
+  "scripts": {
+    "cms:config": "node scripts/cms-config.mjs",
+    "predev": "npm run cms:config",
+    "dev": "astro dev",
+    "prebuild": "npm run cms:config",
+    "build": "astro build && node scripts/check-content.mjs && node scripts/check-links.mjs dist ${BASE_PATH:-/}",
+    "preview": "astro preview",
+    "test": "playwright test"
+  }
+}

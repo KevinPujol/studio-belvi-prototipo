@@ -1,0 +1,38 @@
+# Fuente: Belvi Production Packs.pdf, p. 40-41. El PDF no da precio "desde" para la familia.
+es:
+  slug: couple-details
+  order: 9
+  visible: true
+  featured: true
+  area: memorabilia
+  name: The Couple Details
+  cover_image: /assets/images/memorabilia/obj5.webp
+  tagline: The little things that make you, you.
+  intro: Diseñamos accesorios, joyas y piezas especiales para dar personalidad al estilismo de la pareja. Desde pequeños detalles artesanales hasta conjuntos completamente personalizados, cada creación nace de una historia, una estética y una forma de celebrar quiénes sois.
+  notes:
+    - También podemos desarrollar piezas coordinadas para familiares, testigos y personas especiales, así como cajas personalizadas para presentar y conservar las creaciones.
+  packs:
+    - { slug: the-hair-atelier, name: The Hair Atelier, visible: true, featured: true, description: Tocados y accesorios para el pelo., price: { kind: from, amount: 250, vat_mode: excluded } }
+    - { slug: the-jewelry-studio, name: The Jewelry Studio, visible: true, featured: false, description: Joyas y piezas ornamentales personalizadas., price: { kind: from, amount: 250, vat_mode: excluded } }
+    - { slug: the-couple-accessories, name: The Couple Accessories, visible: true, featured: false, description: "Complementos para el ramo, la solapa y otros detalles del estilismo.", price: { kind: from, amount: 180, vat_mode: excluded } }
+    - { slug: bedazzling-the-couple, name: Bedazzling the Couple, visible: true, featured: false, description: Conjuntos de accesorios coordinados y diseñados especialmente para ambos., price: { kind: from, amount: 350, vat_mode: excluded } }
+en:
+  tagline: The little things that make you, you.
+  intro: We design accessories, jewellery and special pieces to give personality to the couple's styling. From small handmade details to fully personalised sets, each creation is born from a story, an aesthetic and a way of celebrating who you are.
+  notes:
+    - We can also create coordinated pieces for family, witnesses and special people, as well as personalised boxes to present and keep the creations.
+  packs:
+    - { description: Headpieces and hair accessories. }
+    - { description: Personalised jewellery and ornamental pieces. }
+    - { description: "Accessories for the bouquet, the lapel and other styling details." }
+    - { description: Sets of coordinated accessories designed especially for both of you. }
+ca:
+  tagline: The little things that make you, you.
+  intro: Dissenyem accessoris, joies i peces especials per donar personalitat a l'estilisme de la parella. Des de petits detalls artesanals fins a conjunts completament personalitzats, cada creació neix d'una història, una estètica i una manera de celebrar qui sou.
+  notes:
+    - També podem desenvolupar peces coordinades per a familiars, testimonis i persones especials, així com capses personalitzades per presentar i conservar les creacions.
+  packs:
+    - { description: Tocats i accessoris per als cabells. }
+    - { description: Joies i peces ornamentals personalitzades. }
+    - { description: "Complements per al ram, la solapa i altres detalls de l'estilisme." }
+    - { description: Conjunts d'accessoris coordinats i dissenyats especialment per a tots dos. }

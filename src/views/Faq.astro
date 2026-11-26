@@ -1,0 +1,27 @@
+---
+import { type Lang } from '../lib/i18n';
+import { faq } from '../lib/content';
+interface Props { lang: Lang }
+const f = faq(Astro.props.lang);
+---
+<section class="faq-section page-top">
+  <div class="container">
+    <div class="section-header">
+      <h2 set:html={f.title} />
+      <p set:html={f.intro} />
+    </div>
+    {f.items.map((it, i) => (
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false" aria-controls={`faq-${i}`} set:html={it.question} />
+        <div class="faq-answer" id={`faq-${i}`}><p set:html={it.answer} /></div>
+      </div>
+    ))}
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-question').forEach((b) => b.addEventListener('click', () => {
+    const item = b.closest('.faq-item')!;
+    const open = item.classList.toggle('open');
+    b.setAttribute('aria-expanded', String(open));
+  }));
+</script>

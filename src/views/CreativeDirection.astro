@@ -1,0 +1,44 @@
+---
+import PriceTag from '../components/PriceTag.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { pageUrl, type Lang } from '../lib/i18n';
+import { levels, catalog, comparison } from '../lib/content';
+interface Props { lang: Lang; t: Record<string, string> }
+const { lang, t } = Astro.props;
+const lv = levels(lang);
+const cat = catalog(lang);
+const cmp = comparison(lang);
+---
+<section class="page-top">
+  <div class="container">
+    <div class="section-header reveal">
+      <span>{cat.cd_levels_intro}</span>
+      <h2>{cat.cd_title}</h2>
+      <p>{cat.cd_intro}</p>
+    </div>
+    <div class="levels-grid">
+      {lv.map((l, i) => (
+        <a class="level-card reveal" href={pageUrl(l.slug, lang)}>
+          <div class="collab-number">{String(i + 1).padStart(2, '0')}</div>
+          <h3>{l.name}</h3>
+          <p class="motto">{l.motto}</p>
+          <p>{l.description}</p>
+          <PriceTag price={l.price} lang={lang} />
+          <span class="text-link" style="margin-top:0.5rem">{t.see_level}</span>
+        </a>
+      ))}
+    </div>
+    <div class="subsection">
+      <h3 class="subsection-title reveal">{t.compare_title}</h3>
+      <ComparisonTable rows={cmp.rows} levels={lv} />
+    </div>
+    <div class="panel reveal subsection">
+      <h3>{cat.expand_title}</h3>
+      <p style="margin-bottom:1rem">{cat.expand_intro}</p>
+      <div class="extras">
+        {cat.expand.map((e) => <div class="extra"><span class="label">{e.label}</span><PriceTag price={e.price} lang={lang} /></div>)}
+      </div>
+      <p class="small-note">{cat.expand_price_header}.</p>
+    </div>
+  </div>
+</section>

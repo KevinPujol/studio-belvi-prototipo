@@ -1,0 +1,149 @@
+# Fuente: Belvi Production Packs.pdf, p. 22-26
+es:
+  slug: ceremony-moment
+  order: 5
+  visible: true
+  featured: true
+  area: scenography
+  name: The Ceremony Moment
+  cover_image: /assets/images/scenography/sceno1.webp
+  tagline: Diseñamos momentos de ceremonia que se convierten en recuerdos.
+  intro: A través de objetos personalizados, espacios escenográficos y rituales simbólicos, transformamos uno de los instantes más importantes de la boda en una experiencia única y personal.
+  price_from: { kind: from, amount: 1500, vat_mode: excluded }
+  packs:
+    - slug: the-vows
+      name: The Vows
+      visible: true
+      featured: true
+      description: Una colección de objetos diseñados para acompañar el intercambio de votos y los momentos más simbólicos de la ceremonia.
+      price: { kind: from, amount: 1500, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Diseño conceptual de la colección.
+            - Diseño y fabricación de dos libros de votos personalizados.
+            - Una caja o soporte para los anillos.
+            - Un atril personalizado de formato estándar, si se requiere.
+            - Hasta dos detalles simbólicos adicionales de complejidad estándar.
+            - Coordinación estética entre las piezas.
+            - Preparación y embalaje.
+    - slug: the-altar
+      name: The Altar
+      visible: true
+      featured: false
+      description: Un espacio ceremonial diseñado a medida, concebido como el escenario protagonista del momento del «sí, quiero».
+      price: { kind: from, amount: 2400, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Concepto creativo y diseño del altar.
+            - Diseño y fabricación de una estructura o composición principal.
+            - Hasta dos elementos complementarios integrados en la propuesta.
+            - Personalización de materiales, formas y acabados.
+            - Coordinación estética con la identidad de la boda.
+            - Preparación y embalaje.
+    - slug: the-ceremony-experience
+      name: The Ceremony Experience
+      visible: true
+      featured: false
+      description: Una experiencia de ceremonia concebida de principio a fin, donde los objetos, el espacio y los gestos simbólicos forman parte de una misma historia.
+      price: { kind: from, amount: 3500, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Todo lo incluido en The Vows.
+            - Todo lo incluido en The Altar.
+            - Diseño de un ritual o interacción simbólica personalizada para la pareja.
+            - Desarrollo y fabricación de los elementos necesarios para llevarlo a cabo.
+            - Coordinación estética y narrativa de toda la experiencia.
+            - Preparación y embalaje.
+  extras:
+    - kind: addon
+      label: The Words
+      description: Acompañamiento creativo y escritura de dos votos personales a partir de la historia, recuerdos y palabras de la pareja. Incluye una ronda de revisión y entrega de los textos finales.
+      price: { kind: from, amount: 250, vat_mode: excluded }
+    - kind: addon
+      label: Ritual adicional
+      description: Diseño de una dinámica simbólica adicional y desarrollo de los elementos necesarios para realizarla.
+      price: { kind: from, amount: 250, vat_mode: excluded }
+    - kind: addon
+      label: Instalación y montaje
+      description: Transporte, instalación y montaje de las piezas en el espacio de celebración.
+      price: { kind: quote, note: "según ubicación, dimensiones y complejidad", vat_mode: excluded }
+en:
+  tagline: We design ceremony moments that become memories.
+  intro: Through personalised objects, scenographic spaces and symbolic rituals, we turn one of the most important moments of the wedding into a unique and personal experience.
+  packs:
+    - description: A collection of objects designed to accompany the exchange of vows and the most symbolic moments of the ceremony.
+      inclusion_groups:
+        - items:
+            - Conceptual design of the collection.
+            - Design and fabrication of two personalised vow books.
+            - A ring box or ring holder.
+            - A personalised lectern in a standard format, if required.
+            - Up to two additional symbolic details of standard complexity.
+            - Aesthetic coordination between the pieces.
+            - Preparation and packing.
+    - description: A tailor-made ceremonial space, conceived as the leading stage for the moment you say "I do".
+      inclusion_groups:
+        - items:
+            - Creative concept and design of the altar.
+            - Design and fabrication of one main structure or composition.
+            - Up to two complementary elements integrated into the proposal.
+            - Personalisation of materials, shapes and finishes.
+            - Aesthetic coordination with the wedding's identity.
+            - Preparation and packing.
+    - description: A ceremony experience conceived from start to finish, where the objects, the space and the symbolic gestures are part of the same story.
+      inclusion_groups:
+        - items:
+            - Everything included in The Vows.
+            - Everything included in The Altar.
+            - Design of a personalised ritual or symbolic interaction for the couple.
+            - Development and fabrication of the elements needed to carry it out.
+            - Aesthetic and narrative coordination of the whole experience.
+            - Preparation and packing.
+  extras:
+    - label: The Words
+      description: Creative support and writing of two personal vows based on the couple's story, memories and words. Includes one round of revisions and delivery of the final texts.
+    - label: Additional ritual
+      description: Design of an additional symbolic dynamic and development of the elements needed to carry it out.
+    - label: Installation and assembly
+      description: Transport, installation and assembly of the pieces at the celebration venue.
+      price: { note: "depending on location, size and complexity" }
+ca:
+  tagline: Dissenyem moments de cerimònia que es converteixen en records.
+  intro: A través d'objectes personalitzats, espais escenogràfics i rituals simbòlics, transformem un dels instants més importants del casament en una experiència única i personal.
+  packs:
+    - description: Una col·lecció d'objectes dissenyats per acompanyar l'intercanvi de vots i els moments més simbòlics de la cerimònia.
+      inclusion_groups:
+        - items:
+            - Disseny conceptual de la col·lecció.
+            - Disseny i fabricació de dos llibres de vots personalitzats.
+            - Una capsa o suport per als anells.
+            - Un faristol personalitzat de format estàndard, si cal.
+            - Fins a dos detalls simbòlics addicionals de complexitat estàndard.
+            - Coordinació estètica entre les peces.
+            - Preparació i embalatge.
+    - description: Un espai cerimonial dissenyat a mida, concebut com l'escenari protagonista del moment del «sí, vull».
+      inclusion_groups:
+        - items:
+            - Concepte creatiu i disseny de l'altar.
+            - Disseny i fabricació d'una estructura o composició principal.
+            - Fins a dos elements complementaris integrats en la proposta.
+            - Personalització de materials, formes i acabats.
+            - Coordinació estètica amb la identitat del casament.
+            - Preparació i embalatge.
+    - description: Una experiència de cerimònia concebuda de principi a fi, on els objectes, l'espai i els gestos simbòlics formen part d'una mateixa història.
+      inclusion_groups:
+        - items:
+            - Tot el que inclou The Vows.
+            - Tot el que inclou The Altar.
+            - Disseny d'un ritual o interacció simbòlica personalitzada per a la parella.
+            - Desenvolupament i fabricació dels elements necessaris per dur-lo a terme.
+            - Coordinació estètica i narrativa de tota l'experiència.
+            - Preparació i embalatge.
+  extras:
+    - label: The Words
+      description: Acompanyament creatiu i escriptura de dos vots personals a partir de la història, els records i les paraules de la parella. Inclou una ronda de revisió i el lliurament dels textos finals.
+    - label: Ritual addicional
+      description: Disseny d'una dinàmica simbòlica addicional i desenvolupament dels elements necessaris per dur-la a terme.
+    - label: Instal·lació i muntatge
+      description: Transport, instal·lació i muntatge de les peces a l'espai de la celebració.
+      price: { note: "segons la ubicació, les dimensions i la complexitat" }

@@ -1,0 +1,47 @@
+# Builds the Astro site and publishes it to GitHub Pages (Settings > Pages > Source: GitHub Actions).
+# Runs on every push to main, including the commits the back office (Sveltia CMS) makes when publishing.
+# Account-specific values live in repository variables (Settings > Secrets and variables > Actions > Variables):
+#   SITE_URL              https://studiobelvi.com  (prototype: https://<user>.github.io)
+#   BASE_PATH             empty in production       (prototype: /<repo>)
+#   CMS_AUTH_URL          Sveltia CMS Authenticator Worker URL (optional; without it, log in with a GitHub token)
+#   PUBLIC_WEB3FORMS_KEY  Web3Forms access key (optional; without it, the form opens the email client)
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: withastro/action@v6
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          BASE_PATH: ${{ vars.BASE_PATH }}
+          CMS_REPO: ${{ github.repository }}
+          CMS_BRANCH: ${{ github.event.repository.default_branch }}
+          CMS_AUTH_URL: ${{ vars.CMS_AUTH_URL }}
+          PUBLIC_WEB3FORMS_KEY: ${{ vars.PUBLIC_WEB3FORMS_KEY }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

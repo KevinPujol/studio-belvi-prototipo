@@ -1,0 +1,186 @@
+# Fuente: Belvi Production Packs.pdf, p. 35-39
+es:
+  slug: interactive-wedding
+  order: 8
+  visible: true
+  featured: true
+  area: immersion
+  name: The Interactive Wedding
+  cover_image: /assets/images/immersion/imm1.webp
+  tagline: Diseñamos experiencias que invitan a los invitados a conectar, jugar y participar.
+  intro: Dinámicas personalizadas que transforman distintos momentos de la boda en oportunidades para descubrir, compartir y divertirse.
+  price_from: { kind: from, amount: 500, vat_mode: excluded }
+  notes:
+    - Cada experiencia se desarrolla según el momento de la boda, el número de participantes y el tipo de interacción. Los servicios de atención presencial, consumibles adicionales y producción especial se presupuestan según las necesidades del proyecto.
+  packs:
+    - slug: the-mingle
+      name: The Mingle
+      visible: true
+      featured: true
+      description: Una dinámica diseñada para romper el hielo, generar conversaciones y conectar a los invitados. Ideal para el cóctel y los primeros momentos de la celebración.
+      price: { kind: from, amount: 500, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Concepto creativo de la dinámica.
+            - Diseño de una mecánica de interacción sencilla.
+            - Personalización de preguntas, retos o propuestas de conversación.
+            - Diseño gráfico de los materiales de participación.
+            - Hasta 80 elementos de participación de formato estándar.
+            - Instrucciones para los invitados.
+            - Fabricación, preparación y embalaje.
+    - slug: the-game
+      name: The Game
+      visible: true
+      featured: true
+      description: Un juego personalizado que convierte a los invitados en participantes activos. Las mesas se transforman en equipos que compiten, resuelven retos y comparten una experiencia durante el banquete.
+      price: { kind: from, amount: 500, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Concepto creativo y narrativa del juego.
+            - Diseño de mecánica y reglas de participación.
+            - Hasta 3 rondas o pruebas conectadas.
+            - Personalización de preguntas, retos y desafíos.
+            - Diseño de tarjetas, tableros y materiales gráficos.
+            - Fabricación de hasta 8 sets de juego, uno por mesa.
+            - Sistema sencillo de puntuación y resolución.
+            - Instrucciones para los participantes.
+            - Preparación y embalaje.
+    - slug: the-after
+      name: The After
+      visible: true
+      featured: false
+      description: Activaciones participativas diseñadas para prolongar la diversión durante la fiesta. Estaciones creativas y experiencias personalizadas que invitan a los invitados a experimentar, jugar y llevarse un recuerdo de la celebración.
+      price: { kind: from, amount: 500, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Concepto creativo y diseño de la activación.
+            - Diseño de una estación o punto de participación personalizado.
+            - Diseño gráfico y estética de todos los elementos.
+            - Hasta 3 elementos protagonistas diseñados y fabricados para la experiencia.
+            - Materiales necesarios para una dinámica sencilla de participación.
+            - Preparación y embalaje.
+      possibilities:
+        - Temporary Tattoo Bar.
+        - Glitter Bar.
+        - Estaciones de personalización de accesorios.
+        - Props para la fiesta.
+        - Experiencias creativas y participativas.
+  extras:
+    - { kind: combo, label: 2 interactions, price: { kind: from, amount: 900, vat_mode: excluded } }
+    - { kind: combo, label: 3 interactions, price: { kind: from, amount: 1300, vat_mode: excluded } }
+    - { kind: addon, label: Materiales y unidades adicionales }
+    - { kind: addon, label: Equipos o mesas adicionales }
+    - { kind: addon, label: Estaciones de interacción adicionales }
+    - { kind: addon, label: Consumibles según número de participantes }
+    - { kind: addon, label: Personalización individual de accesorios }
+    - { kind: addon, label: Personal de dinamización y atención durante la celebración }
+    - { kind: addon, label: "Transporte, instalación y desmontaje" }
+    - { kind: addon, label: Integraciones digitales especiales }
+en:
+  tagline: We design experiences that invite guests to connect, play and take part.
+  intro: Personalised dynamics that turn different moments of the wedding into opportunities to discover, share and have fun.
+  notes:
+    - Each experience is developed according to the moment of the wedding, the number of participants and the type of interaction. On-site staff, additional consumables and special production are quoted according to the needs of the project.
+  packs:
+    - description: A dynamic designed to break the ice, spark conversations and connect the guests. Ideal for the cocktail hour and the first moments of the celebration.
+      inclusion_groups:
+        - items:
+            - Creative concept for the dynamic.
+            - Design of a simple interaction mechanic.
+            - Personalised questions, challenges or conversation prompts.
+            - Graphic design of the participation materials.
+            - Up to 80 standard-format participation elements.
+            - Instructions for the guests.
+            - Fabrication, preparation and packing.
+    - description: A personalised game that turns the guests into active participants. The tables become teams that compete, solve challenges and share an experience during the banquet.
+      inclusion_groups:
+        - items:
+            - Creative concept and storyline of the game.
+            - Design of the mechanics and rules.
+            - Up to 3 connected rounds or challenges.
+            - Personalised questions, tasks and challenges.
+            - Design of cards, boards and graphic materials.
+            - Fabrication of up to 8 game sets, one per table.
+            - Simple scoring and resolution system.
+            - Instructions for the participants.
+            - Preparation and packing.
+    - description: Participatory activations designed to keep the fun going during the party. Creative stations and personalised experiences that invite guests to experiment, play and take home a memory of the celebration.
+      inclusion_groups:
+        - items:
+            - Creative concept and design of the activation.
+            - Design of a personalised station or participation point.
+            - Graphic design and aesthetic of all the elements.
+            - Up to 3 leading elements designed and made for the experience.
+            - Materials needed for a simple participation dynamic.
+            - Preparation and packing.
+      possibilities:
+        - Temporary Tattoo Bar.
+        - Glitter Bar.
+        - Accessory personalisation stations.
+        - Party props.
+        - Creative and participatory experiences.
+  extras:
+    - { label: 2 interactions }
+    - { label: 3 interactions }
+    - { label: Additional materials and units }
+    - { label: Additional teams or tables }
+    - { label: Additional interaction stations }
+    - { label: Consumables according to the number of participants }
+    - { label: Individual personalisation of accessories }
+    - { label: Hosting and support staff during the celebration }
+    - { label: "Transport, installation and dismantling" }
+    - { label: Special digital integrations }
+ca:
+  tagline: Dissenyem experiències que conviden els convidats a connectar, jugar i participar.
+  intro: Dinàmiques personalitzades que transformen diferents moments del casament en oportunitats per descobrir, compartir i divertir-se.
+  notes:
+    - Cada experiència es desenvolupa segons el moment del casament, el nombre de participants i el tipus d'interacció. Els serveis d'atenció presencial, els consumibles addicionals i la producció especial es pressuposten segons les necessitats del projecte.
+  packs:
+    - description: Una dinàmica dissenyada per trencar el gel, generar converses i connectar els convidats. Ideal per al còctel i els primers moments de la celebració.
+      inclusion_groups:
+        - items:
+            - Concepte creatiu de la dinàmica.
+            - Disseny d'una mecànica d'interacció senzilla.
+            - Personalització de preguntes, reptes o propostes de conversa.
+            - Disseny gràfic dels materials de participació.
+            - Fins a 80 elements de participació de format estàndard.
+            - Instruccions per als convidats.
+            - Fabricació, preparació i embalatge.
+    - description: Un joc personalitzat que converteix els convidats en participants actius. Les taules es transformen en equips que competeixen, resolen reptes i comparteixen una experiència durant el banquet.
+      inclusion_groups:
+        - items:
+            - Concepte creatiu i narrativa del joc.
+            - Disseny de la mecànica i les regles de participació.
+            - Fins a 3 rondes o proves connectades.
+            - Personalització de preguntes, reptes i desafiaments.
+            - Disseny de targetes, taulers i materials gràfics.
+            - Fabricació de fins a 8 jocs, un per taula.
+            - Sistema senzill de puntuació i resolució.
+            - Instruccions per als participants.
+            - Preparació i embalatge.
+    - description: Activacions participatives dissenyades per allargar la diversió durant la festa. Estacions creatives i experiències personalitzades que conviden els convidats a experimentar, jugar i endur-se un record de la celebració.
+      inclusion_groups:
+        - items:
+            - Concepte creatiu i disseny de l'activació.
+            - Disseny d'una estació o punt de participació personalitzat.
+            - Disseny gràfic i estètica de tots els elements.
+            - Fins a 3 elements protagonistes dissenyats i fabricats per a l'experiència.
+            - Materials necessaris per a una dinàmica senzilla de participació.
+            - Preparació i embalatge.
+      possibilities:
+        - Temporary Tattoo Bar.
+        - Glitter Bar.
+        - Estacions de personalització d'accessoris.
+        - Props per a la festa.
+        - Experiències creatives i participatives.
+  extras:
+    - { label: 2 interaccions }
+    - { label: 3 interaccions }
+    - { label: Materials i unitats addicionals }
+    - { label: Equips o taules addicionals }
+    - { label: Estacions d'interacció addicionals }
+    - { label: Consumibles segons el nombre de participants }
+    - { label: Personalització individual d'accessoris }
+    - { label: Personal de dinamització i atenció durant la celebració }
+    - { label: "Transport, instal·lació i desmuntatge" }
+    - { label: Integracions digitals especials }

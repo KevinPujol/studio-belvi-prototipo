@@ -1,0 +1,37 @@
+# Fuente: Belvi Creative Direction.pdf, p. 10
+es:
+  rows:
+    - { label: Reunión inicial, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Concepto creativo, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Moodboard, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: "Paleta, tipografías y materiales", sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Guía de estilo PDF, sparks: Básica, chapters: Completa, universe: Extensa }
+    - { label: Dirección de papelería y decoración, sparks: Conceptual, chapters: Detallada, universe: Detallada }
+    - { label: Diseño de escenografía, sparks: "—", chapters: Conceptual, universe: Detallado }
+    - { label: Experiencia de invitados, sparks: "—", chapters: "—", universe: Desarrollada }
+    - { label: Referencias para proveedores, sparks: "—", chapters: "✓", universe: "✓" }
+    - { label: Reunión de presentación, sparks: "✓", chapters: "✓", universe: "✓" }
+en:
+  rows:
+    - { label: Initial meeting, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Creative concept, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Moodboard, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: "Palette, typefaces and materials", sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: PDF style guide, sparks: Basic, chapters: Complete, universe: Extensive }
+    - { label: Stationery and decoration direction, sparks: Conceptual, chapters: Detailed, universe: Detailed }
+    - { label: Scenography design, sparks: "—", chapters: Conceptual, universe: Detailed }
+    - { label: Guest experience, sparks: "—", chapters: "—", universe: Fully developed }
+    - { label: References for suppliers, sparks: "—", chapters: "✓", universe: "✓" }
+    - { label: Presentation meeting, sparks: "✓", chapters: "✓", universe: "✓" }
+ca:
+  rows:
+    - { label: Reunió inicial, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Concepte creatiu, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Moodboard, sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: "Paleta, tipografies i materials", sparks: "✓", chapters: "✓", universe: "✓" }
+    - { label: Guia d'estil en PDF, sparks: Bàsica, chapters: Completa, universe: Extensa }
+    - { label: Direcció de papereria i decoració, sparks: Conceptual, chapters: Detallada, universe: Detallada }
+    - { label: Disseny d'escenografia, sparks: "—", chapters: Conceptual, universe: Detallat }
+    - { label: Experiència dels convidats, sparks: "—", chapters: "—", universe: Desenvolupada }
+    - { label: Referències per a proveïdors, sparks: "—", chapters: "✓", universe: "✓" }
+    - { label: Reunió de presentació, sparks: "✓", chapters: "✓", universe: "✓" }

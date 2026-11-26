@@ -1,0 +1,17 @@
+node_modules/
+.env*
+!.env.example
+.playwright-mcp/
+playwright-report/
+test-results/
+dist/
+.astro/
+.vercel/
+# Catálogo original de los clientes: no se versiona el binario, sí el texto extraído
+specs/source/*.pdf
+
+public/admin/config.yml
+dist-base/
+
+# Local working notes for Claude Code (mention work accounts): not published
+CLAUDE.md

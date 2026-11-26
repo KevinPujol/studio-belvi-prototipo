@@ -1,0 +1,194 @@
+# Fuente: Belvi Production Packs.pdf, p. 5-10
+es:
+  slug: wedding-paper-suite
+  order: 1
+  visible: true
+  featured: true
+  area: memorabilia
+  name: The Wedding Paper Suite
+  cover_image: /assets/images/memorabilia/obj1.webp
+  tagline: Una identidad de papelería diseñada alrededor de la historia y estética de la pareja.
+  intro: Cada colección se desarrolla como un lenguaje visual propio, desde las primeras invitaciones hasta los pequeños detalles que acompañan la celebración.
+  price_from: { kind: from, amount: 750, vat_mode: excluded }
+  common_inclusions:
+    - Conceptualización y diseño de la colección.
+    - Adaptación a la identidad visual de la boda.
+    - Producción de las piezas contempladas.
+    - Dos rondas de correcciones de diseño.
+    - Preparación y empaquetado.
+  notes:
+    - Precios orientados a una boda de hasta 80 invitados, con cantidades, formatos y acabados estándar.
+  packs:
+    - slug: the-invitation
+      name: The Invitation
+      visible: true
+      featured: true
+      description: Una colección de invitación diseñada para presentar la boda y compartir los primeros detalles con los invitados.
+      price: { kind: from, amount: 750, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Una invitación principal.
+            - Una tarjeta informativa complementaria.
+            - Un sobre estándar por invitación.
+            - Hasta 80 unidades.
+            - Producción y montaje estándar.
+    - slug: the-day-of
+      name: The Day-of
+      visible: true
+      featured: false
+      description: Una colección de papelería que acompaña la celebración y da continuidad a la identidad visual de la boda.
+      price: { kind: from, amount: 850, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Menús individuales.
+            - Marcasitios personalizados.
+            - Numeración de mesas.
+            - Hasta 80 menús.
+            - Hasta 80 marcasitios.
+            - Hasta 8 números de mesa.
+            - Producción, montaje y empaquetado estándar.
+    - slug: the-full-suite
+      name: The Full Suite
+      visible: true
+      featured: true
+      description: "La colección completa: desde las primeras comunicaciones hasta los detalles de papelería del día de la boda."
+      price: { kind: from, amount: 1450, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Save the date digital estático.
+            - Todo lo incluido en The Invitation.
+            - Todo lo incluido en The Day-of.
+            - Producción, montaje y empaquetado estándar.
+    - slug: the-signature-suite
+      name: The Signature Suite
+      visible: true
+      featured: false
+      description: Una colección completa elevada con recursos gráficos originales, acabados especiales y una pieza exclusiva diseñada para la pareja.
+      price: { kind: from, amount: 2050, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Todo lo incluido en The Full Suite.
+            - Una ilustración o recurso gráfico original.
+            - Un acabado especial principal, como foil, troquel o lacre personalizado.
+            - Una pieza adicional de papelería exclusiva.
+            - Producción de hasta 80 unidades de cada pieza cuando corresponda.
+  extras:
+    - { kind: addon, label: Ilustración original del venue, price: { kind: from, amount: 180, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Troquel especial, price: { kind: from, amount: 120, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Lacre personalizado, price: { kind: from, amount: 100, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Foil, price: { kind: quote, note: según tirada y piezas, vat_mode: excluded } }
+    - { kind: addon, label: Sobres personalizados, price: { kind: from, amount: 90, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Papelería adicional, price: { kind: quote, note: según piezas y unidades, vat_mode: excluded } }
+    - { kind: addon, label: Invitación interactiva, price: { kind: from, amount: 200, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Puzzle invitation o invitación con piezas, price: { kind: from, amount: 300, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Caligrafía o personalización individual, price: { kind: quote, note: según cantidad, vat_mode: excluded } }
+en:
+  tagline: A stationery identity designed around the couple's story and aesthetic.
+  intro: Each collection is developed as a visual language of its own, from the first invitations to the small details that accompany the celebration.
+  common_inclusions:
+    - Concept and design of the collection.
+    - Adaptation to the wedding's visual identity.
+    - Production of the pieces included.
+    - Two rounds of design revisions.
+    - Preparation and packaging.
+  notes:
+    - Prices based on a wedding of up to 80 guests, with standard quantities, formats and finishes.
+  packs:
+    - description: An invitation collection designed to announce the wedding and share the first details with the guests.
+      inclusion_groups:
+        - items:
+            - One main invitation.
+            - One additional information card.
+            - One standard envelope per invitation.
+            - Up to 80 units.
+            - Standard production and assembly.
+    - description: A stationery collection that accompanies the celebration and carries on the wedding's visual identity.
+      inclusion_groups:
+        - items:
+            - Individual menus.
+            - Personalised place cards.
+            - Table numbers.
+            - Up to 80 menus.
+            - Up to 80 place cards.
+            - Up to 8 table numbers.
+            - Standard production, assembly and packaging.
+    - description: "The complete collection: from the first announcements to the stationery details on the wedding day."
+      inclusion_groups:
+        - items:
+            - Static digital save the date.
+            - Everything included in The Invitation.
+            - Everything included in The Day-of.
+            - Standard production, assembly and packaging.
+    - description: A complete collection elevated with original graphic resources, special finishes and an exclusive piece designed for the couple.
+      inclusion_groups:
+        - items:
+            - Everything included in The Full Suite.
+            - One original illustration or graphic resource.
+            - One main special finish, such as foil, die-cutting or a custom wax seal.
+            - One additional exclusive stationery piece.
+            - Production of up to 80 units of each piece where applicable.
+  extras:
+    - { label: Original illustration of the venue }
+    - { label: Special die-cut }
+    - { label: Custom wax seal }
+    - { label: Foil, price: { note: depending on print run and pieces } }
+    - { label: Personalised envelopes }
+    - { label: Additional stationery, price: { note: depending on pieces and units } }
+    - { label: Interactive invitation }
+    - { label: Puzzle invitation or invitation in pieces }
+    - { label: Calligraphy or individual personalisation, price: { note: depending on quantity } }
+ca:
+  tagline: Una identitat de papereria dissenyada al voltant de la història i l'estètica de la parella.
+  intro: Cada col·lecció es desenvolupa com un llenguatge visual propi, des de les primeres invitacions fins als petits detalls que acompanyen la celebració.
+  common_inclusions:
+    - Conceptualització i disseny de la col·lecció.
+    - Adaptació a la identitat visual del casament.
+    - Producció de les peces previstes.
+    - Dues rondes de correccions de disseny.
+    - Preparació i empaquetatge.
+  notes:
+    - Preus orientats a un casament de fins a 80 convidats, amb quantitats, formats i acabats estàndard.
+  packs:
+    - description: Una col·lecció d'invitació dissenyada per presentar el casament i compartir els primers detalls amb els convidats.
+      inclusion_groups:
+        - items:
+            - Una invitació principal.
+            - Una targeta informativa complementària.
+            - Un sobre estàndard per invitació.
+            - Fins a 80 unitats.
+            - Producció i muntatge estàndard.
+    - description: Una col·lecció de papereria que acompanya la celebració i dona continuïtat a la identitat visual del casament.
+      inclusion_groups:
+        - items:
+            - Menús individuals.
+            - Marcadors de lloc personalitzats.
+            - Numeració de taules.
+            - Fins a 80 menús.
+            - Fins a 80 marcadors de lloc.
+            - Fins a 8 números de taula.
+            - Producció, muntatge i empaquetatge estàndard.
+    - description: "La col·lecció completa: des de les primeres comunicacions fins als detalls de papereria del dia del casament."
+      inclusion_groups:
+        - items:
+            - Save the date digital estàtic.
+            - Tot el que inclou The Invitation.
+            - Tot el que inclou The Day-of.
+            - Producció, muntatge i empaquetatge estàndard.
+    - description: Una col·lecció completa elevada amb recursos gràfics originals, acabats especials i una peça exclusiva dissenyada per a la parella.
+      inclusion_groups:
+        - items:
+            - Tot el que inclou The Full Suite.
+            - Una il·lustració o recurs gràfic original.
+            - Un acabat especial principal, com ara foil, troquel o lacre personalitzat.
+            - Una peça addicional de papereria exclusiva.
+            - Producció de fins a 80 unitats de cada peça quan correspongui.
+  extras:
+    - { label: Il·lustració original del venue }
+    - { label: Troquel especial }
+    - { label: Lacre personalitzat }
+    - { label: Foil, price: { note: segons tiratge i peces } }
+    - { label: Sobres personalitzats }
+    - { label: Papereria addicional, price: { note: segons peces i unitats } }
+    - { label: Invitació interactiva }
+    - { label: Puzzle invitation o invitació amb peces }
+    - { label: Cal·ligrafia o personalització individual, price: { note: segons la quantitat } }

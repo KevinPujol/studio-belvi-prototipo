@@ -1,0 +1,44 @@
+---
+import FamilyCard from '../components/FamilyCard.astro';
+import { type Lang } from '../lib/i18n';
+import { families, catalog } from '../lib/content';
+interface Props { lang: Lang; t: Record<string, string> }
+const { lang, t } = Astro.props;
+const fam = families(lang);
+const cat = catalog(lang);
+const areas = ['memorabilia', 'scenography', 'immersion'] as const;
+---
+<section class="page-top">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>{cat.pp_title}</h2>
+      <p>{cat.pp_intro}</p>
+    </div>
+    <div class="filters" role="group">
+      <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">{t.filter_all}</button>
+      {areas.map((a) => <button class="filter-btn" type="button" data-filter={a} aria-pressed="false">{t[`area_${a}`]}</button>)}
+    </div>
+    <div class="family-grid" id="family-grid">
+      {fam.map((f) => <FamilyCard family={f} lang={lang} t={t} showFeatured />)}
+    </div>
+    <div class="panel reveal subsection">
+      <h3>{cat.extension_types_title}</h3>
+      <div class="extras">
+        {cat.extension_types.map((e) => <div class="extra"><span><span class="label">{e.name}</span><span class="desc">{e.meaning}</span></span><span>{e.example}</span></div>)}
+      </div>
+    </div>
+    <div class="panel reveal subsection" id="conditions">
+      <h3>{cat.conditions_title}</h3>
+      <ol style="padding-left:1.2rem;display:grid;gap:0.4rem">{cat.conditions.map((c) => <li>{c}</li>)}</ol>
+    </div>
+  </div>
+</section>
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  buttons.forEach((b) => b.addEventListener('click', () => {
+    buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    document.querySelectorAll<HTMLElement>('#family-grid .family-card').forEach((c) => {
+      c.hidden = b.dataset.filter !== 'all' && c.dataset.area !== b.dataset.filter;
+    });
+  }));
+</script>

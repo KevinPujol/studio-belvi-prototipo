@@ -1,0 +1,144 @@
+# Fuente: Belvi Production Packs.pdf, p. 15-19
+es:
+  slug: photo-moment
+  order: 3
+  visible: true
+  featured: true
+  area: scenography
+  name: The Photo Moment
+  cover_image: /assets/images/scenography/sceno5.webp
+  tagline: Una instalación o rincón especialmente concebido para convertirse en un recuerdo visual de la boda.
+  intro: Diseñamos espacios y composiciones que combinan elementos gráficos, escultóricos y escenográficos para crear un punto de encuentro, descubrimiento y fotografía.
+  price_from: { kind: from, amount: 500, vat_mode: excluded }
+  packs:
+    - slug: the-frame
+      name: The Frame
+      visible: true
+      featured: true
+      description: Un elemento protagonista diseñado para crear un punto visual único dentro de la celebración.
+      price: { kind: from, amount: 500, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Un fondo, panel o estructura sencilla personalizada.
+            - Dimensiones de hasta 2 × 2 m como referencia máxima, según materiales y complejidad.
+            - Un acabado o recurso visual principal.
+            - Fabricación con materiales estándar.
+            - Preparación y embalaje.
+            - Instrucciones de montaje.
+    - slug: the-scene
+      name: The Scene
+      visible: true
+      featured: false
+      description: Una composición escenográfica que combina diferentes elementos para crear un rincón personalizado y con identidad propia.
+      price: { kind: from, amount: 1550, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Conceptualización y diseño de una composición escenográfica.
+            - Un fondo o estructura principal.
+            - Hasta dos elementos escultóricos o decorativos complementarios.
+            - Personalización gráfica integrada en la composición.
+            - Integración de iluminación decorativa sencilla cuando sea viable.
+            - Fabricación y preparación de las piezas.
+            - Instrucciones de montaje.
+    - slug: the-experience
+      name: The Experience
+      visible: true
+      featured: false
+      description: Una instalación inmersiva que combina escenografía, iluminación y participación para crear una experiencia que los invitados puedan descubrir y vivir.
+      price: { kind: from, amount: 2500, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Concepto y diseño de una instalación inmersiva.
+            - Composición escenográfica con varios planos o elementos.
+            - Hasta tres elementos protagonistas.
+            - Una interacción participativa sencilla integrada en la instalación.
+            - Diseño conceptual de iluminación.
+            - Fabricación y preparación de las piezas propias.
+            - Instrucciones de instalación.
+  extras:
+    - { kind: addon, label: Elemento 3D personalizado, price: { kind: from, amount: 120, plus: true, note: "de diseño, más fabricación", vat_mode: excluded } }
+    - { kind: addon, label: Elemento textil adicional, price: { kind: from, amount: 150, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Iluminación adicional, price: { kind: from, amount: 150, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Estación de mensajes o libro de firmas, price: { kind: from, amount: 180, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Interacción NFC sencilla, price: { kind: from, amount: 75, plus: true, vat_mode: excluded } }
+    - { kind: addon, label: Instalaciones suspendidas o de gran formato, price: { kind: quote, note: específico, vat_mode: excluded } }
+en:
+  tagline: An installation or corner specially conceived to become a visual memory of the wedding.
+  intro: We design spaces and compositions that combine graphic, sculptural and scenographic elements to create a place for meeting, discovery and photography.
+  packs:
+    - description: A leading element designed to create a unique visual focal point within the celebration.
+      inclusion_groups:
+        - items:
+            - One simple personalised backdrop, panel or structure.
+            - Dimensions of up to 2 × 2 m as a maximum reference, depending on materials and complexity.
+            - One main finish or visual resource.
+            - Fabrication with standard materials.
+            - Preparation and packing.
+            - Assembly instructions.
+    - description: A scenographic composition that combines different elements to create a personalised corner with an identity of its own.
+      inclusion_groups:
+        - items:
+            - Concept and design of a scenographic composition.
+            - One main backdrop or structure.
+            - Up to two complementary sculptural or decorative elements.
+            - Graphic personalisation integrated into the composition.
+            - Simple decorative lighting integrated where feasible.
+            - Fabrication and preparation of the pieces.
+            - Assembly instructions.
+    - description: An immersive installation that combines scenography, lighting and participation to create an experience the guests can discover and live.
+      inclusion_groups:
+        - items:
+            - Concept and design of an immersive installation.
+            - Scenographic composition with several layers or elements.
+            - Up to three leading elements.
+            - One simple participatory interaction integrated into the installation.
+            - Conceptual lighting design.
+            - Fabrication and preparation of our own pieces.
+            - Installation instructions.
+  extras:
+    - { label: Custom 3D element, price: { note: "for design, plus fabrication" } }
+    - { label: Additional textile element }
+    - { label: Additional lighting }
+    - { label: Message station or guest book }
+    - { label: Simple NFC interaction }
+    - { label: Suspended or large-format installations, price: { note: on request } }
+ca:
+  tagline: Una instal·lació o racó especialment concebut per convertir-se en un record visual del casament.
+  intro: Dissenyem espais i composicions que combinen elements gràfics, escultòrics i escenogràfics per crear un punt de trobada, descobriment i fotografia.
+  packs:
+    - description: Un element protagonista dissenyat per crear un punt visual únic dins de la celebració.
+      inclusion_groups:
+        - items:
+            - Un fons, panell o estructura senzilla personalitzada.
+            - Dimensions de fins a 2 × 2 m com a referència màxima, segons materials i complexitat.
+            - Un acabat o recurs visual principal.
+            - Fabricació amb materials estàndard.
+            - Preparació i embalatge.
+            - Instruccions de muntatge.
+    - description: Una composició escenogràfica que combina diferents elements per crear un racó personalitzat i amb identitat pròpia.
+      inclusion_groups:
+        - items:
+            - Conceptualització i disseny d'una composició escenogràfica.
+            - Un fons o estructura principal.
+            - Fins a dos elements escultòrics o decoratius complementaris.
+            - Personalització gràfica integrada en la composició.
+            - Integració d'il·luminació decorativa senzilla quan sigui viable.
+            - Fabricació i preparació de les peces.
+            - Instruccions de muntatge.
+    - description: Una instal·lació immersiva que combina escenografia, il·luminació i participació per crear una experiència que els convidats puguin descobrir i viure.
+      inclusion_groups:
+        - items:
+            - Concepte i disseny d'una instal·lació immersiva.
+            - Composició escenogràfica amb diversos plans o elements.
+            - Fins a tres elements protagonistes.
+            - Una interacció participativa senzilla integrada en la instal·lació.
+            - Disseny conceptual d'il·luminació.
+            - Fabricació i preparació de les peces pròpies.
+            - Instruccions d'instal·lació.
+  extras:
+    - { label: Element 3D personalitzat, price: { note: "de disseny, més fabricació" } }
+    - { label: Element tèxtil addicional }
+    - { label: Il·luminació addicional }
+    - { label: Estació de missatges o llibre de signatures }
+    - { label: Interacció NFC senzilla }
+    - { label: Instal·lacions suspeses o de gran format, price: { note: específic } }

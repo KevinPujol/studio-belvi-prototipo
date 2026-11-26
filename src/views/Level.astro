@@ -1,0 +1,32 @@
+---
+import PriceTag from '../components/PriceTag.astro';
+import { pageUrl, type Lang } from '../lib/i18n';
+import { level } from '../lib/content';
+interface Props { lang: Lang; t: Record<string, string>; slug: string }
+const { lang, t, slug } = Astro.props;
+const l = level(slug, lang)!;
+const interestUrl = `${pageUrl('', lang)}?interest=${encodeURIComponent(l.name)}#contact`;
+---
+<section class="page-top">
+  <div class="container">
+    <div class="info reveal">
+      <div class="section-header">
+        <span>{l.motto}</span>
+        <h2>{l.name}</h2>
+        <p>{l.description}</p>
+        <p style="margin-top:1.5rem"><strong>{t.ideal_for}:</strong> {l.ideal_for}</p>
+        <p>{l.price_label && <span class="price-label">{l.price_label} · </span>}<PriceTag price={l.price} lang={lang} /></p>
+      </div>
+      <div class="info-grid">
+        <div>
+          <h3>{t.includes}</h3>
+          <ul class="check-list">{l.includes.map((i) => <li>{i}</li>)}</ul>
+        </div>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href={interestUrl}>{t.interest}</a>
+          <a class="btn btn-secondary" href={pageUrl('creative-direction', lang)}>{t.offer_cd_link}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

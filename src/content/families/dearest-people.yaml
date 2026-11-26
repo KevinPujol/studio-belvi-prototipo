@@ -1,0 +1,84 @@
+# Fuente: Belvi Production Packs.pdf, p. 27-28
+es:
+  slug: dearest-people
+  order: 6
+  visible: true
+  featured: true
+  area: memorabilia
+  name: Our Dearest People
+  cover_image: /assets/images/memorabilia/obj6.webp
+  tagline: Para las personas que forman parte de vuestra historia.
+  intro: Diseñamos colecciones de regalos y detalles personalizados para implicar al cortejo, agradecer a familiares y personas especiales, y crear una conexión entre quienes os acompañan antes y durante la boda.
+  price_from: { kind: from, amount: 1200, vat_mode: excluded }
+  packs:
+    - slug: our-dearest-people
+      name: Our Dearest People
+      visible: true
+      featured: true
+      description: ""
+      price: { kind: from, amount: 1200, vat_mode: excluded }
+      inclusion_groups:
+        - items:
+            - Concepto creativo y dirección estética de la colección.
+            - 4 proposal boxes personalizadas para el cortejo.
+            - 2 regalos para padres u otros invitados especiales.
+            - 6 boutonnières/corsages coordinados para el día de la boda.
+            - Personalización y fabricación de los elementos incluidos.
+            - Preparación y embalaje.
+        - title: Personalización de la colección
+          description: "Las proposal boxes pueden desarrollarse en dos formatos:"
+          items:
+            - "The Essentials Box: una selección cuidada de detalles con presentación personalizada."
+            - "The Signature Box: una selección más elaborada, con packaging especial y piezas exclusivas diseñadas para la ocasión."
+  extras:
+    - { kind: addon, label: Proposal boxes adicionales }
+    - { kind: addon, label: Regalos adicionales para familiares e invitados especiales }
+    - { kind: addon, label: Boutonnières y corsages adicionales }
+    - { kind: addon, label: Contenido premium y packaging especial }
+    - { kind: addon, label: Personalización individual de cada regalo }
+en:
+  tagline: For the people who are part of your story.
+  intro: We design collections of personalised gifts and details to involve the wedding party, thank family and special people, and create a connection between those who accompany you before and during the wedding.
+  packs:
+    - inclusion_groups:
+        - items:
+            - Creative concept and aesthetic direction of the collection.
+            - 4 personalised proposal boxes for the wedding party.
+            - 2 gifts for parents or other special guests.
+            - 6 coordinated boutonnières/corsages for the wedding day.
+            - Personalisation and fabrication of the elements included.
+            - Preparation and packing.
+        - title: Personalising the collection
+          description: "The proposal boxes can be developed in two formats:"
+          items:
+            - "The Essentials Box: a careful selection of details with personalised presentation."
+            - "The Signature Box: a more elaborate selection, with special packaging and exclusive pieces designed for the occasion."
+  extras:
+    - { label: Additional proposal boxes }
+    - { label: Additional gifts for family and special guests }
+    - { label: Additional boutonnières and corsages }
+    - { label: Premium content and special packaging }
+    - { label: Individual personalisation of each gift }
+ca:
+  tagline: Per a les persones que formen part de la vostra història.
+  intro: Dissenyem col·leccions de regals i detalls personalitzats per implicar el seguici, agrair als familiars i a les persones especials, i crear una connexió entre els qui us acompanyen abans i durant el casament.
+  packs:
+    - inclusion_groups:
+        - items:
+            - Concepte creatiu i direcció estètica de la col·lecció.
+            - 4 proposal boxes personalitzades per al seguici.
+            - 2 regals per als pares o altres convidats especials.
+            - 6 boutonnières/corsages coordinats per al dia del casament.
+            - Personalització i fabricació dels elements inclosos.
+            - Preparació i embalatge.
+        - title: Personalització de la col·lecció
+          description: "Les proposal boxes es poden desenvolupar en dos formats:"
+          items:
+            - "The Essentials Box: una selecció acurada de detalls amb presentació personalitzada."
+            - "The Signature Box: una selecció més elaborada, amb packaging especial i peces exclusives dissenyades per a l'ocasió."
+  extras:
+    - { label: Proposal boxes addicionals }
+    - { label: Regals addicionals per a familiars i convidats especials }
+    - { label: Boutonnières i corsages addicionals }
+    - { label: Contingut prèmium i packaging especial }
+    - { label: Personalització individual de cada regal }
