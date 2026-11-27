@@ -1,0 +1,53 @@
+# Textos de la página de Dirección creativa y "Expand your story". Fuente: Belvi Creative Direction.pdf, p. 3 y 11.
+es:
+  cd_title: Dirección creativa
+  cd_intro: Desarrollamos el universo creativo de la boda. Conceptualizamos, diseñamos y creamos una guía que podéis utilizar con todos vuestros proveedores.
+  cd_levels_intro: Tres niveles de profundidad.
+  expand_title: Expand your story
+  expand_intro: Creative Direction Support para acompañar a los proveedores durante el proceso.
+  expand_price_header: Precio orientativo
+  expand:
+    - label: Sesión adicional de 60 min
+      price:
+        kind: fixed
+        amount: 90
+        vat_mode: unspecified
+    - label: Revisión de propuestas de proveedores
+      price:
+        kind: from
+        amount: 150
+        vat_mode: unspecified
+    - label: Acompañamiento creativo mensual
+      price:
+        kind: from
+        amount: 250
+        vat_mode: unspecified
+        unit: month
+    - label: Supervisión creativa presencial
+      price:
+        kind: quote
+        vat_mode: unspecified
+en:
+  cd_title: Creative direction
+  cd_intro: We develop the creative universe of your wedding. We conceive, design and create a guide you can use with all your suppliers.
+  cd_levels_intro: Three levels of depth.
+  expand_title: Expand your story
+  expand_intro: Creative Direction Support to accompany your suppliers throughout the process.
+  expand_price_header: Indicative prices
+  expand:
+    - label: Additional 60-minute session
+    - label: Review of supplier proposals
+    - label: Monthly creative support
+    - label: On-site creative supervision
+ca:
+  cd_title: Direcció creativa
+  cd_intro: Desenvolupem l'univers creatiu del casament. Conceptualitzem, dissenyem i creem una guia que podeu fer servir amb tots els vostres proveïdors.
+  cd_levels_intro: Tres nivells de profunditat.
+  expand_title: Expand your story
+  expand_intro: Creative Direction Support per acompanyar els proveïdors durant el procés.
+  expand_price_header: Preu orientatiu
+  expand:
+    - label: Sessió addicional de 60 min
+    - label: Revisió de propostes de proveïdors
+    - label: Acompanyament creatiu mensual
+    - label: Supervisió creativa presencial

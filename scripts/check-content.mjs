@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const contentDir = path.join(root, 'src/content');
-const SHARED = new Set(['slug', 'order', 'visible', 'featured', 'published', 'area', 'image', 'cover_image', 'images', 'name', 'amount', 'kind', 'vat_mode', 'unit', 'plus']);
+const SHARED = new Set(['slug', 'order', 'visible', 'featured', 'published', 'area', 'image', 'cover_image', 'images', 'position', 'cover_position', 'portfolio_image', 'portfolio_image_position', 'name', 'amount', 'kind', 'vat_mode', 'unit', 'plus']);
 const isObj = (v) => typeof v === 'object' && v !== null && !Array.isArray(v);
 
 const files = [];

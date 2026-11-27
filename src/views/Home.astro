@@ -1,4 +1,5 @@
 ---
+import { md, plain } from '../lib/text';
 import PriceTag from '../components/PriceTag.astro';
 import FamilyCard from '../components/FamilyCard.astro';
 import ContactForm from '../components/ContactForm.astro';
@@ -19,11 +20,11 @@ const areas = [
 <header class="hero">
   <div class="container hero-grid">
     <div class="hero-text reveal">
-      <small set:html={h.hero_small} />
-      <h1 set:html={h.hero_title} />
-      <p set:html={h.hero_text} />
+      <small set:html={md(h.hero_small)} />
+      <h1 set:html={md(h.hero_title)} />
+      <p set:html={md(h.hero_text)} />
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary"><span set:html={h.hero_cta} /></a>
+        <a href="#contact" class="btn btn-primary"><span set:html={md(h.hero_cta)} /></a>
         <a href={pageUrl('packs', lang)} class="btn btn-secondary">{t.offer_pp_link}</a>
       </div>
     </div>
@@ -38,9 +39,9 @@ const areas = [
 <section id="offer">
   <div class="container">
     <div class="section-header reveal">
-      <span set:html={h.collab_span} />
-      <h2 set:html={h.collab_title} />
-      <p set:html={h.collab_text} />
+      <span set:html={md(h.collab_span)} />
+      <h2 set:html={md(h.collab_title)} />
+      <p set:html={md(h.collab_text)} />
     </div>
     <h3 class="subsection-title reveal">{t.offer_cd_title}</h3>
     <div class="collab-grid">
@@ -70,21 +71,21 @@ const areas = [
 <section id="portfolio">
   <div class="container">
     <div class="section-header reveal">
-      <span set:html={h.portfolio_span} />
-      <h2 set:html={h.portfolio_title} />
-      <p set:html={h.portfolio_text} />
+      <span set:html={md(h.portfolio_span)} />
+      <h2 set:html={md(h.portfolio_title)} />
+      <p set:html={md(h.portfolio_text)} />
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-item reveal" data-flip tabindex="0" role="button" aria-pressed="false">
         <div class="portfolio-card">
           <div class="portfolio-card-front">
-            <img src={asset('/assets/images/portfolio/fairytale-hero.webp')} alt="Once upon a story…" loading="lazy" decoding="async" />
-            <div class="portfolio-overlay"><h3 set:html={h.portfolio_card01_front} /></div>
+            <img src={asset(h.portfolio_image || '/assets/images/portfolio/fairytale-hero.webp')} alt={plain(h.portfolio_card01_front)} style={h.portfolio_image_position ? `object-position: ${h.portfolio_image_position}` : undefined} loading="lazy" decoding="async" />
+            <div class="portfolio-overlay"><h3 set:html={md(h.portfolio_card01_front)} /></div>
           </div>
           <div class="portfolio-card-back">
-            <h3 set:html={h.portfolio_card01_back_title} />
-            <p set:html={h.portfolio_card01_back_text} />
-            <a href={pageUrl('portfolio', lang)} class="portfolio-button" set:html={h.portfolio_card01_back_btn} />
+            <h3 set:html={md(h.portfolio_card01_back_title)} />
+            <p set:html={md(h.portfolio_card01_back_text)} />
+            <a href={pageUrl('portfolio', lang)} class="portfolio-button" set:html={md(h.portfolio_card01_back_btn)} />
           </div>
         </div>
       </div>
@@ -95,16 +96,16 @@ const areas = [
 <section id="services">
   <div class="container">
     <div class="section-header reveal">
-      <span set:html={h.services_span} />
-      <h2 set:html={h.services_title} />
-      <p set:html={h.services_text} />
+      <span set:html={md(h.services_span)} />
+      <h2 set:html={md(h.services_title)} />
+      <p set:html={md(h.services_text)} />
     </div>
     <div class="services-grid">
       {areas.map((a) => (
         <a href={pageUrl(a.href, lang)} class="service-card reveal">
           <div class="service-number">{a.n}</div>
-          <h3 set:html={h[`${a.k}_title`]} />
-          <p set:html={h[`${a.k}_text`]} />
+          <h3 set:html={md(h[`${a.k}_title`])} />
+          <p set:html={md(h[`${a.k}_text`])} />
         </a>
       ))}
     </div>
@@ -115,15 +116,15 @@ const areas = [
   <div class="container">
     <div class="process reveal">
       <div class="section-header">
-        <span set:html={h.process_span} />
-        <h2 set:html={h.process_title} />
+        <span set:html={md(h.process_span)} />
+        <h2 set:html={md(h.process_title)} />
       </div>
       <div class="process-grid">
         {[1, 2, 3, 4].map((n) => (
           <div class="process-step">
             <span>{String(n).padStart(2, '0')}</span>
-            <h3 set:html={h[`process_card0${n}_title`]} />
-            <p set:html={h[`process_card0${n}_text`]} />
+            <h3 set:html={md(h[`process_card0${n}_title`])} />
+            <p set:html={md(h[`process_card0${n}_text`])} />
           </div>
         ))}
       </div>
@@ -134,8 +135,8 @@ const areas = [
 <section id="cta">
   <div class="container">
     <div class="cta reveal" id="contact">
-      <h2 set:html={h.contact_title} />
-      <p set:html={h.contact_text} />
+      <h2 set:html={md(h.contact_title)} />
+      <p set:html={md(h.contact_text)} />
       <ContactForm lang={lang} t={t} levels={lv} families={families(lang)} />
     </div>
   </div>

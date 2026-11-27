@@ -1,4 +1,5 @@
 ---
+import { md, plain } from '../lib/text';
 import FamilyCard from '../components/FamilyCard.astro';
 import { asset, type Lang } from '../lib/i18n';
 import { gallery, families } from '../lib/content';
@@ -10,15 +11,15 @@ const fam = families(lang).filter((f) => f.area === area);
 <section class="page-top">
   <div class="container">
     <div class="section-header reveal">
-      <h2 set:html={g.title} />
-      {g.text && <p set:html={g.text} />}
+      <h2 set:html={md(g.title)} />
+      {g.text && <p set:html={md(g.text)} />}
     </div>
     <div class="portfolio-grid cols-3">
       {g.cards.map((c) => (
         <div class="portfolio-item reveal" data-flip tabindex="0" role="button" aria-pressed="false">
           <div class="portfolio-card">
-            <div class="portfolio-card-front"><img src={asset(c.image)} alt={c.caption.replace(/<[^>]+>/g, '') || g.title} loading="lazy" decoding="async" /></div>
-            <div class="portfolio-card-back"><h3 set:html={c.caption} /></div>
+            <div class="portfolio-card-front"><img src={asset(c.image)} alt={plain(c.caption) || plain(g.title)} style={c.position ? `object-position: ${c.position}` : undefined} loading="lazy" decoding="async" /></div>
+            <div class="portfolio-card-back"><h3 set:html={md(c.caption)} /></div>
           </div>
         </div>
       ))}

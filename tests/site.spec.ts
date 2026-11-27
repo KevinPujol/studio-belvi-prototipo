@@ -175,6 +175,20 @@ test.describe('catalogue', () => {
     await expect(page.getByText('€1,850 VAT included').first()).toBeVisible();
   });
 
+  test('portfolio card photo uses the chosen crop (couple visible on mobile)', async ({ page }) => {
+    const pos = content('pages/home.yaml').es.portfolio_image_position;
+    await open(page, '/es/');
+    expect(await page.locator('#portfolio .portfolio-card-front img').evaluate((i) => getComputedStyle(i).objectPosition)).toBe(pos);
+  });
+
+  test('no raw HTML or markup symbols leak into page texts', async ({ page }) => {
+    for (const path of ['/es/', '/memorabilia.html', '/portfolio.html']) {
+      await open(page, path);
+      const text = await page.locator('main').innerText();
+      expect(text).not.toMatch(/<\/?(b|i|br)>|\*\*/);
+    }
+  });
+
   test('hidden pack is not published', async ({ page }) => {
     // Guard for R-14: a pack with visible:false must not appear. All packs are visible today, so check the rule on data.
     const fam = content('families/wedding-paper-suite.yaml').es;
@@ -252,6 +266,10 @@ test.describe('no PWA, SEO basics', () => {
     const cfg = YAML.parse(await (await request.get('/admin/config.yml')).text());
     expect(cfg.backend.name).toBe('github');
     expect(cfg.i18n.locales).toEqual(['es', 'en', 'ca']);
-    expect(cfg.collections.map((c: { name: string }) => c.name)).toEqual(['levels', 'families', 'general', 'pages', 'galleries', 'ui']);
+    expect(cfg.collections.filter((c: { divider?: boolean }) => !c.divider).map((c: { name: string }) => c.name)).toEqual(['creative', 'families', 'packs_general', 'pages', 'galleries', 'ui']);
+    // Page text fields have human labels, not code keys
+    const home = cfg.collections.find((c: { name: string }) => c.name === 'pages').files.find((f: { name: string }) => f.name === 'home');
+    expect(home.fields[0].label).toBe('Portada · antetítulo');
+    expect(html).toContain('preview.js');
   });
 });

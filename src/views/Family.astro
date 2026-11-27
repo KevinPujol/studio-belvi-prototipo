@@ -20,7 +20,7 @@ const cat = catalog(lang);
         {f.intro && <p style="margin-top:1rem">{f.intro}</p>}
         <PriceTag price={f.price_from} lang={lang} />
       </div>
-      {f.cover_image && <img class="reveal" src={asset(f.cover_image)} alt={f.name} decoding="async" />}
+      {f.cover_image && <img class="reveal" src={asset(f.cover_image)} alt={f.name} style={f.cover_position ? `object-position: ${f.cover_position}` : undefined} decoding="async" />}
     </div>
 
     {f.common_inclusions.length > 0 && (

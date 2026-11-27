@@ -1,0 +1,55 @@
+# Textos generales de Production packs: introducción, tipos de ampliación y condiciones. Fuente: Belvi Production Packs.pdf, p. 3, 42 y 43.
+es:
+  pp_title: Production packs
+  pp_intro: Objetos, espacios y experiencias únicos. Nuestros packs están para ayudarte a decidir en qué te quieres enfocar.
+  extension_types_title: Ampliaciones aplicables a todos los packs
+  extension_types:
+    - name: More
+      meaning: Más unidades o más mesas
+      example: 80 a 120 invitaciones; 6 a 10 centros
+    - name: Custom
+      meaning: Más personalización o desarrollo
+      example: Ilustración original, figura 3D propia, retos personalizados
+    - name: Immersive
+      meaning: Añadir espacio o interacción
+      example: Instalación, iluminación, NFC, búsqueda del tesoro
+  conditions_title: Condiciones aplicables a todos los packs
+  conditions:
+    - Todos los precios del catálogo son precios desde y excluyen IVA.
+    - Los precios incluyen una cantidad concreta de revisiones y un alcance definido.
+    - Transporte, montaje, desmontaje y desplazamientos se especifican según el proyecto.
+  home_note: Precios desde. Transporte y montaje según proyecto.
+en:
+  pp_title: Production packs
+  pp_intro: Unique objects, spaces and experiences. Our packs are here to help you decide what you want to focus on.
+  extension_types_title: Add-ons for every pack
+  extension_types:
+    - meaning: More units or more tables
+      example: 80 to 120 invitations; 6 to 10 centrepieces
+    - meaning: More personalisation or development
+      example: Original illustration, custom 3D figure, personalised challenges
+    - meaning: Add a space or an interaction
+      example: Installation, lighting, NFC, treasure hunt
+  conditions_title: Conditions for every pack
+  conditions:
+    - All catalogue prices are starting prices and exclude VAT.
+    - Prices include a set number of revisions and a defined scope.
+    - Transport, assembly, dismantling and travel are specified for each project.
+  home_note: Starting prices. Transport and assembly depend on the project.
+ca:
+  pp_title: Production packs
+  pp_intro: Objectes, espais i experiències únics. Els nostres packs són aquí per ajudar-te a decidir en què et vols centrar.
+  extension_types_title: Ampliacions aplicables a tots els packs
+  extension_types:
+    - meaning: Més unitats o més taules
+      example: De 80 a 120 invitacions; de 6 a 10 centres
+    - meaning: Més personalització o desenvolupament
+      example: Il·lustració original, figura 3D pròpia, reptes personalitzats
+    - meaning: Afegir un espai o una interacció
+      example: Instal·lació, il·luminació, NFC, cerca del tresor
+  conditions_title: Condicions aplicables a tots els packs
+  conditions:
+    - Tots els preus del catàleg són preus des de i no inclouen l'IVA.
+    - Els preus inclouen una quantitat concreta de revisions i un abast definit.
+    - El transport, el muntatge, el desmuntatge i els desplaçaments s'especifiquen segons el projecte.
+  home_note: Preus des de. Transport i muntatge segons el projecte.

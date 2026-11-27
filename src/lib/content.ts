@@ -5,6 +5,7 @@ import { z } from 'astro/zod';
 import YAML from 'yaml';
 import { localize, type Lang } from './i18n';
 import type { Price } from './price';
+import { slugify } from './text';
 
 const raw = import.meta.glob('/src/content/**/*.yaml', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 
@@ -39,7 +40,7 @@ export const priceSchema = z
   .refine((p) => p.kind === 'quote' || p.amount != null, { message: 'A price "from" or "fixed" needs an amount' });
 
 const packSchema = z.object({
-  slug: z.string().regex(/^[a-z0-9-]+$/),
+  slug: empty(z.string().regex(/^[a-z0-9-]+$/).nullish()),
   name: z.string().min(1),
   visible: z.boolean().default(true),
   featured: z.boolean().default(false),
@@ -58,13 +59,13 @@ const extraSchema = z.object({
 });
 
 const familySchema = z.object({
-  slug: z.string().regex(/^[a-z0-9-]+$/),
   order: z.number().int(),
   visible: z.boolean().default(true),
   featured: z.boolean().default(true),
   area: z.enum(['memorabilia', 'scenography', 'immersion']),
   name: z.string().min(1),
   cover_image: z.string().nullish(),
+  cover_position: z.string().nullish(),
   tagline: text,
   intro: text,
   price_from: priceSchema.nullish(),
@@ -75,7 +76,6 @@ const familySchema = z.object({
 });
 
 const levelSchema = z.object({
-  slug: z.enum(['sparks', 'chapters', 'universe']),
   order: z.number().int(),
   visible: z.boolean().default(true),
   name: z.string(),
@@ -87,10 +87,12 @@ const levelSchema = z.object({
   includes: list,
 });
 
-const catalogSchema = z.object({
+const creativeDirectionSchema = z.object({
   cd_title: z.string(), cd_intro: text, cd_levels_intro: text,
   expand_title: text, expand_intro: text, expand_price_header: text,
   expand: z.array(z.object({ label: z.string(), price: priceSchema })).default([]),
+});
+const packsGeneralSchema = z.object({
   pp_title: z.string(), pp_intro: text,
   extension_types_title: text,
   extension_types: z.array(z.object({ name: z.string(), meaning: text, example: text })).default([]),
@@ -98,39 +100,44 @@ const catalogSchema = z.object({
 });
 
 const comparisonSchema = z.object({ rows: z.array(z.object({ label: z.string(), sparks: z.string(), chapters: z.string(), universe: z.string() })) });
-const gallerySchema = z.object({ title: z.string(), text: text, cards: z.array(z.object({ image: z.string(), caption: text })) });
+const gallerySchema = z.object({ title: z.string(), text: text, cards: z.array(z.object({ image: z.string(), position: z.string().nullish(), caption: text })) });
 const faqSchema = z.object({ published: z.boolean().default(true), title: z.string(), intro: text, items: z.array(z.object({ question: z.string(), answer: z.string() })) });
 const privacySchema = z.object({ title: z.string(), draft_notice: text, sections: z.array(z.object({ heading: z.string(), body: z.string() })) });
 const dictSchema = z.record(z.string(), z.string());
 
 // ---------- Types ----------
-export type Pack = z.infer<typeof packSchema> & { price: Price };
+export type Pack = z.infer<typeof packSchema> & { slug: string; price: Price };
 export type Extra = z.infer<typeof extraSchema>;
-export type Family = Omit<z.infer<typeof familySchema>, 'packs'> & { packs: Pack[] };
-export type Level = z.infer<typeof levelSchema>;
-export type Catalog = z.infer<typeof catalogSchema>;
+export type Family = Omit<z.infer<typeof familySchema>, 'packs'> & { slug: string; packs: Pack[] };
+export type Level = z.infer<typeof levelSchema> & { slug: 'sparks' | 'chapters' | 'universe' };
+export type Catalog = z.infer<typeof creativeDirectionSchema> & z.infer<typeof packsGeneralSchema>;
 export type Gallery = z.infer<typeof gallerySchema>;
 export type Area = Family['area'];
 
 const byOrder = <T extends { order: number }>(a: T, b: T) => a.order - b.order;
 const filesIn = (dir: string) => Object.keys(raw).filter((p) => p.startsWith(`/src/content/${dir}/`)).sort();
+// The file name is the identifier (URL): editors cannot change it by mistake from the back office.
+const fileSlug = (path: string) => path.split('/').pop()!.replace(/\.yaml$/, '');
 
 // ---------- Getters (localised, visible only) ----------
 export function families(lang: Lang, { all = false } = {}): Family[] {
   return filesIn('families')
-    .map((p) => localize<Family>(load(p, familySchema), lang))
+    .map((p) => ({ ...localize<Family>(load(p, familySchema), lang), slug: fileSlug(p) }))
     .filter((f) => all || f.visible)
-    .map((f) => ({ ...f, packs: all ? f.packs : f.packs.filter((p) => p.visible) }))
+    .map((f) => ({ ...f, packs: (all ? f.packs : f.packs.filter((p) => p.visible)).map((p) => ({ ...p, slug: p.slug || slugify(p.name) })) }))
     .sort(byOrder);
 }
 export const family = (slug: string, lang: Lang) => families(lang).find((f) => f.slug === slug);
 
 export function levels(lang: Lang): Level[] {
-  return filesIn('creative-levels').map((p) => localize<Level>(load(p, levelSchema), lang)).filter((l) => l.visible).sort(byOrder);
+  return filesIn('creative-levels').map((p) => ({ ...localize<Level>(load(p, levelSchema), lang), slug: fileSlug(p) as Level['slug'] })).filter((l) => l.visible).sort(byOrder);
 }
 export const level = (slug: string, lang: Lang) => levels(lang).find((l) => l.slug === slug);
 
-export const catalog = (lang: Lang) => localize<Catalog>(load('/src/content/catalog.yaml', catalogSchema), lang);
+export const catalog = (lang: Lang): Catalog => ({
+  ...localize<z.infer<typeof creativeDirectionSchema>>(load('/src/content/creative-direction.yaml', creativeDirectionSchema), lang),
+  ...localize<z.infer<typeof packsGeneralSchema>>(load('/src/content/packs-general.yaml', packsGeneralSchema), lang),
+});
 export const comparison = (lang: Lang) => localize<z.infer<typeof comparisonSchema>>(load('/src/content/comparison.yaml', comparisonSchema), lang);
 export const gallery = (name: string, lang: Lang) => localize<Gallery>(load(`/src/content/galleries/${name}.yaml`, gallerySchema), lang);
 export const faq = (lang: Lang) => localize<z.infer<typeof faqSchema>>(load('/src/content/faq.yaml', faqSchema), lang);

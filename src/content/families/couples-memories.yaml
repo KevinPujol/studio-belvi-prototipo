@@ -1,7 +1,6 @@
 # Fuente: Belvi Production Packs.pdf, p. 29-34
 # Incoherencia 3 de specs/02: la familia dice "desde 550 €" pero hay packs de 350 € y 250 €. Se mantiene el PDF.
 es:
-  slug: couples-memories
   order: 7
   visible: true
   featured: true

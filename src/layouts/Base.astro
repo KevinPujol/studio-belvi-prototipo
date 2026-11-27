@@ -1,4 +1,5 @@
 ---
+import { md } from '../lib/text';
 import '../styles/global.css';
 import { LANGS, DEFAULT_LANG, asset, pageUrl, isIndexable, type Lang } from '../lib/i18n';
 import { ui as uiText } from '../lib/content';
@@ -79,7 +80,7 @@ const links = [
 
   <footer>
     <div class="container">
-      <p set:html={t.footer_text} />
+      <p set:html={md(t.footer_text)} />
       <p class="footer-links">
         <a href="mailto:hello@studiobelvi.com">hello@studiobelvi.com</a>
         <a href={pageUrl('privacy', lang)}>{t.privacy_link}</a>

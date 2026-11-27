@@ -1,6 +1,6 @@
 es:
   title: Érase una vez…
-  text: Espacios bucólicos, arcos de fantasía, luces de neón, un <i>backdrop</i> hecho de páginas de libro, una tiara élfica, un cerezo como libro de firmas, un bingo muy especial, una búsqueda del tesoro y una novia que parecía sacada de un cuento.
+  text: Espacios bucólicos, arcos de fantasía, luces de neón, un *backdrop* hecho de páginas de libro, una tiara élfica, un cerezo como libro de firmas, un bingo muy especial, una búsqueda del tesoro y una novia que parecía sacada de un cuento.
   cards:
     - image: /assets/images/portfolio/fairytale1.webp
       caption: ""
@@ -52,7 +52,7 @@ en:
       caption: ""
 ca:
   title: Hi havia una vegada…
-  text: Espais bucòlics, arcs de fantasia, llums de neó, un <i>backdrop</i> fet de pàgines de llibre, una tiara èlfica, un cirerer com a llibre de signatures, un bingo molt especial, una cerca del tresor i una núvia que semblava treta d’un conte.
+  text: Espais bucòlics, arcs de fantasia, llums de neó, un *backdrop* fet de pàgines de llibre, una tiara èlfica, un cirerer com a llibre de signatures, un bingo molt especial, una cerca del tresor i una núvia que semblava treta d’un conte.
   cards:
     - image: /assets/images/portfolio/fairytale1.webp
       caption: ""

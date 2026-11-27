@@ -11,7 +11,7 @@ es:
     - image: /assets/images/scenography/sceno4.webp
       caption: Flores gigantes
     - image: /assets/images/scenography/sceno5.webp
-      caption: <i>Backdrop</i> hecho con hojas de libros viejos
+      caption: "*Backdrop* hecho con hojas de libros viejos"
     - image: /assets/images/scenography/sceno6.webp
       caption: Arco ceremonial efecto piedra
 en:
@@ -43,6 +43,6 @@ ca:
     - image: /assets/images/scenography/sceno4.webp
       caption: Flors gegants
     - image: /assets/images/scenography/sceno5.webp
-      caption: <i>Backdrop</i> fet amb fulles de llibres vells
+      caption: "*Backdrop* fet amb fulles de llibres vells"
     - image: /assets/images/scenography/sceno6.webp
       caption: Arc cerimonial efecte pedra

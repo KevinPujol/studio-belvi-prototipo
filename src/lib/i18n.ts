@@ -48,7 +48,7 @@ function merge(base: unknown, over: unknown): unknown {
 }
 
 // Fields that are never translated (Sveltia `i18n: duplicate`); always read from the source language.
-const SHARED = new Set(['slug', 'order', 'visible', 'featured', 'published', 'area', 'image', 'cover_image', 'images', 'name', 'amount', 'kind', 'vat_mode', 'unit', 'plus']);
+const SHARED = new Set(['slug', 'order', 'visible', 'featured', 'published', 'area', 'image', 'cover_image', 'images', 'position', 'cover_position', 'portfolio_image', 'portfolio_image_position', 'name', 'amount', 'kind', 'vat_mode', 'unit', 'plus']);
 
 function stripShared(v: unknown): unknown {
   if (Array.isArray(v)) return v.map(stripShared);

@@ -7,7 +7,7 @@ const { family: f, lang, t, showFeatured = false } = Astro.props;
 const featured = f.packs.filter((p) => p.featured).map((p) => p.name);
 ---
 <a href={pageUrl(`packs/${f.slug}`, lang)} class="family-card reveal" data-area={f.area}>
-  {f.cover_image && <img src={asset(f.cover_image)} alt={f.name} loading="lazy" decoding="async" width="800" height="600" />}
+  {f.cover_image && <img src={asset(f.cover_image)} alt={f.name} style={f.cover_position ? `object-position: ${f.cover_position}` : undefined} loading="lazy" decoding="async" width="800" height="600" />}
   <div class="body">
     <h3>{f.name}</h3>
     <p class="tagline">{f.tagline}</p>

@@ -1,5 +1,6 @@
 ---
 // Renders one route in one language (used by src/pages/[...route].astro and src/pages/[lang]/index.astro).
+import { plain } from '../lib/text';
 import Base from '../layouts/Base.astro';
 import Home from '../views/Home.astro';
 import CreativeDirection from '../views/CreativeDirection.astro';
@@ -16,7 +17,7 @@ import { ui, family, level, gallery, faq, catalog, privacy } from '../lib/conten
 
 const { lang, def } = Astro.props as { lang: Lang; def: RouteDef };
 const t = ui(lang);
-const strip = (s = '') => s.replace(/<[^>]+>/g, '');
+
 let title = '';
 let description = '';
 let image: string | undefined;
@@ -25,9 +26,9 @@ switch (def.view) {
   case 'level': { const l = level(def.key!, lang)!; title = l.name; description = l.description; break; }
   case 'packs': title = catalog(lang).pp_title; description = catalog(lang).pp_intro; break;
   case 'family': { const f = family(def.key!, lang)!; title = f.name; description = f.tagline; image = f.cover_image ?? undefined; break; }
-  case 'area': title = strip(gallery(def.key!, lang).title); break;
-  case 'portfolio': { const g = gallery('portfolio', lang); title = strip(g.title); description = strip(g.text); break; }
-  case 'faq': title = strip(faq(lang).title); break;
+  case 'area': title = plain(gallery(def.key!, lang).title); break;
+  case 'portfolio': { const g = gallery('portfolio', lang); title = plain(g.title); description = plain(g.text); break; }
+  case 'faq': title = plain(faq(lang).title); break;
   case 'privacy': title = privacy(lang).title; break;
 }
 ---

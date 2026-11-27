@@ -1,6 +1,5 @@
 # Fuente: Belvi Production Packs.pdf, p. 40-41. El PDF no da precio "desde" para la familia.
 es:
-  slug: couple-details
   order: 9
   visible: true
   featured: true

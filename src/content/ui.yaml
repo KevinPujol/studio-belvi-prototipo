@@ -18,7 +18,6 @@ es:
   offer_pp_title: Production packs
   offer_pp_link: Ver todos los packs
   see_level: Ver el nivel
-  see_family: Ver los packs
   featured_packs: Destacados
   ideal_for: Ideal para
   includes: Incluye
@@ -36,7 +35,6 @@ es:
   area_packs_title: Packs de esta área
   interest: Me interesa
   back_to_packs: Todos los packs
-  form_title: Cuéntanos tu historia
   form_name: Nombre
   form_email: Email
   form_date: Fecha aproximada de la boda
@@ -69,7 +67,6 @@ en:
   offer_pp_title: Production packs
   offer_pp_link: See all packs
   see_level: See this level
-  see_family: See the packs
   featured_packs: Featured
   ideal_for: Ideal for
   includes: Includes
@@ -87,7 +84,6 @@ en:
   area_packs_title: Packs in this area
   interest: I'm interested
   back_to_packs: All packs
-  form_title: Tell us your story
   form_name: Name
   form_email: Email
   form_date: Approximate wedding date
@@ -120,7 +116,6 @@ ca:
   offer_pp_title: Production packs
   offer_pp_link: Veure tots els packs
   see_level: Veure el nivell
-  see_family: Veure els packs
   featured_packs: Destacats
   ideal_for: Ideal per a
   includes: Inclou
@@ -138,7 +133,6 @@ ca:
   area_packs_title: Packs d'aquesta àrea
   interest: M'interessa
   back_to_packs: Tots els packs
-  form_title: Explica'ns la teva història
   form_name: Nom
   form_email: Correu electrònic
   form_date: Data aproximada del casament
