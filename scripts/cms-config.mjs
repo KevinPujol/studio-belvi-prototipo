@@ -125,6 +125,7 @@ const creative = {
 
 const pack = {
   name: 'packs', label: 'Packs', label_singular: 'Pack', widget: 'list', ...T, collapsed: true, summary: '{{fields.name}}',
+  min: 1, hint: 'Cada familia necesita al menos un pack.',
   fields: [
     str('name', 'Nombre (se mantiene en inglés)', D),
     str('slug', 'Enlace directo', { ...D, required: false, readonly: true, hint: 'Se crea solo a partir del nombre. Es el enlace directo al pack.' }),

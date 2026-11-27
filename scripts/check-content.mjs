@@ -1,5 +1,5 @@
 // Runs after `astro build`. Reports missing translations (EN/CA fall back to Spanish on the site)
-// and fails if a shared field (price, visibility, order…) differs between languages.
+// and notes shared fields (price, visibility, order…) whose EN/CA copy differs from ES (the site always uses ES).
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
@@ -61,7 +61,8 @@ if (fs.existsSync(dist)) {
   console.log(`check-content: ${html.length} HTML pages in dist/.`);
 }
 
+// Shared fields (prices, order, images…) are always read from Spanish, so a different value in EN/CA never reaches
+// the site. Sveltia sometimes writes defaults there (e.g. a price kind inside a translated list), so this is a warning.
 if (conflicts.length) {
-  console.error(`\ncheck-content: ${conflicts.length} shared fields differ between languages:\n  ` + conflicts.join('\n  '));
-  process.exit(1);
+  console.warn(`\ncheck-content: note, ${conflicts.length} shared fields in EN/CA differ from ES (ignored by the site, which uses ES):\n  ` + conflicts.slice(0, 10).join('\n  ') + (conflicts.length > 10 ? `\n  … and ${conflicts.length - 10} more` : ''));
 }

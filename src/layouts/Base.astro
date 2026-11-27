@@ -1,5 +1,5 @@
 ---
-import { md } from '../lib/text';
+import { md, plain } from '../lib/text';
 import '../styles/global.css';
 import { LANGS, DEFAULT_LANG, asset, pageUrl, isIndexable, type Lang } from '../lib/i18n';
 import { ui as uiText } from '../lib/content';
@@ -66,7 +66,7 @@ const links = [
       </a>
       <div class="nav-right">
         <div class="nav-links" id="nav-links">
-          {links.map((l) => <a href={l.href}>{l.label}</a>)}
+          {links.map((l) => <a href={l.href}>{plain(l.label)}</a>)}
         </div>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-open={t.menu} data-close={t.close}>{t.menu}</button>
         <div class="lang-switcher" role="group" aria-label="Language">
