@@ -51,10 +51,12 @@
   // Same light markup as src/lib/text.ts.
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const md = (s) => ({ __html: s ? esc(s.trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>').replace(/\r?\n/g, '<br>') : '' });
+  // The admin lives at <base>/admin/, so the site's base path (e.g. /studio-belvi-prototipo) is what comes before it.
+  const BASE = location.pathname.replace(/\/admin(\/.*)?$/, '');
   const assetUrl = (getAsset, src) => {
     if (!src) return '';
     try { const a = getAsset && getAsset(src); if (a && typeof a.then !== 'function' && String(a) !== '[object Object]') return String(a); } catch (e) {}
-    return src;
+    return src.startsWith('/') ? BASE + src : src;
   };
   const AREA = { memorabilia: 'Memorabilia', scenography: 'Escenografía', immersion: 'Inmersión' };
   const EXTRAS = { additional_piece: 'Piezas adicionales', combo: 'Combinaciones', addon: 'Ampliaciones', support: 'Acompañamiento' };

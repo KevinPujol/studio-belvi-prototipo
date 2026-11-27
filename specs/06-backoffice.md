@@ -29,20 +29,24 @@ Alta y baja: Owner invita o retira a la persona como colaboradora del repo en Gi
 
 ## Pantallas
 
-Sveltia muestra una colección por entrada del menú lateral. Propuesta de colecciones, en el orden en que aparecen:
+Organización revisada el 27-11-2026: cada página se edita en un solo sitio, con etiquetas legibles y un separador entre catálogo y web.
 
-| # | Pantalla | Tipo | Qué contiene | Fichero en el repo |
+| # | Colección | Tipo | Qué contiene | Ficheros |
 |---|---|---|---|---|
-| 1 | Home | Fichero único | Textos del hero, intro de "Nuestra oferta", nota de condiciones de la home, pasos del proceso | `src/content/pages/home.yaml` |
-| 2 | Dirección creativa | Carpeta (3 entradas) | Sparks, Chapters, Universe: lema, descripción, "Ideal para", qué incluye, precio, guía y duración de la reunión | `src/content/creative-levels/*.yaml` |
-| 3 | Tabla comparativa | Fichero único | Filas con etiqueta y valor por nivel | `src/content/creative-direction/comparison.yaml` |
-| 4 | Packs de producción | Carpeta (9 entradas) | Una familia por entrada, **con sus packs y ampliaciones dentro** (ver abajo) | `src/content/families/*.yaml` |
-| 5 | Ampliaciones generales | Fichero único | "Expand your story", tipos More / Custom / Immersive | `src/content/extras/global.yaml` |
-| 6 | Condiciones | Fichero único | Las condiciones generales, ordenables | `src/content/conditions.yaml` |
-| 7 | Galerías | Ficheros (4) | Memorabilia, Scenography, Immersion, Portfolio: lista de tarjetas con foto, título y texto | `src/content/galleries/*.yaml` |
-| 8 | FAQ | Fichero único | Preguntas y respuestas ordenables | `src/content/faq.yaml` |
-| 9 | Textos de la web | Fichero único | Menú, botones, pie, textos del formulario | `src/content/ui.yaml` |
-| 10 | Medios | Biblioteca de Sveltia | Todas las imágenes subidas | ver [Imágenes](#imágenes-r-13-r-10) |
+| 1 | Dirección creativa | Ficheros (5) | Story Sparks, Chapters, Universe; tabla comparativa; textos de la página y "Expand your story" | `src/content/creative-levels/*.yaml`, `comparison.yaml`, `creative-direction.yaml` |
+| 2 | Packs | Carpeta (9) | Una familia por entrada, **con sus packs y ampliaciones dentro** | `src/content/families/*.yaml` |
+| 3 | Packs · condiciones | Fichero | Introducción de packs, tipos de ampliación, condiciones, nota de la home | `src/content/packs-general.yaml` |
+| — | *separador* | | | |
+| 4 | Páginas | Ficheros (3) | Home (campos etiquetados por sección: "Portada · titular"…), FAQ (con interruptor Publicada), Privacidad | `pages/home.yaml`, `faq.yaml`, `privacy.yaml` |
+| 5 | Galerías | Ficheros (4) | Memorabilia, Scenography, Immersion, Portfolio: foto, encuadre y pie | `src/content/galleries/*.yaml` |
+| 6 | Textos de la web | Fichero | Menú, botones, formulario, pie, agrupados ("Menú · Packs") | `src/content/ui.yaml` |
+
+Decisiones de esta organización:
+- **Identificador = nombre del fichero** (familias y niveles): no aparece en el panel y no se puede cambiar por error. El enlace de cada pack es de solo lectura y se deriva del nombre.
+- **Textos con formato ligero** (`**negrita**`, `*cursiva*`, saltos de línea), nunca HTML; la web lo convierte (`src/lib/text.ts`).
+- **Encuadre** (`object-position`) junto a cada foto que se recorta: portada de familia, fotos de galería y foto del portfolio de la home.
+- **Una carpeta de subida por sección** (`public/assets/images/packs`, `galleries`, `pages`, `creative-direction`); la biblioteca general sigue mostrando todas las fotos.
+- **Vista previa con el diseño de la web** para familias, niveles y galerías (`public/admin/preview.js` con `preview.css`, copia de `src/styles/global.css`).
 
 **Packs dentro de su familia.** El modelo de [02](02-catalogo-modelo-de-contenido.md) no cambia, pero se guarda así: cada fichero de familia lleva una lista `packs` y una lista `extras`. Ventajas: una pantalla por familia, como en el PDF; el orden de los packs es el orden de la lista (se arrastra); no hay relaciones que mantener. Cada pack de la lista se pliega para que el formulario no sea eterno.
 

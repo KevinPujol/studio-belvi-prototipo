@@ -163,7 +163,7 @@ const families = {
 };
 
 const packsGeneral = {
-  name: 'packs_general', label: 'Packs · textos y condiciones', i18n: true,
+  name: 'packs_general', label: 'Packs · condiciones', i18n: true,
   files: [{ name: 'packs_page', label: 'Introducción, tipos de ampliación y condiciones', file: 'src/content/packs-general.yaml', format: 'yaml', i18n: true, fields: [
     str('pp_title', 'Título de la página de packs'), txt('pp_intro', 'Introducción'),
     str('extension_types_title', 'Tipos de ampliación: título'),
