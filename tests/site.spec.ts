@@ -56,6 +56,28 @@ test.describe('layout', () => {
     await expect(page).toHaveURL(/\/packs\.html$/);
   });
 
+  test('flip cards work by tap on mobile (portfolio card reaches the project)', async ({ page }, info) => {
+    test.skip(!isMobile(info.project.name), 'mobile only');
+    await open(page, '/es/');
+    const card = page.locator('#portfolio .portfolio-item');
+    await card.scrollIntoViewIfNeeded();
+    await card.tap();
+    await expect(card).toHaveClass(/flipped/);
+    await page.locator('#portfolio .portfolio-button').tap();
+    await expect(page).toHaveURL(/\/es\/portfolio\.html$/);
+  });
+
+  test('gallery cards flip by tap on mobile and back again', async ({ page }, info) => {
+    test.skip(!isMobile(info.project.name), 'mobile only');
+    await open(page, '/memorabilia.html');
+    const card = page.locator('.portfolio-item[data-flip]').first();
+    await card.scrollIntoViewIfNeeded();
+    await card.tap();
+    await expect(card).toHaveAttribute('aria-pressed', 'true');
+    await card.tap();
+    await expect(card).toHaveAttribute('aria-pressed', 'false');
+  });
+
   test('pack "Includes" is an accordion on mobile and open on desktop', async ({ page }, info) => {
     await open(page, '/packs/wedding-signs.html');
     const first = page.locator('details[data-accordion]').first();

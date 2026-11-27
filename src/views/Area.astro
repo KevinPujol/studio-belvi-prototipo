@@ -15,7 +15,7 @@ const fam = families(lang).filter((f) => f.area === area);
     </div>
     <div class="portfolio-grid cols-3">
       {g.cards.map((c) => (
-        <div class="portfolio-item reveal">
+        <div class="portfolio-item reveal" data-flip tabindex="0" role="button" aria-pressed="false">
           <div class="portfolio-card">
             <div class="portfolio-card-front"><img src={asset(c.image)} alt={c.caption.replace(/<[^>]+>/g, '') || g.title} loading="lazy" decoding="async" /></div>
             <div class="portfolio-card-back"><h3 set:html={c.caption} /></div>

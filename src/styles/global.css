@@ -274,9 +274,13 @@ section {
     transform-style: preserve-3d;
 }
 
-.portfolio-item:hover .portfolio-card {
-    transform: rotateY(180deg);
+/* Flip on hover only where there is a real pointer; touch screens and keyboards use the .flipped class (see Base.astro). */
+@media (hover: hover) {
+    .portfolio-item:hover .portfolio-card { transform: rotateY(180deg); }
 }
+.portfolio-item.flipped .portfolio-card { transform: rotateY(180deg); }
+.portfolio-item[data-flip] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.portfolio-item[data-flip]:focus-visible { outline: 2px solid var(--bronze); outline-offset: 4px; border-radius: 28px; }
 .portfolio-card-front,
 .portfolio-card-back {
     position: absolute;

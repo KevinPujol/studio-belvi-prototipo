@@ -108,6 +108,20 @@ const links = [
       if (toggle) toggle.textContent = toggle.dataset.open!;
     }));
 
+    // Flip cards (portfolio, galleries): tap on touch screens, Enter/Space on keyboard. On desktop, hover flips them (CSS).
+    // iOS Safari does not apply :hover when tapping a plain block, so without this the back face was unreachable on iPhone.
+    const noHover = window.matchMedia('(hover: none)');
+    document.querySelectorAll<HTMLElement>('.portfolio-item[data-flip]').forEach((card) => {
+      const toggle = () => card.setAttribute('aria-pressed', String(card.classList.toggle('flipped')));
+      card.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).closest('a')) return; // let links on the back face work
+        if (noHover.matches) toggle();
+      });
+      card.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && !(e.target as HTMLElement).closest('a')) { e.preventDefault(); toggle(); }
+      });
+    });
+
     // Reveal on scroll (legacy behaviour).
     const io = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('active')), { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
