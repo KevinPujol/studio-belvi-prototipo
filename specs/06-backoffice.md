@@ -180,6 +180,16 @@ Otras comprobaciones: validación al construir (un precio "Desde" sin importe ha
 
 Manual para las editoras con capturas: `docs/manual.html`, solo en local (fuera de git).
 
+## Publicación segura (27-11-2026, tras la auditoría independiente)
+
+- **Flujo:** Borrador → Listo → Publicar (`publish_mode.stages: [draft, pending_publish]`). Sin "En revisión": una sola cuenta compartida.
+- **Comprobación de cada borrador:** `.github/workflows/check.yml` construye cada pull request de Sveltia con las mismas validaciones que el despliegue. Con la regla de rama en `main` (check `check` obligatorio, también para administradores), un borrador inválido no se puede fusionar. Probado en el prototipo: un precio "Desde" sin importe falló la comprobación ("needs an amount greater than 0") y "Publish" quedó bloqueado (GitHub 405); un cambio correcto pasó, se publicó y llegó a la web.
+- **Aviso en el panel:** `public/admin/status.js` muestra "Publicando…", "Web al día", "Hay un borrador con errores" o "La última publicación ha fallado".
+- **Traducciones:** una traducción solo se usa si el texto castellano existe; las listas se emparejan solo si tienen la misma longitud (si no, se muestra la castellana) y `check-content` lo avisa.
+- **Edición:** textos largos con botones de negrita y cursiva (`richtext`, guarda `**…**`, `_…_` y saltos de línea, que `src/lib/text.ts` convierte); solo el castellano es obligatorio; las familias no se borran desde el panel y las nuevas empiezan ocultas; los niveles no exponen orden ni visibilidad.
+
+**En la migración, la dueña de la cuenta debe además activar la regla de rama en `studiobelvi/studiobelvi.github.io`:** Settings → Branches → Add rule para `main`, "Require status checks to pass" con `check`, e "Include administrators" (sin esto la cuenta compartida, que es administradora, se la saltaría).
+
 ## Abierto
 
 1. ¿Las editoras aceptan cuenta GitHub personal? Si no: Sveltia Additions o Pages CMS.
