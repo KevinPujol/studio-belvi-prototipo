@@ -38,7 +38,9 @@
   const UNIT = { month: '/mes', unit: '/unidad', piece: '/pieza' };
   function priceText(p, vat = true) {
     if (!p || !p.kind) return '';
-    if (p.kind === 'quote' || p.amount == null || p.amount === '') return p.note ? `Presupuesto ${p.note}` : 'Presupuesto personalizado';
+    // A "from"/"fixed" price without amount can't be published (the site build rejects it): say so in the preview.
+    if (p.kind !== 'quote' && (p.amount == null || p.amount === '' || Number(p.amount) <= 0)) return '⚠ Falta el importe: así no se podrá publicar';
+    if (p.kind === 'quote') return p.note ? `Presupuesto ${p.note}` : 'Presupuesto personalizado';
     let a = money(p.amount);
     if (p.unit && UNIT[p.unit]) a = a.replace(' €', ` €${UNIT[p.unit]}`);
     if (p.plus) a = '+' + a;
