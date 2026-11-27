@@ -217,7 +217,7 @@ const config = {
   // The whole image folder, so editors can reuse today's photos; each collection uploads into its own subfolder.
   media_folder: 'public/assets/images',
   public_folder: '/assets/images',
-  // Convert uploads to WebP and cap their size (Sveltia 0.273.1 accepts these options without warnings).
+  // Convert uploads to WebP and cap their size (accepted by Sveltia 5.0.2 without warnings).
   media_libraries: { default: { config: { max_file_size: 8000000, slugify_filename: true, transformations: { raster_image: { format: 'webp', quality: 85, width: 2400, height: 2400 } } } } },
   i18n: { structure: 'single_file', locales: ['es', 'en', 'ca'], default_locale: 'es' },
   // Catalogue first, then the rest of the website, with a divider between them.

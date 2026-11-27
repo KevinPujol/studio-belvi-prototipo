@@ -4,7 +4,7 @@ Estado: propuesta del 26-11-2026 para la **opción A** de [04](04-arquitectura-o
 
 ## Resumen
 
-- El back office está en `studiobelvi.com/admin/`. Es una página estática que carga Sveltia CMS en una versión fijada.
+- El back office está en `studiobelvi.com/admin/`. Es una página estática que carga Sveltia CMS en una versión fijada (5.0.2 desde el 27-11-2026, primera versión estable tras la beta 0.x).
 - Entra cada persona con **su cuenta GitHub personal**. No hay contraseñas propias que guardar.
 - Lo que se edita son formularios: niveles de dirección creativa, familias con sus packs, ampliaciones, galerías, FAQ y textos de la web, en ES / EN / CA.
 - Guardar crea un borrador. Publicar escribe en el repo y la web se actualiza en 1-2 minutos (estimación propia).
@@ -166,7 +166,7 @@ Nota: el permiso Write de GitHub también permite editar código desde github.co
 
 Construido en local en la rama `prototipo`, sin commit ni repo remoto todavía.
 
-**Prueba de punta a punta del panel (Playwright, modo "Work with Local Repository" de Sveltia sobre una copia del contenido):** Sveltia 0.273.1 abrió las 6 colecciones sin errores; se cambió el precio "desde" de The Wedding Signs de 950 a 975 €, Sveltia confirmó "Entry saved." y, con ese fichero, el build publicó "Desde 975 € + IVA" y "From €975 + VAT" con las traducciones intactas. Después se restauró el precio real (950 €).
+**Prueba de punta a punta del panel (Playwright, modo "Work with Local Repository" de Sveltia sobre una copia del contenido):** Sveltia (0.273.1, y de nuevo con 5.0.2 el 27-11-2026) abrió las 6 colecciones sin errores; se cambió el precio "desde" de The Wedding Signs de 950 a 975 €, Sveltia confirmó "Entry saved." y, con ese fichero, el build publicó "Desde 975 € + IVA" y "From €975 + VAT" con las traducciones intactas. Después se restauró el precio real (950 €).
 
 Lo que se aprendió de cómo escribe Sveltia, ya resuelto en el código:
 - Escribe los campos opcionales vacíos como `''` (`unit: ''`, `note: ''`): el esquema los trata como "sin valor".

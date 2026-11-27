@@ -108,7 +108,7 @@ Volumen esperado (estimación propia): unos 50 registros de catálogo y 100-200 
 - **Supuesto:** las editoras aceptan crear una cuenta GitHub personal cada una. Si no, Pages CMS (email) o Sveltia Additions (experimental).
 - **Supuesto:** un retraso de 1-2 minutos entre publicar y verlo en la web es aceptable.
 - **Riesgo:** GitHub Pages prohíbe usarlo para "run your online business"; una web escaparate sin pagos es zona gris (INV §7). Si se quiere eliminar la duda, el mismo build se publica en Cloudflare Pages o Workers sin cambiar el código (INV §6).
-- **Riesgo:** Sveltia en 0.x. Mitigación: versión fijada, y como lee la configuración de Decap, Decap es la salida si Sveltia se abandona (INV §1).
+- **Riesgo (reducido):** Sveltia salió de la beta el 26-11-2026 (versión 5.0.0; el prototipo usa 5.0.2). Mitigación: versión fijada y probada antes de cada actualización; como lee la configuración de Decap, Decap es la salida si Sveltia se abandona (INV §1).
 - **Abierto:** si Sveltia puede guardar imágenes en `src/` para el `srcset` de Astro (R-10). Se verifica en el prototipo.
 - Web3Forms bloquea los navegadores automáticos sin ventana (protección anti-bots); los visitantes reales no se ven afectados. Por eso las pruebas automáticas no envían el formulario.
 
