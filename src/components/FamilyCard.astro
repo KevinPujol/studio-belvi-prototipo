@@ -1,4 +1,5 @@
 ---
+import { md } from '../lib/text';
 import PriceTag from './PriceTag.astro';
 import { asset, pageUrl, type Lang } from '../lib/i18n';
 import type { Family } from '../lib/content';
@@ -10,7 +11,7 @@ const featured = f.packs.filter((p) => p.featured).map((p) => p.name);
   {f.cover_image && <img src={asset(f.cover_image)} alt={f.name} style={f.cover_position ? `object-position: ${f.cover_position}` : undefined} loading="lazy" decoding="async" width="800" height="600" />}
   <div class="body">
     <h3>{f.name}</h3>
-    <p class="tagline">{f.tagline}</p>
+    <p class="tagline" set:html={md(f.tagline)} />
     {showFeatured && featured.length > 0 && <p class="featured">{t.featured_packs}: {featured.join(' · ')}</p>}
     <PriceTag price={f.price_from} lang={lang} />
   </div>

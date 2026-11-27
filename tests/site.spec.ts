@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
 import { priceText, type Price } from '../src/lib/price';
+import { md, plain } from '../src/lib/text';
 
 const LANGS = ['en', 'es', 'ca'] as const;
 const content = (rel: string) => YAML.parse(fs.readFileSync(path.join('src/content', rel), 'utf8'));
@@ -20,6 +21,14 @@ async function open(page: Page, path: string) {
   const res = await page.goto(path);
   return { res, errors };
 }
+
+test('light markup: what the rich text editor writes renders safely', () => {
+  expect(md('En **Studio Belvi** somos _leitmotiv_ y *foil*')).toBe('En <strong>Studio Belvi</strong> somos <em>leitmotiv</em> y <em>foil</em>');
+  expect(md('Línea 1\nLínea 2')).toBe('Línea 1<br>Línea 2');
+  expect(md('Precio 5 \\* 2 y snake_case_word')).toBe('Precio 5 * 2 y snake_case_word');
+  expect(md('<script>alert(1)</script>')).not.toContain('<script>');
+  expect(plain('**Hola** _mundo_\nfin')).toBe('Hola mundo fin');
+});
 
 test.describe('every page in every language', () => {
   test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop-chromium', 'full sweep on one browser'));

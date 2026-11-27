@@ -1,8 +1,8 @@
 ---
 import { pageUrl, type Lang } from '../lib/i18n';
 import type { Family, Level } from '../lib/content';
-interface Props { lang: Lang; t: Record<string, string>; levels: Level[]; families: Family[] }
-const { lang, t, levels, families } = Astro.props;
+interface Props { lang: Lang; t: Record<string, string>; h: Record<string, string>; levels: Level[]; families: Family[] }
+const { lang, t, h, levels, families } = Astro.props;
 // Web3Forms access key: public by design, set per environment (no account tied to the code).
 const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
 
@@ -56,11 +56,11 @@ const guestRanges = ['≤ 50', '50–80', '80–120', '120–200', '+200'];
 
   <fieldset class="field full">
     <legend class="field-label">{t.form_interest}</legend>
-    <p class="chip-group-title">{t.offer_cd_title}</p>
+    <p class="chip-group-title">{h.offer_cd_title}</p>
     <div class="chips">
       {levels.map((l) => <label class="chip"><input type="checkbox" name="interest" value={l.name} /><span>{l.name}</span></label>)}
     </div>
-    <p class="chip-group-title">{t.offer_pp_title}</p>
+    <p class="chip-group-title">{h.offer_pp_title}</p>
     <div class="chips">
       {families.map((f) => <label class="chip"><input type="checkbox" name="interest" value={f.name} /><span>{f.name}</span></label>)}
     </div>

@@ -37,7 +37,7 @@ export const priceSchema = z
     plus: z.boolean().optional(),
     note: z.string().nullish(),
   })
-  .refine((p) => p.kind === 'quote' || p.amount != null, { message: 'A price "from" or "fixed" needs an amount' });
+  .refine((p) => p.kind === 'quote' || (p.amount != null && p.amount > 0), { message: 'A price "from" or "fixed" needs an amount greater than 0' });
 
 const packSchema = z.object({
   slug: empty(z.string().regex(/^[a-z0-9-]+$/).nullish()),
@@ -76,7 +76,7 @@ const familySchema = z.object({
 });
 
 const levelSchema = z.object({
-  order: z.number().int(),
+  order: z.number().int().optional(),
   visible: z.boolean().default(true),
   name: z.string(),
   motto: text,
@@ -96,7 +96,7 @@ const packsGeneralSchema = z.object({
   pp_title: z.string(), pp_intro: text,
   extension_types_title: text,
   extension_types: z.array(z.object({ name: z.string(), meaning: text, example: text })).default([]),
-  conditions_title: text, conditions: list, home_note: text,
+  conditions_title: text, conditions: list,
 });
 
 const comparisonSchema = z.object({ rows: z.array(z.object({ label: z.string(), sparks: z.string(), chapters: z.string(), universe: z.string() })) });
@@ -130,7 +130,9 @@ export function families(lang: Lang, { all = false } = {}): Family[] {
 export const family = (slug: string, lang: Lang) => families(lang).find((f) => f.slug === slug);
 
 export function levels(lang: Lang): Level[] {
-  return filesIn('creative-levels').map((p) => ({ ...localize<Level>(load(p, levelSchema), lang), slug: fileSlug(p) as Level['slug'] })).filter((l) => l.visible).sort(byOrder);
+  // Fixed order (the comparison table has one column per level); hiding a level removes it everywhere.
+  const ORDER = ['sparks', 'chapters', 'universe'];
+  return filesIn('creative-levels').map((p) => ({ ...localize<Level>(load(p, levelSchema), lang), slug: fileSlug(p) as Level['slug'] })).filter((l) => l.visible).sort((a, b) => ORDER.indexOf(a.slug) - ORDER.indexOf(b.slug));
 }
 export const level = (slug: string, lang: Lang) => levels(lang).find((l) => l.slug === slug);
 

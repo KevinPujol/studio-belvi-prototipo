@@ -25,7 +25,7 @@ const areas = [
       <p set:html={md(h.hero_text)} />
       <div class="hero-buttons">
         <a href="#contact" class="btn btn-primary"><span set:html={md(h.hero_cta)} /></a>
-        <a href={pageUrl('packs', lang)} class="btn btn-secondary">{t.offer_pp_link}</a>
+        <a href={pageUrl('packs', lang)} class="btn btn-secondary">{h.offer_pp_link}</a>
       </div>
     </div>
     <div class="hero-visual reveal">
@@ -43,27 +43,27 @@ const areas = [
       <h2 set:html={md(h.collab_title)} />
       <p set:html={md(h.collab_text)} />
     </div>
-    <h3 class="subsection-title reveal">{t.offer_cd_title}</h3>
+    <h3 class="subsection-title reveal">{h.offer_cd_title}</h3>
     <div class="collab-grid">
       {lv.map((l, i) => (
         <a href={pageUrl(l.slug, lang)} class="collab-card reveal">
           <div class="collab-number">{String(i + 1).padStart(2, '0')}</div>
           <h3>{l.name}</h3>
           <p class="motto">{l.motto}</p>
-          <p>{l.description}</p>
+          <p set:html={md(l.description)} />
           <PriceTag price={l.price} lang={lang} />
         </a>
       ))}
     </div>
-    <a class="text-link reveal" href={pageUrl('creative-direction', lang)}>{t.offer_cd_link}</a>
+    <a class="text-link reveal" href={pageUrl('creative-direction', lang)}>{h.offer_cd_link}</a>
 
     <div class="subsection">
-      <h3 class="subsection-title reveal">{t.offer_pp_title}</h3>
+      <h3 class="subsection-title reveal">{h.offer_pp_title}</h3>
       <div class="family-grid">
         {fam.map((f) => <FamilyCard family={f} lang={lang} t={t} showFeatured />)}
       </div>
-      <a class="text-link reveal" href={pageUrl('packs', lang)}>{t.offer_pp_link}</a>
-      {cat.home_note && <p class="small-note">{cat.home_note} <a href={pageUrl('packs', lang, 'conditions')} style="text-decoration:underline">{cat.conditions_title}</a></p>}
+      <a class="text-link reveal" href={pageUrl('packs', lang)}>{h.offer_pp_link}</a>
+      {h.home_note && <p class="small-note">{h.home_note} <a href={pageUrl('packs', lang, 'conditions')} style="text-decoration:underline">{cat.conditions_title}</a></p>}
     </div>
   </div>
 </section>
@@ -137,7 +137,7 @@ const areas = [
     <div class="cta reveal" id="contact">
       <h2 set:html={md(h.contact_title)} />
       <p set:html={md(h.contact_text)} />
-      <ContactForm lang={lang} t={t} levels={lv} families={families(lang)} />
+      <ContactForm lang={lang} t={t} h={h} levels={lv} families={families(lang)} />
     </div>
   </div>
 </section>

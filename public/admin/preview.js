@@ -50,7 +50,14 @@
   }
   // Same light markup as src/lib/text.ts.
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  const md = (s) => ({ __html: s ? esc(s.trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>').replace(/\r?\n/g, '<br>') : '' });
+  const md = (s) => {
+    if (!s) return { __html: '' };
+    const lit = [];
+    const t = s.trim().replace(/\\([\\`*_{}\[\]()#+\-.!~|<>])/g, (_, ch) => `\u0000${lit.push(ch) - 1}\u0000`);
+    return { __html: esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/__(.+?)__/g, '<strong>$1</strong>')
+      .replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>').replace(/(^|[^\w_])_([^_\n]+?)_(?![\w_])/g, '$1<em>$2</em>')
+      .replace(/\r?\n/g, '<br>').replace(/\u0000(\d+)\u0000/g, (_, i) => esc(lit[Number(i)])) };
+  };
   // The admin lives at <base>/admin/, so the site's base path (e.g. /studio-belvi-prototipo) is what comes before it.
   const BASE = location.pathname.replace(/\/admin(\/.*)?$/, '');
   const assetUrl = (getAsset, src) => {

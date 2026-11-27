@@ -1,4 +1,5 @@
 ---
+import { md } from '../lib/text';
 import PriceTag from '../components/PriceTag.astro';
 import PackBlock from '../components/PackBlock.astro';
 import ExtrasList from '../components/ExtrasList.astro';
@@ -16,8 +17,8 @@ const cat = catalog(lang);
       <div class="section-header reveal" style="margin-bottom:0">
         <span>{t[`area_${f.area}`]}</span>
         <h2>{f.name}</h2>
-        <p>{f.tagline}</p>
-        {f.intro && <p style="margin-top:1rem">{f.intro}</p>}
+        <p set:html={md(f.tagline)} />
+        {f.intro && <p style="margin-top:1rem" set:html={md(f.intro)} />}
         <PriceTag price={f.price_from} lang={lang} />
       </div>
       {f.cover_image && <img class="reveal" src={asset(f.cover_image)} alt={f.name} style={f.cover_position ? `object-position: ${f.cover_position}` : undefined} decoding="async" />}

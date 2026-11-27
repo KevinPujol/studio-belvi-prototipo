@@ -1,4 +1,5 @@
 ---
+import { md } from '../lib/text';
 import PriceTag from './PriceTag.astro';
 import type { Lang } from '../lib/i18n';
 import type { Extra } from '../lib/content';
@@ -7,7 +8,6 @@ const { extras, lang, t } = Astro.props;
 const groups = (['additional_piece', 'combo', 'addon', 'support'] as const)
   .map((kind) => ({ kind, items: extras.filter((e) => e.kind === kind) }))
   .filter((g) => g.items.length);
-const vatExcluded = extras.some((e) => e.price?.vat_mode === 'excluded');
 ---
 {groups.map((g) => (
   <div class="panel reveal subsection">
@@ -15,11 +15,11 @@ const vatExcluded = extras.some((e) => e.price?.vat_mode === 'excluded');
     <div class="extras">
       {g.items.map((e) => (
         <div class="extra">
-          <span><span class="label">{e.label}</span>{e.description && <span class="desc">{e.description}</span>}</span>
-          <PriceTag price={e.price} lang={lang} vat={false} />
+          <span><span class="label">{e.label}</span>{e.description && <span class="desc" set:html={md(e.description)} />}</span>
+          <PriceTag price={e.price} lang={lang} vat={e.price?.vat_mode === 'included'} />
         </div>
       ))}
     </div>
-    {vatExcluded && g.items.some((e) => e.price) && <p class="small-note">{t.extras_vat_note}</p>}
+    {(() => { const priced = g.items.filter((e) => e.price && e.price.amount != null); return priced.length > 0 && priced.every((e) => e.price!.vat_mode === 'excluded'); })() && <p class="small-note">{t.extras_vat_note}</p>}
   </div>
 ))}

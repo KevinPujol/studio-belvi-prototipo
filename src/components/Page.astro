@@ -22,10 +22,10 @@ let title = '';
 let description = '';
 let image: string | undefined;
 switch (def.view) {
-  case 'creative-direction': title = catalog(lang).cd_title; description = catalog(lang).cd_intro; break;
-  case 'level': { const l = level(def.key!, lang)!; title = l.name; description = l.description; break; }
-  case 'packs': title = catalog(lang).pp_title; description = catalog(lang).pp_intro; break;
-  case 'family': { const f = family(def.key!, lang)!; title = f.name; description = f.tagline; image = f.cover_image ?? undefined; break; }
+  case 'creative-direction': title = catalog(lang).cd_title; description = plain(catalog(lang).cd_intro); break;
+  case 'level': { const l = level(def.key!, lang)!; title = l.name; description = plain(l.description); break; }
+  case 'packs': title = catalog(lang).pp_title; description = plain(catalog(lang).pp_intro); break;
+  case 'family': { const f = family(def.key!, lang)!; title = f.name; description = plain(f.tagline); image = f.cover_image ?? undefined; break; }
   case 'area': title = plain(gallery(def.key!, lang).title); break;
   case 'portfolio': { const g = gallery('portfolio', lang); title = plain(g.title); description = plain(g.text); break; }
   case 'faq': title = plain(faq(lang).title); break;

@@ -23,7 +23,16 @@ let missingTotal = 0;
 const conflicts = [];
 const report = {};
 
+const structural = [];
 function compare(src, tr, where, file, lang) {
+  const isEmpty = (v) => v === undefined || v === null || v === '';
+  if (isEmpty(src) && !isEmpty(tr) && !(Array.isArray(tr) && !tr.length) && !(isObj(tr) && Object.values(tr).every(isEmpty))) {
+    structural.push(`${file} ${where} (${lang}): translated but empty in Spanish, not shown`);
+    return;
+  }
+  if (Array.isArray(src) && Array.isArray(tr) && tr.length && tr.length !== src.length) {
+    structural.push(`${file} ${where} (${lang}): ${tr.length} items vs ${src.length} in Spanish, the site shows the Spanish list`);
+  }
   if (typeof src === 'string') {
     if (src.trim() && (tr === undefined || tr === null || tr === '')) { missingTotal++; (report[file] ??= { en: 0, ca: 0 })[lang]++; }
   } else if (Array.isArray(src)) {
@@ -53,6 +62,12 @@ if (pending.length) {
   console.log(`\ncheck-content: ${missingTotal} texts without translation (the site shows the Spanish text):`);
   for (const [file, c] of pending) console.log(`  ${file.padEnd(40)} EN ${String(c.en).padStart(3)}   CA ${String(c.ca).padStart(3)}`);
 } else console.log('\ncheck-content: all texts translated.');
+
+if (structural.length) {
+  console.log(`\ncheck-content: ${structural.length} translations need attention (the site falls back to Spanish there):`);
+  for (const line of structural.slice(0, 15)) console.log('  ' + line);
+  if (structural.length > 15) console.log(`  … and ${structural.length - 15} more`);
+}
 
 const dist = path.join(root, 'dist');
 if (fs.existsSync(dist)) {

@@ -13,10 +13,6 @@ es:
   nav_packs: Packs
   menu: Menú
   close: Cerrar
-  offer_cd_title: Dirección creativa
-  offer_cd_link: Comparar los tres niveles
-  offer_pp_title: Production packs
-  offer_pp_link: Ver todos los packs
   see_level: Ver el nivel
   featured_packs: Destacados
   ideal_for: Ideal para
@@ -48,6 +44,8 @@ es:
   form_error: No se ha podido enviar. Escríbenos a hello@studiobelvi.com.
   privacy_link: Privacidad
   meta_description: Studio Belvi diseña y crea la dirección creativa, los objetos, los espacios y las experiencias de tu boda. Packs y precios.
+  compare_link: Comparar los tres niveles
+  extras_support: Acompañamiento
 en:
   privacy_read: Read
   form_date_placeholder: Choose a month
@@ -62,10 +60,6 @@ en:
   nav_packs: Packs
   menu: Menu
   close: Close
-  offer_cd_title: Creative direction
-  offer_cd_link: Compare the three levels
-  offer_pp_title: Production packs
-  offer_pp_link: See all packs
   see_level: See this level
   featured_packs: Featured
   ideal_for: Ideal for
@@ -97,6 +91,8 @@ en:
   form_error: The message could not be sent. Please write to hello@studiobelvi.com.
   privacy_link: Privacy
   meta_description: Studio Belvi designs and creates the creative direction, objects, spaces and experiences of your wedding. Packs and prices.
+  compare_link: Compare the three levels
+  extras_support: Support
 ca:
   privacy_read: Llegir
   form_date_placeholder: Tria el mes
@@ -111,10 +107,6 @@ ca:
   nav_packs: Packs
   menu: Menú
   close: Tanca
-  offer_cd_title: Direcció creativa
-  offer_cd_link: Compara els tres nivells
-  offer_pp_title: Production packs
-  offer_pp_link: Veure tots els packs
   see_level: Veure el nivell
   featured_packs: Destacats
   ideal_for: Ideal per a
@@ -146,3 +138,5 @@ ca:
   form_error: No s'ha pogut enviar. Escriu-nos a hello@studiobelvi.com.
   privacy_link: Privacitat
   meta_description: Studio Belvi dissenya i crea la direcció creativa, els objectes, els espais i les experiències del teu casament. Packs i preus.
+  compare_link: Compara els tres nivells
+  extras_support: Acompanyament

@@ -17,12 +17,15 @@ const siteUrl = (env.SITE_URL || 'https://studiobelvi.com') + (env.BASE_PATH && 
 // ---------- field helpers (labels in Spanish: the editors write in Spanish) ----------
 const T = { i18n: true };
 const D = { i18n: 'duplicate' };
-const MARKUP = 'Negrita: **texto**. Cursiva: *texto*. Salto de línea: Intro.';
-const str = (name, label, o = {}) => ({ name, label, widget: 'string', ...T, ...o });
-const txt = (name, label, o = {}) => ({ name, label, widget: 'text', hint: MARKUP, ...T, ...o });
+// Paragraph texts use the rich text editor with only bold and italic (it saves the light markup src/lib/text.ts renders).
+const RICH = { widget: 'richtext', buttons: ['bold', 'italic'], editor_components: [], modes: ['rich_text'], minimal: true };
+// Translated fields are required only in Spanish: EN/CA can be filled later (the site falls back to Spanish).
+const req = (o) => (o.i18n === 'duplicate' ? true : ['es']);
+const str = (name, label, o = {}) => ({ name, label, widget: 'string', ...T, required: req(o), ...o });
+const txt = (name, label, o = {}) => ({ name, label, ...RICH, ...T, required: req(o), ...o });
 const bool = (name, label, def, o = {}) => ({ name, label, widget: 'boolean', default: def, ...D, ...o });
 const num = (name, label, o = {}) => ({ name, label, widget: 'number', value_type: 'int', ...D, ...o });
-const img = (name, label, o = {}) => ({ name, label, widget: 'image', required: false, ...D, ...o });
+const img = (name, label, o = {}) => ({ name, label, widget: 'image', required: false, choose_url: false, ...D, ...o });
 const strList = (name, label, o = {}) => ({ name, label, widget: 'list', required: false, field: { name: 'item', label: 'Texto', widget: 'string' }, ...T, ...o });
 // Which part of a photo stays visible when it is cropped (cards, mobile). Values are CSS object-position.
 const position = (name, label = 'Encuadre de la foto') => ({
@@ -35,14 +38,14 @@ const position = (name, label = 'Encuadre de la foto') => ({
     { label: 'Abajo a la izquierda', value: '20% 80%' }, { label: 'Abajo a la derecha', value: '80% 80%' },
   ],
 });
-const price = (name = 'price', label = 'Precio', required = true) => ({
+const price = (name = 'price', label = 'Precio', required = true, vat = 'excluded') => ({
   name, label, widget: 'object', required, ...T,
   hint: 'La web compone el texto: "Desde 750 € + IVA", "490 € IVA incluido", "Presupuesto personalizado".',
   fields: [
     { name: 'kind', label: 'Tipo', widget: 'select', ...D, default: 'from', options: [
       { label: 'Desde', value: 'from' }, { label: 'Precio cerrado', value: 'fixed' }, { label: 'Presupuesto', value: 'quote' }] },
-    { name: 'amount', label: 'Importe (€, sin decimales)', widget: 'number', value_type: 'int', min: 0, required: false, ...D, hint: 'Obligatorio salvo en "Presupuesto".' },
-    { name: 'vat_mode', label: 'IVA', widget: 'select', ...D, default: 'excluded', options: [
+    { name: 'amount', label: 'Importe (€, sin decimales)', widget: 'number', value_type: 'int', min: 1, required: false, ...D, hint: 'Obligatorio salvo en "Presupuesto". Si falta, la publicación se detiene y la web no cambia.' },
+    { name: 'vat_mode', label: 'IVA', widget: 'select', ...D, default: vat, options: [
       { label: '+ IVA (no incluido)', value: 'excluded' }, { label: 'IVA incluido', value: 'included' }, { label: 'Sin indicar', value: 'unspecified' }] },
     { name: 'unit', label: 'Unidad', widget: 'select', required: false, ...D, options: [
       { label: '€/mes', value: 'month' }, { label: '€/unidad', value: 'unit' }, { label: '€/pieza', value: 'piece' }] },
@@ -57,6 +60,9 @@ const media = (folder) => ({ media_folder: `/public/assets/images/${folder}`, pu
 const HOME = [
   ['hero_small', 'Portada · antetítulo', 'string'], ['hero_title', 'Portada · titular', 'string'], ['hero_text', 'Portada · texto', 'text'], ['hero_cta', 'Portada · botón', 'string'],
   ['collab_span', 'Oferta · antetítulo', 'string'], ['collab_title', 'Oferta · título', 'string'], ['collab_text', 'Oferta · texto', 'text'],
+  ['offer_cd_title', 'Oferta · título de dirección creativa', 'string'], ['offer_cd_link', 'Oferta · enlace a la comparativa', 'string'],
+  ['offer_pp_title', 'Oferta · título de packs', 'string'], ['offer_pp_link', 'Oferta · enlace a todos los packs (también botón de la portada)', 'string'],
+  ['home_note', 'Oferta · nota de condiciones', 'string'],
   ['portfolio_span', 'Portfolio · antetítulo', 'string'], ['portfolio_title', 'Portfolio · título', 'string'], ['portfolio_text', 'Portfolio · texto', 'text'],
   ['portfolio_image', 'Portfolio · foto de la tarjeta', 'image'], ['portfolio_image_position', 'Portfolio · encuadre de la foto', 'position'],
   ['portfolio_card01_front', 'Portfolio · tarjeta: título (delante)', 'string'], ['portfolio_card01_back_title', 'Portfolio · tarjeta: título (detrás)', 'string'],
@@ -72,12 +78,10 @@ const HOME = [
 const UI = [
   ['nav01', 'Menú · Portfolio'], ['nav02', 'Menú · Qué hacemos'], ['nav03', 'Menú · Qué necesitas (oferta)'], ['nav_packs', 'Menú · Packs'],
   ['nav04', 'Menú · Proceso'], ['nav05', 'Menú · Contacto'], ['nav06', 'Menú · FAQ'], ['menu', 'Menú · botón "Menú" (móvil)'], ['close', 'Menú · botón "Cerrar" (móvil)'],
-  ['offer_cd_title', 'Home, oferta · título de dirección creativa'], ['offer_cd_link', 'Home, oferta · enlace a la comparativa'],
-  ['offer_pp_title', 'Home, oferta · título de packs'], ['offer_pp_link', 'Home, oferta · enlace a todos los packs'],
-  ['see_level', 'Dirección creativa · enlace "Ver el nivel"'], ['ideal_for', 'Dirección creativa · "Ideal para"'], ['compare_title', 'Dirección creativa · título de la comparativa'],
+  ['see_level', 'Dirección creativa · enlace "Ver el nivel"'], ['compare_link', 'Dirección creativa · enlace a la comparativa (páginas de nivel)'], ['ideal_for', 'Dirección creativa · "Ideal para"'], ['compare_title', 'Dirección creativa · título de la comparativa'],
   ['featured_packs', 'Packs · etiqueta "Destacados"'], ['includes', 'Packs · "Incluye"'], ['common_inclusions', 'Packs · "Incluye en todos los niveles"'],
   ['possibilities', 'Packs · "Posibilidades"'], ['extras_addon', 'Packs · título "Ampliaciones"'], ['extras_additional_piece', 'Packs · título "Piezas adicionales"'],
-  ['extras_combo', 'Packs · título "Combinaciones"'], ['extras_vat_note', 'Packs · nota de IVA en ampliaciones'], ['filter_all', 'Packs · filtro "Todas"'],
+  ['extras_combo', 'Packs · título "Combinaciones"'], ['extras_support', 'Packs · título "Acompañamiento"'], ['extras_vat_note', 'Packs · nota de IVA en ampliaciones'], ['filter_all', 'Packs · filtro "Todas"'],
   ['interest', 'Packs · botón "Me interesa"'], ['back_to_packs', 'Packs · enlace "Todos los packs"'],
   ['area_memorabilia', 'Áreas · Memorabilia'], ['area_scenography', 'Áreas · Escenografía'], ['area_immersion', 'Áreas · Inmersión'], ['area_packs_title', 'Áreas · título "Packs de esta área"'],
   ['form_name', 'Formulario · Nombre'], ['form_email', 'Formulario · Email'], ['form_date', 'Formulario · Fecha'], ['form_date_placeholder', 'Formulario · fecha: texto inicial'],
@@ -94,31 +98,32 @@ function pageFields(rel, map, defaultWidget = 'string') {
     .map(([k, label, widget = defaultWidget]) => {
       if (widget === 'image') return img(k, label);
       if (widget === 'position') return position(k, label);
-      return widget === 'text' ? txt(k, label, { required: false }) : str(k, label, { required: false });
+      // Titles are required (in Spanish) so the hero or a section title can't be left blank by mistake.
+      const required = /(^|_)title$/.test(k) ? ['es'] : false;
+      return widget === 'text' ? txt(k, label, { required }) : str(k, label, { required });
     });
 }
 
 // ---------- collections ----------
 const levelFields = [
-  num('order', 'Orden'), bool('visible', 'Visible', true),
   str('name', 'Nombre', D), str('motto', 'Lema'), txt('description', 'Descripción'), txt('ideal_for', 'Ideal para'),
-  str('price_label', 'Etiqueta del precio', { required: false }), price(),
+  str('price_label', 'Etiqueta del precio', { required: false }), price('price', 'Precio', true, 'included'),
   strList('includes', 'Qué incluye'),
 ];
-const levelFile = (slug, label) => ({ name: slug, label, file: `src/content/creative-levels/${slug}.yaml`, format: 'yaml', i18n: true, fields: levelFields });
+const levelFile = (slug, label) => ({ name: slug, label, icon: 'star', file: `src/content/creative-levels/${slug}.yaml`, format: 'yaml', i18n: true, preview_path: `/es/${slug}.html`, fields: levelFields });
 
 const creative = {
-  name: 'creative', label: 'Dirección creativa', i18n: true, ...media('creative-direction'),
+  name: 'creative', label: 'Dirección creativa', icon: 'auto_awesome', i18n: true, ...media('creative-direction'),
   description: 'Los tres niveles, la tabla comparativa y los textos de la página.',
   files: [
     levelFile('sparks', 'Story Sparks'), levelFile('chapters', 'Story Chapters'), levelFile('universe', 'Story Universe'),
-    { name: 'comparison', label: 'Tabla comparativa', file: 'src/content/comparison.yaml', format: 'yaml', i18n: true, fields: [
+    { name: 'comparison', label: 'Tabla comparativa', icon: 'table', file: 'src/content/comparison.yaml', format: 'yaml', i18n: true, preview_path: '/es/creative-direction.html', fields: [
       { name: 'rows', label: 'Filas', label_singular: 'Fila', widget: 'list', ...T, summary: '{{fields.label}}', fields: [str('label', 'Fila'), str('sparks', 'Sparks'), str('chapters', 'Chapters'), str('universe', 'Universe')] },
     ] },
-    { name: 'creative_page', label: 'Textos de la página y "Expand your story"', file: 'src/content/creative-direction.yaml', format: 'yaml', i18n: true, fields: [
+    { name: 'creative_page', label: 'Textos de la página y "Expand your story"', icon: 'article', file: 'src/content/creative-direction.yaml', format: 'yaml', i18n: true, preview_path: '/es/creative-direction.html', fields: [
       str('cd_title', 'Título'), txt('cd_intro', 'Introducción'), str('cd_levels_intro', 'Antetítulo'),
       str('expand_title', 'Expand your story: título'), txt('expand_intro', 'Expand your story: introducción'), str('expand_price_header', 'Expand your story: pie de precios'),
-      { name: 'expand', label: 'Expand your story: servicios', label_singular: 'Servicio', widget: 'list', ...T, summary: '{{fields.label}}', fields: [str('label', 'Servicio'), price()] },
+      { name: 'expand', label: 'Expand your story: servicios', label_singular: 'Servicio', widget: 'list', ...T, summary: '{{fields.label}}', fields: [str('label', 'Servicio'), price('price', 'Precio', true, 'unspecified')] },
     ] },
   ],
 };
@@ -128,25 +133,32 @@ const pack = {
   min: 1, hint: 'Cada familia necesita al menos un pack.',
   fields: [
     str('name', 'Nombre (se mantiene en inglés)', D),
-    str('slug', 'Enlace directo', { ...D, required: false, readonly: true, hint: 'Se crea solo a partir del nombre. Es el enlace directo al pack.' }),
+    str('slug', 'Enlace directo (automático, no se edita)', { ...D, required: false, readonly: true }),
     bool('visible', 'Visible', true), bool('featured', 'Destacado en la home', false),
     txt('description', 'Descripción', { required: false }), price(),
     { name: 'inclusion_groups', label: 'Qué incluye', label_singular: 'Grupo', widget: 'list', required: false, ...T, summary: '{{fields.title}}',
       fields: [str('title', 'Título del grupo (opcional)', { required: false }), str('description', 'Texto del grupo (opcional)', { required: false }), strList('items', 'Puntos')] },
     strList('possibilities', 'Posibilidades'),
-    { name: 'images', label: 'Imágenes', widget: 'list', required: false, ...D, field: { name: 'image', label: 'Imagen', widget: 'image' } },
   ],
 };
 
 const families = {
-  name: 'families', label: 'Packs', label_singular: 'Familia', ...media('packs'),
-  description: 'Las familias de Production packs, cada una con sus packs y ampliaciones.',
+  name: 'families', label: 'Packs', label_singular: 'Familia', icon: 'inventory_2', ...media('packs'),
+  description: 'Las familias de Production packs, cada una con sus packs y ampliaciones. Para quitar una familia, apaga "Visible".',
   folder: 'src/content/families', extension: 'yaml', format: 'yaml', i18n: true,
-  create: true, slug: '{{name}}', identifier_field: 'name', summary: '{{order}}. {{name}}',
-  sortable_fields: ['order', 'name'],
+  create: true, delete: false, slug: '{{name}}', identifier_field: 'name', summary: '{{order}}. {{name}}',
+  preview_path: '/es/packs/{{slug}}.html',
+  sortable_fields: { fields: ['order', 'name'], default: { field: 'order', direction: 'ascending' } },
+  view_filters: [
+    { label: 'Visibles', field: 'visible', pattern: true },
+    { label: 'Ocultas', field: 'visible', pattern: false },
+    { label: 'En la home', field: 'featured', pattern: true },
+  ],
+  view_groups: [{ label: 'Área', field: 'area' }],
   fields: [
     str('name', 'Nombre (se mantiene en inglés)', D), num('order', 'Orden'),
-    bool('visible', 'Visible', true), bool('featured', 'Mostrar en la home', true),
+    // New families start hidden and off the home page, so a half-finished one never goes live by accident.
+    bool('visible', 'Visible', false), bool('featured', 'Mostrar en la home', false),
     { name: 'area', label: 'Área', widget: 'select', ...D, options: [
       { label: 'Memorabilia', value: 'memorabilia' }, { label: 'Escenografía', value: 'scenography' }, { label: 'Inmersión', value: 'immersion' }] },
     img('cover_image', 'Imagen de portada'), position('cover_position', 'Encuadre de la portada'),
@@ -164,32 +176,32 @@ const families = {
 };
 
 const packsGeneral = {
-  name: 'packs_general', label: 'Packs · condiciones', i18n: true,
-  files: [{ name: 'packs_page', label: 'Introducción, tipos de ampliación y condiciones', file: 'src/content/packs-general.yaml', format: 'yaml', i18n: true, fields: [
+  name: 'packs_general', label: 'Página de packs', icon: 'gavel', i18n: true,
+  files: [{ name: 'packs_page', label: 'Introducción, tipos de ampliación y condiciones', file: 'src/content/packs-general.yaml', format: 'yaml', i18n: true, preview_path: '/es/packs.html', fields: [
     str('pp_title', 'Título de la página de packs'), txt('pp_intro', 'Introducción'),
     str('extension_types_title', 'Tipos de ampliación: título'),
     { name: 'extension_types', label: 'Tipos de ampliación', label_singular: 'Tipo', widget: 'list', ...T, summary: '{{fields.name}}', fields: [str('name', 'Tipo', D), str('meaning', 'Qué significa'), str('example', 'Ejemplo')] },
-    str('conditions_title', 'Condiciones: título'), strList('conditions', 'Condiciones'), str('home_note', 'Nota de condiciones en la home'),
+    str('conditions_title', 'Condiciones: título'), strList('conditions', 'Condiciones'),
   ] }],
 };
 
-const galleryFile = (name, label) => ({
-  name, label, file: `src/content/galleries/${name}.yaml`, format: 'yaml', i18n: true, fields: [
+const galleryFile = (name, label, page) => ({
+  name, label, icon: 'photo_library', file: `src/content/galleries/${name}.yaml`, format: 'yaml', i18n: true, preview_path: `/es/${page}.html`, fields: [
     str('title', 'Título'), txt('text', 'Texto', { required: false }),
-    { name: 'cards', label: 'Fotos', label_singular: 'Foto', widget: 'list', ...T, summary: '{{fields.caption}}', fields: [img('image', 'Imagen', { required: true }), position('position'), str('caption', 'Pie de foto', { required: false })] },
+    { name: 'cards', label: 'Fotos', label_singular: 'Foto', widget: 'list', ...T, summary: '{{fields.caption}}', thumbnail: 'image', fields: [img('image', 'Imagen', { required: true }), position('position'), str('caption', 'Pie de foto', { required: false, hint: 'Describe la foto: también es el texto que leen Google y los lectores de pantalla.' })] },
   ],
 });
 
 const pages = {
-  name: 'pages', label: 'Páginas', i18n: true, ...media('pages'),
+  name: 'pages', label: 'Páginas', icon: 'description', i18n: true, ...media('pages'),
   files: [
-    { name: 'home', label: 'Home', file: 'src/content/pages/home.yaml', format: 'yaml', i18n: true, fields: pageFields('src/content/pages/home.yaml', HOME, 'text') },
-    { name: 'faq', label: 'FAQ', file: 'src/content/faq.yaml', format: 'yaml', i18n: true, fields: [
+    { name: 'home', label: 'Home', icon: 'home', file: 'src/content/pages/home.yaml', format: 'yaml', i18n: true, preview_path: '/es/', fields: pageFields('src/content/pages/home.yaml', HOME, 'text') },
+    { name: 'faq', label: 'FAQ', icon: 'help', file: 'src/content/faq.yaml', format: 'yaml', i18n: true, fields: [
       bool('published', 'Publicada (si no, queda como borrador y no sale en la web)', true),
       str('title', 'Título'), txt('intro', 'Introducción'),
       { name: 'items', label: 'Preguntas', label_singular: 'Pregunta', widget: 'list', ...T, summary: '{{fields.question}}', fields: [str('question', 'Pregunta'), txt('answer', 'Respuesta')] },
     ] },
-    { name: 'privacy', label: 'Privacidad', file: 'src/content/privacy.yaml', format: 'yaml', i18n: true, fields: [
+    { name: 'privacy', label: 'Privacidad', icon: 'shield', file: 'src/content/privacy.yaml', format: 'yaml', i18n: true, preview_path: '/es/privacy.html', fields: [
       str('title', 'Título'), str('draft_notice', 'Aviso de borrador (vaciar al publicar)', { required: false }),
       { name: 'sections', label: 'Apartados', label_singular: 'Apartado', widget: 'list', ...T, summary: '{{fields.heading}}', fields: [str('heading', 'Título'), txt('body', 'Texto')] },
     ] },
@@ -197,12 +209,12 @@ const pages = {
 };
 
 const galleries = {
-  name: 'galleries', label: 'Galerías', i18n: true, ...media('galleries'),
-  files: [galleryFile('memorabilia', 'Memorabilia'), galleryFile('scenography', 'Scenography'), galleryFile('immersion', 'Immersion'), galleryFile('portfolio', 'Portfolio: Once upon a story…')],
+  name: 'galleries', label: 'Galerías', icon: 'photo_library', i18n: true, ...media('galleries'),
+  files: [galleryFile('memorabilia', 'Memorabilia', 'memorabilia'), galleryFile('scenography', 'Escenografía', 'scenography'), galleryFile('immersion', 'Inmersión', 'immersion'), galleryFile('portfolio', 'Portfolio: Érase una vez…', 'portfolio')],
 };
 
 const uiTexts = {
-  name: 'ui', label: 'Textos de la web', i18n: true,
+  name: 'ui', label: 'Textos de la web', icon: 'translate', i18n: true,
   files: [{ name: 'ui', label: 'Menú, botones, formulario y pie', file: 'src/content/ui.yaml', format: 'yaml', i18n: true, fields: pageFields('src/content/ui.yaml', UI) }],
 };
 
@@ -211,7 +223,13 @@ if (env.CMS_AUTH_URL) backend.base_url = env.CMS_AUTH_URL;
 
 const config = {
   backend,
-  publish_mode: 'editorial_workflow',
+  // Draft → Ready → Publish. No "In review" stage (one shared account). Every draft is a pull request that the
+  // "check" workflow builds before it can be published (see .github/workflows/check.yml).
+  publish_mode: { type: 'editorial_workflow', stages: ['draft', 'pending_publish'] },
+  app_title: 'Studio Belvi',
+  logo: { src: `${env.BASE_PATH && env.BASE_PATH !== '/' ? env.BASE_PATH : ''}/assets/images/logo/favicon.svg` },
+  // New families get plain URLs (no accents or curly quotes in packs/<name>.html).
+  slug: { encoding: 'ascii', clean_accents: true },
   site_url: siteUrl,
   display_url: siteUrl,
   // The whole image folder, so editors can reuse today's photos; each collection uploads into its own subfolder.

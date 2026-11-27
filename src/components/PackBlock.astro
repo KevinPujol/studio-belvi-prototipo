@@ -1,4 +1,5 @@
 ---
+import { md } from '../lib/text';
 import PriceTag from './PriceTag.astro';
 import { pageUrl, type Lang } from '../lib/i18n';
 import type { Pack } from '../lib/content';
@@ -14,7 +15,7 @@ const interestUrl = `${pageUrl('', lang)}?interest=${encodeURIComponent(familyNa
     {p.featured && <span class="badge">{t.featured_packs}</span>}
     <h3>{p.name}</h3>
     <PriceTag price={p.price} lang={lang} />
-    {p.description && <p>{p.description}</p>}
+    {p.description && <p set:html={md(p.description)} />}
     <p style="margin-top:1.5rem"><a class="btn btn-primary interest-btn" href={interestUrl}>{t.interest}</a></p>
   </div>
   <details class="pack-body" open data-accordion>
@@ -22,7 +23,7 @@ const interestUrl = `${pageUrl('', lang)}?interest=${encodeURIComponent(familyNa
     {p.inclusion_groups.map((g, i) => (
       <>
         <h4>{g.title || t.includes}</h4>
-        {g.description && <p>{g.description}</p>}
+        {g.description && <p set:html={md(g.description)} />}
         <ul class="check-list">{g.items.map((it) => <li>{it}</li>)}</ul>
       </>
     ))}

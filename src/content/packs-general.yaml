@@ -18,7 +18,6 @@ es:
     - Todos los precios del catálogo son precios desde y excluyen IVA.
     - Los precios incluyen una cantidad concreta de revisiones y un alcance definido.
     - Transporte, montaje, desmontaje y desplazamientos se especifican según el proyecto.
-  home_note: Precios desde. Transporte y montaje según proyecto.
 en:
   pp_title: Production packs
   pp_intro: Unique objects, spaces and experiences. Our packs are here to help you decide what you want to focus on.
@@ -35,7 +34,6 @@ en:
     - All catalogue prices are starting prices and exclude VAT.
     - Prices include a set number of revisions and a defined scope.
     - Transport, assembly, dismantling and travel are specified for each project.
-  home_note: Starting prices. Transport and assembly depend on the project.
 ca:
   pp_title: Production packs
   pp_intro: Objectes, espais i experiències únics. Els nostres packs són aquí per ajudar-te a decidir en què et vols centrar.
@@ -52,4 +50,3 @@ ca:
     - Tots els preus del catàleg són preus des de i no inclouen l'IVA.
     - Els preus inclouen una quantitat concreta de revisions i un abast definit.
     - El transport, el muntatge, el desmuntatge i els desplaçaments s'especifiquen segons el projecte.
-  home_note: Preus des de. Transport i muntatge segons el projecte.

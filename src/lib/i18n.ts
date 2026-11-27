@@ -30,21 +30,25 @@ export function pageUrl(route: string, lang: Lang, hash = ''): string {
 type Obj = Record<string, unknown>;
 const isObj = (v: unknown): v is Obj => typeof v === 'object' && v !== null && !Array.isArray(v);
 
-/** Deep merge: objects merge, arrays and scalars from `over` replace `base` when present and non-empty. */
+/** Translation over Spanish (the source):
+ *  - a translation only counts where the Spanish value exists (clearing or deleting in Spanish clears it everywhere);
+ *  - lists are paired item by item only when both have the same length; otherwise the Spanish list is shown
+ *    (a reordered or shortened list must never put a translated label next to another item's price);
+ *  - only keys present in Spanish are kept (orphan translations are ignored). */
 function merge(base: unknown, over: unknown): unknown {
-  if (over === undefined || over === null || over === '') return base;
-  if (Array.isArray(over)) {
-    if (over.length === 0) return base;
-    // Lists of objects (packs, cards…) merge item by item so a partial translation keeps the rest.
-    if (Array.isArray(base) && over.every(isObj)) return base.map((b, i) => merge(b, over[i]));
-    return over;
+  const empty = (v: unknown) => v === undefined || v === null || v === '';
+  if (empty(base) || empty(over)) return base;
+  if (Array.isArray(base)) {
+    if (!Array.isArray(over) || over.length !== base.length) return base;
+    return base.map((b, i) => merge(b, over[i]));
   }
-  if (isObj(base) && isObj(over)) {
-    const out: Obj = { ...base };
-    for (const [k, v] of Object.entries(over)) out[k] = merge(base[k], v);
+  if (isObj(base)) {
+    if (!isObj(over)) return base;
+    const out: Obj = {};
+    for (const [k, v] of Object.entries(base)) out[k] = merge(v, over[k]);
     return out;
   }
-  return over;
+  return typeof over === typeof base ? over : base;
 }
 
 // Fields that are never translated (Sveltia `i18n: duplicate`); always read from the source language.
