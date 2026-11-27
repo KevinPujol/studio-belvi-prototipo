@@ -640,7 +640,10 @@ footer {
 .collab-card .motto, .level-card .motto { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; line-height: 1.3; margin-bottom: 0.8rem; color: var(--espresso); }
 /* A price inside a section header must not inherit the eyebrow style of `.section-header span` */
 .section-header .price { display: inline-block; text-transform: none; letter-spacing: 0.01em; color: var(--oxblood); font-size: 1.1rem; margin-top: 1.2rem; }
-.section-header .price-label { text-transform: none; letter-spacing: normal; font-size: 1.1rem; color: var(--ink); }
+/* Level pages: "Inversión inicial" as a small eyebrow above the price (no dangling separator on phones) */
+.section-header .price-block { margin-top: 1.5rem; }
+.section-header .price-label { display: block; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--espresso); }
+.section-header .price-label + .price { margin-top: 0.3rem; }
 .subsection-title { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; margin: 0 0 2rem; }
 .subsection { margin-top: 4rem; }
 .text-link { display: inline-block; margin-top: 2rem; color: var(--bronze); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
@@ -783,6 +786,13 @@ footer .footer-links a { text-decoration: underline; }
   .contact-form { grid-template-columns: 1fr; gap: 1.4rem; }
   .cta { padding: 4rem 1.4rem; }
   .extra { flex-direction: column; gap: 0.2rem; }
-  .extra .price { text-align: left; }
+  /* Long quote notes ("Presupuesto según ubicación, dimensiones y complejidad") must wrap on phones */
+  .extra .price { text-align: left; white-space: normal; }
   .pack-head h3 { font-size: 1.9rem; }
+}
+
+/* Mobile rhythm (27-11-2026): 3rem per side → 96px between sections instead of the legacy 128px.
+   Desktop keeps the legacy 7rem. */
+@media (max-width: 768px) {
+  section { padding: 3rem 0; }
 }

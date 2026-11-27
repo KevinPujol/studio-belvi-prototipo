@@ -38,7 +38,7 @@ test.describe('every page in every language', () => {
 });
 
 test.describe('layout', () => {
-  for (const route of ['', 'packs', 'packs/wedding-paper-suite', 'creative-direction', 'memorabilia', 'privacy']) {
+  for (const route of ['', 'packs', ...familySlugs.map((s) => `packs/${s}`), 'creative-direction', 'sparks', 'memorabilia', 'portfolio', 'privacy']) {
     test(`no horizontal scroll: ${route || 'home'}`, async ({ page }) => {
       await open(page, url(route, 'es'));
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

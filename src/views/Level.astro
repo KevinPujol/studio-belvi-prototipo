@@ -15,7 +15,7 @@ const interestUrl = `${pageUrl('', lang)}?interest=${encodeURIComponent(l.name)}
         <h2>{l.name}</h2>
         <p>{l.description}</p>
         <p style="margin-top:1.5rem"><strong>{t.ideal_for}:</strong> {l.ideal_for}</p>
-        <p>{l.price_label && <span class="price-label">{l.price_label} · </span>}<PriceTag price={l.price} lang={lang} /></p>
+        <p class="price-block">{l.price_label && <span class="price-label">{l.price_label}</span>}<PriceTag price={l.price} lang={lang} /></p>
       </div>
       <div class="info-grid">
         <div>
